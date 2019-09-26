@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.controller.captcha;
+package com.toughguy.committeeSystem.controller.captcha;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.toughguy.alarmSystem.util.AliyunMessageUtil;
-import com.toughguy.alarmSystem.util.MD5Util;
+import com.toughguy.committeeSystem.util.AliyunMessageUtil;
+import com.toughguy.committeeSystem.util.MD5Util;
 
 
 

@@ -1,9 +1,9 @@
-package com.toughguy.alarmSystem.persist.authority.prototype;
+package com.toughguy.committeeSystem.persist.authority.prototype;
 
 import java.util.List;
 
-import com.toughguy.alarmSystem.model.authority.Resource;
-import com.toughguy.alarmSystem.persist.prototype.IGenericDao;
+import com.toughguy.committeeSystem.model.authority.Resource;
+import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

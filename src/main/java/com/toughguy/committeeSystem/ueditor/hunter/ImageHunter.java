@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor.hunter;
+package com.toughguy.committeeSystem.ueditor.hunter;
 
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
@@ -8,13 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.toughguy.alarmSystem.ueditor.PathFormat;
-import com.toughguy.alarmSystem.ueditor.define.AppInfo;
-import com.toughguy.alarmSystem.ueditor.define.BaseState;
-import com.toughguy.alarmSystem.ueditor.define.MIMEType;
-import com.toughguy.alarmSystem.ueditor.define.MultiState;
-import com.toughguy.alarmSystem.ueditor.define.State;
-import com.toughguy.alarmSystem.ueditor.upload.StorageManager;
+import com.toughguy.committeeSystem.ueditor.PathFormat;
+import com.toughguy.committeeSystem.ueditor.define.AppInfo;
+import com.toughguy.committeeSystem.ueditor.define.BaseState;
+import com.toughguy.committeeSystem.ueditor.define.MIMEType;
+import com.toughguy.committeeSystem.ueditor.define.MultiState;
+import com.toughguy.committeeSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.upload.StorageManager;
 
 /**
  * 图片抓取器

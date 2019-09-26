@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;  
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;  
 import org.apache.shiro.web.util.WebUtils;  

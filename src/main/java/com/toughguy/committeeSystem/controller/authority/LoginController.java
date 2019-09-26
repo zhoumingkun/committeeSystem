@@ -1,5 +1,5 @@
 
-package com.toughguy.alarmSystem.controller.authority;
+package com.toughguy.committeeSystem.controller.authority;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,15 +27,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.code.kaptcha.Constants;
-import com.toughguy.alarmSystem.dto.UserDTO;
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.model.authority.User;
-import com.toughguy.alarmSystem.persist.authority.prototype.IOperationDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IResourceDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IRoleDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IUserDao;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.dto.UserDTO;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.model.authority.User;
+import com.toughguy.committeeSystem.persist.authority.prototype.IOperationDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IResourceDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IRoleDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IUserDao;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 
 /**

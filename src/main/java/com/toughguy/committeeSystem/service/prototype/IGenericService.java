@@ -1,10 +1,10 @@
-package com.toughguy.alarmSystem.service.prototype;
+package com.toughguy.committeeSystem.service.prototype;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import com.toughguy.alarmSystem.pagination.PagerModel;
+import com.toughguy.committeeSystem.pagination.PagerModel;
 
 
 /**

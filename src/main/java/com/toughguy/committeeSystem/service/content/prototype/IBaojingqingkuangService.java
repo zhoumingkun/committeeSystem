@@ -1,12 +1,11 @@
-package com.toughguy.alarmSystem.service.content.prototype;
+package com.toughguy.committeeSystem.service.content.prototype;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.toughguy.alarmSystem.model.content.Baojingqingkuang;
-import com.toughguy.alarmSystem.model.content.Saoheichue;
-import com.toughguy.alarmSystem.service.prototype.IGenericService;
+import com.toughguy.committeeSystem.model.content.Baojingqingkuang;
+import com.toughguy.committeeSystem.service.prototype.IGenericService;
 
 /**
  * 报警情况Service层接口类

@@ -1,10 +1,10 @@
-package com.toughguy.alarmSystem.service.authority.prototype;
+package com.toughguy.committeeSystem.service.authority.prototype;
 
 import java.util.List;
 
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.model.authority.User;
-import com.toughguy.alarmSystem.service.prototype.IGenericService;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.model.authority.User;
+import com.toughguy.committeeSystem.service.prototype.IGenericService;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

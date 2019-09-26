@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.util;
+package com.toughguy.committeeSystem.util;
 
 import java.lang.reflect.Field;
 import java.util.Map;
