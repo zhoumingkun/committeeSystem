@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.controller.authority;
+package com.toughguy.committeeSystem.controller.authority;
 
 
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.toughguy.alarmSystem.dto.TreeDTO;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.model.authority.User;
-import com.toughguy.alarmSystem.service.authority.prototype.IAuthorityService;
-import com.toughguy.alarmSystem.service.authority.prototype.IUserService;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.dto.TreeDTO;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.model.authority.User;
+import com.toughguy.committeeSystem.service.authority.prototype.IAuthorityService;
+import com.toughguy.committeeSystem.service.authority.prototype.IUserService;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

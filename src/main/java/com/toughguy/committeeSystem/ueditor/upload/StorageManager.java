@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor.upload;
+package com.toughguy.committeeSystem.ueditor.upload;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -9,9 +9,9 @@ import java.io.InputStream;
 
 import org.apache.commons.io.FileUtils;
 
-import com.toughguy.alarmSystem.ueditor.define.AppInfo;
-import com.toughguy.alarmSystem.ueditor.define.BaseState;
-import com.toughguy.alarmSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.define.AppInfo;
+import com.toughguy.committeeSystem.ueditor.define.BaseState;
+import com.toughguy.committeeSystem.ueditor.define.State;
 
 public class StorageManager {
     public static final int BUFFER_SIZE = 8192;

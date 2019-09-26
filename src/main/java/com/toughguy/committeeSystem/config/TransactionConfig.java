@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 
 import java.util.Properties;
 

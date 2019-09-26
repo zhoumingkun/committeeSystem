@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.controller.ueditor;
+package com.toughguy.committeeSystem.controller.ueditor;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.toughguy.alarmSystem.ueditor.ActionEnter;
+import com.toughguy.committeeSystem.ueditor.ActionEnter;
 
 
 @Controller

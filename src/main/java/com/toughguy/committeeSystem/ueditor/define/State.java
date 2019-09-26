@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor.define;
+package com.toughguy.committeeSystem.ueditor.define;
 
 /**
  * 处理状态接口

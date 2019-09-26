@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

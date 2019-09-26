@@ -1,5 +1,5 @@
 
-package com.toughguy.alarmSystem.security;
+package com.toughguy.committeeSystem.security;
 
 
 import java.util.List;
@@ -18,10 +18,10 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.User;
-import com.toughguy.alarmSystem.service.authority.prototype.IAuthorityService;
-import com.toughguy.alarmSystem.service.authority.prototype.IUserService;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.User;
+import com.toughguy.committeeSystem.service.authority.prototype.IAuthorityService;
+import com.toughguy.committeeSystem.service.authority.prototype.IUserService;
 
 /**
  * 管理员realm

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.persist.authority.impl;
+package com.toughguy.committeeSystem.persist.authority.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.persist.authority.prototype.IRoleDao;
-import com.toughguy.alarmSystem.persist.impl.GenericDaoImpl;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.persist.authority.prototype.IRoleDao;
+import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

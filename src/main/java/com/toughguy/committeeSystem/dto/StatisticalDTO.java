@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.dto;
+package com.toughguy.committeeSystem.dto;
 
 import java.util.Date;
 

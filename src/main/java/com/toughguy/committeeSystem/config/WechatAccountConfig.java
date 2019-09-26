@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

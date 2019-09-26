@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.authority.impl;
+package com.toughguy.committeeSystem.service.authority.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.persist.authority.prototype.IRoleDao;
-import com.toughguy.alarmSystem.service.authority.prototype.IRoleService;
-import com.toughguy.alarmSystem.service.impl.GenericServiceImpl;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.persist.authority.prototype.IRoleDao;
+import com.toughguy.committeeSystem.service.authority.prototype.IRoleService;
+import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.util;
+package com.toughguy.committeeSystem.util;
 
 import java.io.File;
 import java.io.IOException;

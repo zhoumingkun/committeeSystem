@@ -1,6 +1,6 @@
-package com.toughguy.alarmSystem.dto;
+package com.toughguy.committeeSystem.dto;
 
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  * 用户基本信息（前台）

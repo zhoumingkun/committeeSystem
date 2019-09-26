@@ -1,10 +1,10 @@
-package com.toughguy.alarmSystem.model.authority;
+package com.toughguy.committeeSystem.model.authority;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.toughguy.alarmSystem.model.AbstractModel;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.model.AbstractModel;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

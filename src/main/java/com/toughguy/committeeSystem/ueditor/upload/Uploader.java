@@ -1,9 +1,9 @@
-package com.toughguy.alarmSystem.ueditor.upload;
+package com.toughguy.committeeSystem.ueditor.upload;
 
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
-import com.toughguy.alarmSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.define.State;
 
 public class Uploader {
     private HttpServletRequest request = null;

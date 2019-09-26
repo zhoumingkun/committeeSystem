@@ -1,8 +1,8 @@
-package com.toughguy.alarmSystem.dto;
+package com.toughguy.committeeSystem.dto;
 
 import java.util.List;
 
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 
 /**

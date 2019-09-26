@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -19,7 +19,8 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.toughguy.alarmSystem.security.SystemRealm;
+
+import com.toughguy.committeeSystem.security.SystemRealm;
 
 @Configuration
 public class ShiroConfig {
