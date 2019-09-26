@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor.define;
+package com.toughguy.committeeSystem.ueditor.define;
 
 import java.util.Map;
 import java.util.HashMap;

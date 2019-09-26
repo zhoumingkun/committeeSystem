@@ -1,14 +1,14 @@
-package com.toughguy.alarmSystem.ueditor.upload;
+package com.toughguy.committeeSystem.ueditor.upload;
 
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
 
-import com.toughguy.alarmSystem.ueditor.PathFormat;
-import com.toughguy.alarmSystem.ueditor.define.AppInfo;
-import com.toughguy.alarmSystem.ueditor.define.BaseState;
-import com.toughguy.alarmSystem.ueditor.define.FileType;
-import com.toughguy.alarmSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.PathFormat;
+import com.toughguy.committeeSystem.ueditor.define.AppInfo;
+import com.toughguy.committeeSystem.ueditor.define.BaseState;
+import com.toughguy.committeeSystem.ueditor.define.FileType;
+import com.toughguy.committeeSystem.ueditor.define.State;
 
 public final class Base64Uploader {
 

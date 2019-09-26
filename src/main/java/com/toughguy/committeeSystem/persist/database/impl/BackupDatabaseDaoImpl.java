@@ -1,10 +1,10 @@
-package com.toughguy.alarmSystem.persist.database.impl;
+package com.toughguy.committeeSystem.persist.database.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.toughguy.alarmSystem.model.database.BackupDatabaseInfo;
-import com.toughguy.alarmSystem.persist.database.prototype.IBackupDatabaseDao;
-import com.toughguy.alarmSystem.persist.impl.GenericDaoImpl;
+import com.toughguy.committeeSystem.model.database.BackupDatabaseInfo;
+import com.toughguy.committeeSystem.persist.database.prototype.IBackupDatabaseDao;
+import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.database.impl;
+package com.toughguy.committeeSystem.service.database.impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,10 +17,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
 
-import com.toughguy.alarmSystem.model.database.BackupDatabaseInfo;
-import com.toughguy.alarmSystem.model.database.ProgressSingleton;
-import com.toughguy.alarmSystem.service.database.prototype.IBackupDatabaseService;
-import com.toughguy.alarmSystem.service.impl.GenericServiceImpl;
+import com.toughguy.committeeSystem.model.database.BackupDatabaseInfo;
+import com.toughguy.committeeSystem.model.database.ProgressSingleton;
+import com.toughguy.committeeSystem.service.database.prototype.IBackupDatabaseService;
+import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
 
 @Repository
 public class BackupDatabaseServiceImpl extends GenericServiceImpl<BackupDatabaseInfo, Integer>implements IBackupDatabaseService {

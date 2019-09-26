@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.content.impl;
+package com.toughguy.committeeSystem.service.content.impl;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,13 +27,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.toughguy.alarmSystem.model.content.Baojingqingkuang;
-import com.toughguy.alarmSystem.model.content.Saoheichue;
-import com.toughguy.alarmSystem.persist.content.prototype.IBaojingqingkuangDao;
-import com.toughguy.alarmSystem.persist.content.prototype.ISaoheichueDao;
-import com.toughguy.alarmSystem.service.content.prototype.IBaojingqingkuangService;
-import com.toughguy.alarmSystem.service.impl.GenericServiceImpl;
-import com.toughguy.alarmSystem.util.POIUtils;
+import com.toughguy.committeeSystem.model.content.Baojingqingkuang;
+import com.toughguy.committeeSystem.persist.content.prototype.IBaojingqingkuangDao;
+import com.toughguy.committeeSystem.service.content.prototype.IBaojingqingkuangService;
+import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
+import com.toughguy.committeeSystem.util.POIUtils;
 
 
 /**

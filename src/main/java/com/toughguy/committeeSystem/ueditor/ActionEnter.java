@@ -1,14 +1,14 @@
-package com.toughguy.alarmSystem.ueditor;
+package com.toughguy.committeeSystem.ueditor;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.toughguy.alarmSystem.ueditor.define.ActionMap;
-import com.toughguy.alarmSystem.ueditor.define.AppInfo;
-import com.toughguy.alarmSystem.ueditor.define.BaseState;
-import com.toughguy.alarmSystem.ueditor.define.State;
-import com.toughguy.alarmSystem.ueditor.hunter.FileManager;
-import com.toughguy.alarmSystem.ueditor.hunter.ImageHunter;
-import com.toughguy.alarmSystem.ueditor.upload.Uploader;
+import com.toughguy.committeeSystem.ueditor.define.ActionMap;
+import com.toughguy.committeeSystem.ueditor.define.AppInfo;
+import com.toughguy.committeeSystem.ueditor.define.BaseState;
+import com.toughguy.committeeSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.hunter.FileManager;
+import com.toughguy.committeeSystem.ueditor.hunter.ImageHunter;
+import com.toughguy.committeeSystem.ueditor.upload.Uploader;
 
 import java.util.Map;
 

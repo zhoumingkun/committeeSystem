@@ -1,10 +1,10 @@
-package com.toughguy.alarmSystem.ueditor.define;
+package com.toughguy.committeeSystem.ueditor.define;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.toughguy.alarmSystem.ueditor.Encoder;
+import com.toughguy.committeeSystem.ueditor.Encoder;
 
 public class BaseState implements State {
 

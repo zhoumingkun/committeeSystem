@@ -1,14 +1,14 @@
-package com.toughguy.alarmSystem.ueditor.upload;
+package com.toughguy.committeeSystem.ueditor.upload;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.toughguy.alarmSystem.ueditor.PathFormat;
-import com.toughguy.alarmSystem.ueditor.define.AppInfo;
-import com.toughguy.alarmSystem.ueditor.define.BaseState;
-import com.toughguy.alarmSystem.ueditor.define.FileType;
-import com.toughguy.alarmSystem.ueditor.define.State;
+import com.toughguy.committeeSystem.ueditor.PathFormat;
+import com.toughguy.committeeSystem.ueditor.define.AppInfo;
+import com.toughguy.committeeSystem.ueditor.define.BaseState;
+import com.toughguy.committeeSystem.ueditor.define.FileType;
+import com.toughguy.committeeSystem.ueditor.define.State;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;

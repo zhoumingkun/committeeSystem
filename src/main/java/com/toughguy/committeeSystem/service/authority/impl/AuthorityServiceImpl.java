@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.authority.impl;
+package com.toughguy.committeeSystem.service.authority.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,22 +14,22 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.toughguy.alarmSystem.dto.OperationDTO;
-import com.toughguy.alarmSystem.dto.TreeDTO;
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Resource;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.model.authority.User;
-import com.toughguy.alarmSystem.pagination.PagerModel;
-import com.toughguy.alarmSystem.persist.authority.prototype.IOperationDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IRoleDao;
-import com.toughguy.alarmSystem.service.authority.prototype.IAuthorityService;
-import com.toughguy.alarmSystem.service.authority.prototype.IOperationService;
-import com.toughguy.alarmSystem.service.authority.prototype.IResourceService;
-import com.toughguy.alarmSystem.service.authority.prototype.IRoleService;
-import com.toughguy.alarmSystem.service.authority.prototype.IUserService;
-import com.toughguy.alarmSystem.util.JsonUtil;
-import com.toughguy.alarmSystem.util.PinyinUtil;
+import com.toughguy.committeeSystem.dto.OperationDTO;
+import com.toughguy.committeeSystem.dto.TreeDTO;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Resource;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.model.authority.User;
+import com.toughguy.committeeSystem.pagination.PagerModel;
+import com.toughguy.committeeSystem.persist.authority.prototype.IOperationDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IRoleDao;
+import com.toughguy.committeeSystem.service.authority.prototype.IAuthorityService;
+import com.toughguy.committeeSystem.service.authority.prototype.IOperationService;
+import com.toughguy.committeeSystem.service.authority.prototype.IResourceService;
+import com.toughguy.committeeSystem.service.authority.prototype.IRoleService;
+import com.toughguy.committeeSystem.service.authority.prototype.IUserService;
+import com.toughguy.committeeSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.util.PinyinUtil;
 
 
 @Service

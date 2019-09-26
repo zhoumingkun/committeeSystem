@@ -1,8 +1,8 @@
-package com.toughguy.alarmSystem.model.content;
+package com.toughguy.committeeSystem.model.content;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.toughguy.alarmSystem.model.AbstractModel;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.model.AbstractModel;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  *报警情况实体类

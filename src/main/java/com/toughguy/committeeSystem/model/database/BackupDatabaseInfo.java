@@ -1,9 +1,9 @@
-package com.toughguy.alarmSystem.model.database;
+package com.toughguy.committeeSystem.model.database;
 
 import java.text.NumberFormat;
 
-import com.toughguy.alarmSystem.model.AbstractModel;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.model.AbstractModel;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

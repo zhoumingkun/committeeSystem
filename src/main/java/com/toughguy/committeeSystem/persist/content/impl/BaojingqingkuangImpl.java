@@ -1,12 +1,12 @@
-package com.toughguy.alarmSystem.persist.content.impl;
+package com.toughguy.committeeSystem.persist.content.impl;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.toughguy.alarmSystem.model.content.Baojingqingkuang;
-import com.toughguy.alarmSystem.persist.content.prototype.IBaojingqingkuangDao;
-import com.toughguy.alarmSystem.persist.impl.GenericDaoImpl;
+import com.toughguy.committeeSystem.model.content.Baojingqingkuang;
+import com.toughguy.committeeSystem.persist.content.prototype.IBaojingqingkuangDao;
+import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 /**
  * 报警情况Dao实现类
  * @author zmk

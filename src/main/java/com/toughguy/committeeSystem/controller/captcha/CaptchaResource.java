@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.controller.captcha;
+package com.toughguy.committeeSystem.controller.captcha;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

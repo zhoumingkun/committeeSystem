@@ -1,11 +1,11 @@
-package com.toughguy.alarmSystem.model;
+package com.toughguy.committeeSystem.model;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.toughguy.alarmSystem.util.DateUtil;
+import com.toughguy.committeeSystem.util.DateUtil;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

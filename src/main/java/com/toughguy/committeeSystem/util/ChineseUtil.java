@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.util;
+package com.toughguy.committeeSystem.util;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
