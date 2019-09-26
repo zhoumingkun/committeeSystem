@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.config;
+package com.toughguy.committeeSystem.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.toughguy.alarmSystem.ueditor.ActionEnter;
-import com.toughguy.alarmSystem.ueditor.ConfigManager;
-import com.toughguy.alarmSystem.ueditor.UEditorConfig;
+import com.toughguy.committeeSystem.ueditor.ActionEnter;
+import com.toughguy.committeeSystem.ueditor.ConfigManager;
+import com.toughguy.committeeSystem.ueditor.UEditorConfig;
 /**
  * 跨域请求配置
  * @author BOBO

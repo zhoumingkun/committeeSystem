@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.exception;
+package com.toughguy.committeeSystem.exception;
 
 
 import org.apache.shiro.authz.UnauthenticatedException;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

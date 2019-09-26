@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.filter;
+package com.toughguy.committeeSystem.filter;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 
-import com.toughguy.alarmSystem.system.SystemContext;
+import com.toughguy.committeeSystem.system.SystemContext;
 
 
 /**

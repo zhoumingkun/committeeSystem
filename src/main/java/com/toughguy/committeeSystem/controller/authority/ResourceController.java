@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.controller.authority;
+package com.toughguy.committeeSystem.controller.authority;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,13 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.toughguy.alarmSystem.dto.TreeDTO;
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Resource;
-import com.toughguy.alarmSystem.service.authority.prototype.IAuthorityService;
-import com.toughguy.alarmSystem.service.authority.prototype.IOperationService;
-import com.toughguy.alarmSystem.service.authority.prototype.IResourceService;
-import com.toughguy.alarmSystem.util.JsonUtil;
+import com.toughguy.committeeSystem.dto.TreeDTO;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Resource;
+import com.toughguy.committeeSystem.service.authority.prototype.IAuthorityService;
+import com.toughguy.committeeSystem.service.authority.prototype.IOperationService;
+import com.toughguy.committeeSystem.service.authority.prototype.IResourceService;
+import com.toughguy.committeeSystem.util.JsonUtil;
 
 
 /**

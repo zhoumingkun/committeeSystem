@@ -1,7 +1,7 @@
-package com.toughguy.alarmSystem.persist.database.prototype;
+package com.toughguy.committeeSystem.persist.database.prototype;
 
-import com.toughguy.alarmSystem.model.database.BackupDatabaseInfo;
-import com.toughguy.alarmSystem.persist.prototype.IGenericDao;
+import com.toughguy.committeeSystem.model.database.BackupDatabaseInfo;
+import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

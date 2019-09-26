@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.persist.impl;
+package com.toughguy.committeeSystem.persist.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -10,9 +10,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.toughguy.alarmSystem.pagination.PagerModel;
-import com.toughguy.alarmSystem.persist.prototype.IGenericDao;
-import com.toughguy.alarmSystem.system.SystemContext;
+import com.toughguy.committeeSystem.pagination.PagerModel;
+import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
+import com.toughguy.committeeSystem.system.SystemContext;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one

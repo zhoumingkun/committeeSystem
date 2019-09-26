@@ -1,11 +1,11 @@
-package com.toughguy.alarmSystem.persist.content.prototype;
+package com.toughguy.committeeSystem.persist.content.prototype;
 
 
 import java.util.List;
 import java.util.Map;
 
-import com.toughguy.alarmSystem.model.content.Baojingqingkuang;
-import com.toughguy.alarmSystem.persist.prototype.IGenericDao;
+import com.toughguy.committeeSystem.model.content.Baojingqingkuang;
+import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
 
 /**
  * 报警情况Dao接口类

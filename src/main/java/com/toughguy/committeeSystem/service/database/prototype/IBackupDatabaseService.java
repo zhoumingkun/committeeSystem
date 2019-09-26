@@ -1,11 +1,11 @@
-package com.toughguy.alarmSystem.service.database.prototype;
+package com.toughguy.committeeSystem.service.database.prototype;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
-import com.toughguy.alarmSystem.model.database.BackupDatabaseInfo;
-import com.toughguy.alarmSystem.service.prototype.IGenericService;
+import com.toughguy.committeeSystem.model.database.BackupDatabaseInfo;
+import com.toughguy.committeeSystem.service.prototype.IGenericService;
 
 /**
  * 数据库备份服务接口类

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.authority.impl;
+package com.toughguy.committeeSystem.service.authority.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.toughguy.alarmSystem.dto.OperationDTO;
-import com.toughguy.alarmSystem.dto.TreeDTO;
-import com.toughguy.alarmSystem.model.authority.Operation;
-import com.toughguy.alarmSystem.model.authority.Resource;
-import com.toughguy.alarmSystem.model.authority.Role;
-import com.toughguy.alarmSystem.persist.authority.prototype.IOperationDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IResourceDao;
-import com.toughguy.alarmSystem.persist.authority.prototype.IRoleDao;
-import com.toughguy.alarmSystem.service.authority.prototype.IResourceService;
-import com.toughguy.alarmSystem.service.impl.GenericServiceImpl;
+import com.toughguy.committeeSystem.dto.OperationDTO;
+import com.toughguy.committeeSystem.dto.TreeDTO;
+import com.toughguy.committeeSystem.model.authority.Operation;
+import com.toughguy.committeeSystem.model.authority.Resource;
+import com.toughguy.committeeSystem.model.authority.Role;
+import com.toughguy.committeeSystem.persist.authority.prototype.IOperationDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IResourceDao;
+import com.toughguy.committeeSystem.persist.authority.prototype.IRoleDao;
+import com.toughguy.committeeSystem.service.authority.prototype.IResourceService;
+import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
 ;
 
 @Service

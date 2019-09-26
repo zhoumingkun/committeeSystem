@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.model.database;
+package com.toughguy.committeeSystem.model.database;
 
 import java.util.Hashtable;
 /**

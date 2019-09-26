@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor;
+package com.toughguy.committeeSystem.ueditor;
 
 public class Encoder {
 

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.ueditor;
+package com.toughguy.committeeSystem.ueditor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

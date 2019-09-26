@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.service.impl;
+package com.toughguy.committeeSystem.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.toughguy.alarmSystem.pagination.PagerModel;
-import com.toughguy.alarmSystem.persist.prototype.IGenericDao;
-import com.toughguy.alarmSystem.service.prototype.IGenericService;
+import com.toughguy.committeeSystem.pagination.PagerModel;
+import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
+import com.toughguy.committeeSystem.service.prototype.IGenericService;
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file

@@ -1,4 +1,4 @@
-package com.toughguy.alarmSystem.pagination;
+package com.toughguy.committeeSystem.pagination;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package com.toughguy.alarmSystem.ueditor;
+package com.toughguy.committeeSystem.ueditor;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.util.ResourceUtils;
 
-import com.toughguy.alarmSystem.ueditor.define.ActionMap;
+import com.toughguy.committeeSystem.ueditor.define.ActionMap;
 
 import java.io.*;
 import java.util.HashMap;
