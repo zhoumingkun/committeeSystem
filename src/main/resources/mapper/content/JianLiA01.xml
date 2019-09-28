@@ -58,7 +58,7 @@
 	<!-- 查询小表 -->
 	<select id="findExport" parameterType="String" resultType="JianLiA01">
 		select 
-			a.id as ID ,
+			a.ID as Aid,
 			b.name as sex,
 			a.A0107 as birthDay,
 			c.name as  nation,
