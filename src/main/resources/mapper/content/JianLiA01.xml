@@ -52,7 +52,7 @@
 	<select id="findJianli" parameterType="String" resultType="JianLiA01">
 		SELECT A0101 as name,A0104 as sex,A0107 as birthDay,A0117 as nation, A0111A as homeTown
         FROM rs_a01
-        where ID=#{ID}
+        where ID=#{id}
 	</select>
 	
 	<!-- 查询小表 -->
@@ -89,7 +89,7 @@
 			dic_rs_zb125 d,
 			dic_rs_zb130 e
 		where 
-			ID=ID=#{ID} AND 
+			ID=#{id} AND 
 			a.A0104=b.code AND
 			a.A0117=c.code AND
 			a.A0160=d.code AND

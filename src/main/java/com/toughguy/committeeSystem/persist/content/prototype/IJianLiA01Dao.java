@@ -16,13 +16,13 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 * 导出小excel表查询方法
 	 * 
 	 */
-	public JianLiA01 findExport(String ID);
+	public JianLiA01 findExport(String id);
 	
 	/**
 	 * 导出大excel简历表查询方法
 	 * 
 	 */
-	public JianLiA01 findJianli(String ID);
+	public JianLiA01 findJianli(String id);
 	
 	/**
 	 * 通过名字模糊查询和通过身份证完全匹配查询

@@ -15,16 +15,16 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * 导出小excel表查询查询方法
 	 * 
 	 */
-	public JianLiA01 findExport(String ID);
+	public JianLiA01 findExport(String id);
 	
 	public void ExportReport(HttpServletResponse response,String[] ids);
 	/**
 	 * 导出大excel简历表查询方法
 	 * 
 	 */
-	public JianLiA01 findJianli(String ID);
+	public JianLiA01 findJianli(String id);
 	
-	public void ExportJianLi(HttpServletResponse response,String ID);
+	public void ExportJianLi(HttpServletResponse response,String id);
 	
 	/**
 	 * 通过名字模糊查询和通过身份证完全匹配查询

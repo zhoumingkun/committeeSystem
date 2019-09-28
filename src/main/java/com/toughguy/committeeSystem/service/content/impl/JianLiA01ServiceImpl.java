@@ -64,16 +64,16 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	private IJianLiA39Dao jianLiA39Dao;
 	
 	@Override
-	public JianLiA01 findExport(String ID) {
+	public JianLiA01 findExport(String id) {
 		// TODO Auto-generated method stub
-		return ((IJianLiA01Dao)dao).findExport(ID);
+		return ((IJianLiA01Dao)dao).findExport(id);
 	}
 	
 	
 	@Override
-	public JianLiA01 findJianli(String ID) {
+	public JianLiA01 findJianli(String id) {
 		// TODO Auto-generated method stub
-		return ((IJianLiA01Dao)dao).findJianli(ID);
+		return ((IJianLiA01Dao)dao).findJianli(id);
 	}
 
 	
@@ -166,7 +166,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	}
 	
 	
-	public void ExportJianLi(HttpServletResponse response,String ID) { 
+	public void ExportJianLi(HttpServletResponse response,String id) { 
 		try {
 			
 			//输入模板文件

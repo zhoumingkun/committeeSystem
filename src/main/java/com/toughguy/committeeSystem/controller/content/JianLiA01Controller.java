@@ -38,9 +38,9 @@ public class JianLiA01Controller {
 		@ResponseBody	
 		@RequestMapping(value = "/ExportJianLi")
 //		@RequiresPermissions("jianliA01:ExportReport")
-		public String ExportJianLi(HttpServletResponse response,String ID) {
+		public String ExportJianLi(HttpServletResponse response,String id) {
 			try {
-				JianLiA01Service.ExportJianLi(response, ID);
+				JianLiA01Service.ExportJianLi(response, id);
 				return "{ \"success\" : true }";
 			} catch (Exception e) {
 				e.printStackTrace();
