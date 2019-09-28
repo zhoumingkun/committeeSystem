@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toughguy.committeeSystem.model.content.JianLiA01">
+	
+	<select id="selectA01" resultType="JianLiA01" parameterType="Map">
+	
+		select 
+			a.id as id ,
+			b.name as sex,
+			a.A0107 as birthDay,
+			c.name as  nation,
+			a.A0134 as workingTime,
+			d.name as  personType,
+			a.A0184 as idCard,
+			a.A0101 as name,
+			a.A0111A as homeTown,
+			a.A0114A as birthPlace,
+			a.A0128 as healthState,
+			e.name as  manageType,
+			a.A0187A as speciality,
+			a.A1701 as resume,
+			a.A0192A as jobNameL,
+			a.A0192 as  jobNameS,
+			a.A15Z101 as yearResult,
+			a.A0196 as  specialityPost,
+			a.A0192c as gradeTime,
+			(SELECT q.name FROM dic_rs_zb09 q WHERE  a.A0172=q.code) as jobLevel,
+			(SELECT w.name FROM dic_rs_njszj w WHERE  a.A0192d=w.code) as grade,
+			a.ZZXLXX as graduateSchool1,
+			a.QRZXLXX as graduateSchool2,
+			a.A0173 as jobLevelTime
+		from 
+			rs_a01 a,
+			dic_rs_ax b ,
+			dic_rs_ae c,
+			dic_rs_zb125 d,
+			dic_rs_zb130 e
+		where 
+			<if test="name != 'null' and name !='' ">
+				A0101 like #{name} AND 
+			</if>                             
+			<if test="idCard != 'null' and idCard !='' ">
+		 		A0184=#{idCard} AND 
+			</if>
+			a.A0104=b.code AND
+			a.A0117=c.code AND
+			a.A0160=d.code AND
+			a.A0165=e.code 
+	</select>
+
+</mapper>
