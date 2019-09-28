@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toughguy.committeeSystem.model.content.JianLiA36">
-
-
+		<!-- 根据id查询某人的家庭成员 -->
+		<select id="selectA36" resultType="JianLiA36" parameterType="String">
+			select sid,A3601 as JRname,A3604A as JRcall  ,A3607 as JRbirthDay ,A3627 as JRpolitics ,A3611 as JRjobPlace  from rs_a36  where sid=#{id} 
+		</select>
 </mapper>

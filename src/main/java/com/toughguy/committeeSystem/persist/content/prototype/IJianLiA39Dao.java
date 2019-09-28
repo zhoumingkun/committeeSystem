@@ -13,5 +13,11 @@ import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
  */
 public interface IJianLiA39Dao extends IGenericDao<JianLiA39, Integer>{
 	
+	/**
+	 * 根据id查询某人的入党时间
+	 * @param id
+	 * @return
+	 */
+	public JianLiA39 selectA39(String id);
 	
 }

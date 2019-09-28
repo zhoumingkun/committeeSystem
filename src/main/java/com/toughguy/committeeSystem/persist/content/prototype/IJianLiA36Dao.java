@@ -14,5 +14,10 @@ import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
  */
 public interface IJianLiA36Dao extends IGenericDao<JianLiA36, Integer>{
 	
-	
+	/**
+	 * 根据id查询某人家庭组成情况
+	 * @param id
+	 * @return
+	 */
+	public List<JianLiA36> selectA36(String id);
 }

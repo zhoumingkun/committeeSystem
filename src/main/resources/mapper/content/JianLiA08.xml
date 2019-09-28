@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toughguy.committeeSystem.model.content.JianLiA08">
 
+	<!-- 根据id查询某人的全日制教育和在职教育情况 -->
+	<select id="selectA08" resultType="JianLiA08" parameterType="String">
+		select sid, b.name as educationType ,a.A0801A as educational,a.A0901A as degree from rs_a08 a,dic_rs_jylb b where sid=#{id} AND a.A0837=b.code
+	</select>
 </mapper>

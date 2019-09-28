@@ -13,6 +13,12 @@ import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 @Repository
 public class JianLiA39Impl extends GenericDaoImpl<JianLiA39, Integer> implements IJianLiA39Dao {
 
+	@Override
+	public JianLiA39 selectA39(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectA39", id);
+	}
+
 
 
 }

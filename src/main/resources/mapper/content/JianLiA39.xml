@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toughguy.committeeSystem.model.content.JianLiA39">
-
-
+		
+		<!-- 根据id查询入党时间 -->
+		<select id="selectA39" resultType="JianLiA39" parameterType="String">
+			select sid,A0144 as joinTime from rs_a39 where sid=#{id} 
+		</select>
 </mapper>

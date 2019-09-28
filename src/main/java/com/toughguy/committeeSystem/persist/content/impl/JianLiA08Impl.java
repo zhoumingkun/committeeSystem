@@ -14,5 +14,11 @@ import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 @Repository
 public class JianLiA08Impl extends GenericDaoImpl<JianLiA08, Integer> implements IJianLiA08Dao {
 
+	@Override
+	public List<JianLiA08> selectA08(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectA08", id);
+	}
+
 
 }
