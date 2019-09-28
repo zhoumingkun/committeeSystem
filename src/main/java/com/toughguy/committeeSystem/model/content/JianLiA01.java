@@ -35,7 +35,7 @@ public class JianLiA01 extends AbstractModel {
 	private String grade;	      //A0192d  现职级
 	private String graduateSchool1;	  //ZZXLXX  毕业院校系及专业上
 	private String graduateSchool2;	  //QRZXLXX 毕业院校系及专业下
-	private String jobLevelTime;	  //A1073  任现职务层次时间
+	private String jobLevelTime;	  //A0173  任现职务层次时间
 	public String getID() {
 		return ID;
 	}
