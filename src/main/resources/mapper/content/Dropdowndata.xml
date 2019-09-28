@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toughguy.committeeSystem.model.content.Dropdowndata">
+	
+	<!-- 查询部门详细信息 -->
+	<select id="selectDepartment" resultType="String">
+		select B0101B from rs_unmk  
+	</select>
+	
+	<!-- 查询职务层次详细信息 -->
+	<select id="selectDutyLevel" resultType="String">
+		SELECT tdesc FROM  dic_rs_zb09 WHERE fcode="1A"  
+	</select>
+	
+	<!-- 查询人员类别详细信息 -->
+	<select id="selectPersonnelCategory" resultType="String">
+		SELECT NAME FROM dic_rs_zb125 
+	</select>
+	
+	<!-- 查询管理类别详细信息 -->
+	<select id="selectManagementCategory" resultType="String">
+		SELECT NAME FROM dic_rs_zb130 
+	</select>
+	
+	<!-- 查询编制类型详细信息 -->
+	<select id="selectCompilationType" resultType="String">
+		SELECT NAME FROM dic_rs_zb135 
+	</select>
+	
+		<!-- 查询现职级详细信息 -->
+	<select id="selectCurrentLevel" resultType="String">
+		SELECT NAME FROM dic_rs_njszj WHERE fcode="1" 
+	</select>
+	
+</mapper>
