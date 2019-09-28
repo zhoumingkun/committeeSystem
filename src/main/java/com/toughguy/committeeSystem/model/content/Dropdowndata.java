@@ -2,7 +2,6 @@ package com.toughguy.committeeSystem.model.content;
 
 import java.util.List;
 
-import scala.annotation.meta.param;
 
 public class Dropdowndata {
 	private List<String> department;				//部门
