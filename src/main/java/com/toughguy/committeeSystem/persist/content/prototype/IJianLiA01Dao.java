@@ -12,6 +12,17 @@ import com.toughguy.committeeSystem.persist.prototype.IGenericDao;
  *
  */
 public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
+	/**
+	 * 导出小excel表查询方法
+	 * 
+	 */
+	public JianLiA01 findExport(String ID);
+	
+	/**
+	 * 导出大excel简历表查询方法
+	 * 
+	 */
+	public JianLiA01 findJianli(String ID);
 	
 	
 }

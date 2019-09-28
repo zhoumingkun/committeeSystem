@@ -11,4 +11,18 @@ import com.toughguy.committeeSystem.service.prototype.IGenericService;
  *
  */
 public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
+	/**
+	 * 导出小excel表查询查询方法
+	 * 
+	 */
+	public JianLiA01 findExport(String ID);
+	
+	public void ExportReport(HttpServletResponse response,String[] ids);
+	/**
+	 * 导出大excel简历表查询方法
+	 * 
+	 */
+	public JianLiA01 findJianli(String ID);
+	
+	public void ExportJianLi(HttpServletResponse response,String ID);
 }

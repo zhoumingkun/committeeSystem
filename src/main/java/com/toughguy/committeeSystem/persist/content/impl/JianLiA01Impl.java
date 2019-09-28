@@ -12,6 +12,17 @@ import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
  */
 @Repository
 public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements IJianLiA01Dao {
+	@Override
+	public JianLiA01 findExport(String ID) {		
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".findExport", ID);
+		
+	}
+	
+	@Override
+	public JianLiA01 findJianli(String ID) {		
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".findJianli", ID);
+		
+	}
 
 	
 
