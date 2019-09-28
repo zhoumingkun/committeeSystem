@@ -25,4 +25,11 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	public JianLiA01 findJianli(String ID);
 	
 	public void ExportJianLi(HttpServletResponse response,String ID);
+	
+	/**
+	 * 通过名字模糊查询和通过身份证完全匹配查询
+	 * @param jianli
+	 * @return
+	 */
+	public Map<String,Object> selectOne(JianLiA01 jianli);
 }

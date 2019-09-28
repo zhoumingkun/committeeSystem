@@ -28,8 +28,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.toughguy.committeeSystem.model.content.Baojingqingkuang;
 import com.toughguy.committeeSystem.model.content.JianLiA01;
+import com.toughguy.committeeSystem.model.content.JianLiA08;
+import com.toughguy.committeeSystem.model.content.JianLiA36;
+import com.toughguy.committeeSystem.model.content.JianLiA39;
 import com.toughguy.committeeSystem.persist.content.prototype.IBaojingqingkuangDao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA01Dao;
+import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA08Dao;
+import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA36Dao;
+import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA39Dao;
 import com.toughguy.committeeSystem.service.content.prototype.IBaojingqingkuangService;
 import com.toughguy.committeeSystem.service.content.prototype.IJianLiA01Service;
 import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
@@ -47,6 +53,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	
 	@Autowired
 	IJianLiA01Dao  jianLiA01Dao;
+	
+	@Autowired
+	private IJianLiA08Dao jianLiA08Dao;
+	
+	@Autowired
+	private IJianLiA36Dao jianLiA36Dao;
+
+	@Autowired
+	private IJianLiA39Dao jianLiA39Dao;
 	
 	@Override
 	public JianLiA01 findExport(String ID) {
@@ -184,7 +199,26 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	}
 
 
+
 	
+	@Override
+	public Map<String,Object> selectOne(JianLiA01 jianli) {
+		// TODO Auto-generated method stub
+		Map<String,String> map = new HashMap<>();
+		Map<String,Object> map2=new HashMap<>();
+		String name = "%"+jianli.getName()+"%";
+		map.put("name",name);		//模糊
+		map.put("idCard",jianli.getIdCard());	//不模糊
+		JianLiA01 selectA01 = jianLiA01Dao.selectA01(map);
+		map2.put("A01", selectA01);
+		List<JianLiA08> selectA08 = jianLiA08Dao.selectA08(selectA01.getID());
+		map2.put("A08", selectA08);
+		List<JianLiA36> selectA36 = jianLiA36Dao.selectA36(selectA01.getID());
+		map2.put("A36", selectA36);
+		JianLiA39 selectA39 = jianLiA39Dao.selectA39(selectA01.getID());
+		map2.put("A39", selectA39);
+		return map2;
+	}
 
 	
 

@@ -24,5 +24,10 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 */
 	public JianLiA01 findJianli(String ID);
 	
-	
+	/**
+	 * 通过名字模糊查询和通过身份证完全匹配查询
+	 * @param jianli
+	 * @return
+	 */
+	public JianLiA01 selectA01(Map<String,String> map);
 }

@@ -1,11 +1,15 @@
 package com.toughguy.committeeSystem.controller.content;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.toughguy.committeeSystem.model.content.JianLiA01;
 import com.toughguy.committeeSystem.service.content.prototype.IJianLiA01Service;
 
 @RequestMapping("/jianliA01")
@@ -44,8 +48,16 @@ public class JianLiA01Controller {
 			}
 		}
 	
-		
-	
+		/**
+		 * 根据名字  身份证 查询用户信息
+		 * @param jianli
+		 * @return
+		 */
+		@RequestMapping("/findNameAndCard")
+		public Map<String,Object> selectOne(JianLiA01 jianli) {
+			
+			return JianLiA01Service.selectOne(jianli);
+		}
 	
 
 }
