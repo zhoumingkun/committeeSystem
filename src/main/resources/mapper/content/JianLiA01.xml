@@ -5,7 +5,7 @@
 	<select id="selectA01" resultType="JianLiA01" parameterType="Map">
 	
 		select 
-			a.id as id ,
+		    a.ID as Aid,
 			b.name as sex,
 			a.A0107 as birthDay,
 			c.name as  nation,
@@ -58,7 +58,7 @@
 	<!-- 查询小表 -->
 	<select id="findExport" parameterType="String" resultType="JianLiA01">
 		select 
-			a.id as id ,
+			a.id as ID ,
 			b.name as sex,
 			a.A0107 as birthDay,
 			c.name as  nation,

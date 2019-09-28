@@ -12,7 +12,7 @@ import com.toughguy.committeeSystem.util.JsonUtil;
 @JsonInclude(JsonInclude.Include.NON_NULL) //为空字段不返回
 public class JianLiA01 extends AbstractModel {
 	
-	private String ID;            //关联id
+	private String Aid;            //关联id
 	private String sex;           //A0104    性别
 	private String birthDay;      //A0107     出生年月
 	private String nation;        //A0117     民族
@@ -36,11 +36,11 @@ public class JianLiA01 extends AbstractModel {
 	private String graduateSchool1;	  //ZZXLXX  毕业院校系及专业上
 	private String graduateSchool2;	  //QRZXLXX 毕业院校系及专业下
 	private String jobLevelTime;	  //A0173  任现职务层次时间
-	public String getID() {
-		return ID;
+	public String getAid() {
+		return Aid;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setAid(String aid) {
+		Aid = aid;
 	}
 	public String getSex() {
 		return sex;
@@ -182,7 +182,7 @@ public class JianLiA01 extends AbstractModel {
 	}
 	@Override
 	public String toString() {
-		return "JianLiA01 [ID=" + ID + ", sex=" + sex + ", birthDay=" + birthDay + ", nation=" + nation
+		return "JianLiA01 [Aid=" + Aid + ", sex=" + sex + ", birthDay=" + birthDay + ", nation=" + nation
 				+ ", workingTime=" + workingTime + ", personType=" + personType + ", idCard=" + idCard + ", name="
 				+ name + ", homeTown=" + homeTown + ", birthPlace=" + birthPlace + ", healthState=" + healthState
 				+ ", manageType=" + manageType + ", speciality=" + speciality + ", resume=" + resume + ", jobNameL="

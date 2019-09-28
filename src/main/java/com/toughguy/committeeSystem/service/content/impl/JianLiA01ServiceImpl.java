@@ -211,11 +211,11 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		map.put("idCard",jianli.getIdCard());	//不模糊
 		JianLiA01 selectA01 = jianLiA01Dao.selectA01(map);
 		map2.put("A01", selectA01);
-		List<JianLiA08> selectA08 = jianLiA08Dao.selectA08(selectA01.getID());
+		List<JianLiA08> selectA08 = jianLiA08Dao.selectA08(selectA01.getAid());
 		map2.put("A08", selectA08);
-		List<JianLiA36> selectA36 = jianLiA36Dao.selectA36(selectA01.getID());
+		List<JianLiA36> selectA36 = jianLiA36Dao.selectA36(selectA01.getAid());
 		map2.put("A36", selectA36);
-		JianLiA39 selectA39 = jianLiA39Dao.selectA39(selectA01.getID());
+		JianLiA39 selectA39 = jianLiA39Dao.selectA39(selectA01.getAid());
 		map2.put("A39", selectA39);
 		return map2;
 	}
