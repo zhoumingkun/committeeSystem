@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -341,9 +342,46 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        Row row002 = sh1.createRow(2);
 	        CellRangeAddress region19 = new CellRangeAddress(2, (short) 2, 2, (short) 23);
 			Cell cell24=row002.createCell(2);
-			utils.setRegionStyle(sh, region19, utils.Style6(workbook));
+			utils.setRegionStyle1(sh1, region19, utils.Style6(workbook));
 			sh.addMergedRegion(region19);
 	        cell24.setCellValue(jianLiA01.getYearResult());//A15Z101  年度考核结果
+	        
+	        Row row003 = sh1.createRow(3);
+	        CellRangeAddress region20 = new CellRangeAddress(3, (short) 3, 2, (short) 23);
+			Cell cell25=row003.createCell(2);
+			utils.setRegionStyle1(sh1, region20, utils.Style6(workbook));
+			sh.addMergedRegion(region20);
+	        cell25.setCellValue(" ");//A15Z101  年度考核结果
+	        
+	        List<JianLiA36> jianLiA36 = jianLiA36Dao.selectA36(id);
+	        for(int j=0; j<jianLiA36.size(); j++) {
+	        	Row row = sh1.createRow(j+8);
+	        	CellRangeAddress region21 = new CellRangeAddress(j+8, (short) j+8, 2, (short) 4);
+				Cell cell26=row.createCell(2);
+				utils.setRegionStyle1(sh1, region21, utils.Style6(workbook));
+				sh.addMergedRegion(region21);
+		        cell26.setCellValue(jianLiA36.get(j).getJRcall());//A3604A 家人称谓
+		        
+		        Cell cell27=row.createCell(5);
+				cell27.setCellStyle(utils.Style6(workbook));
+				cell27.setCellValue(jianLiA36.get(j).getJRname());//A3601   家人姓名
+				
+				Cell cell28=row.createCell(6);
+				cell28.setCellStyle(utils.Style6(workbook));
+				String JRbirthDay=jianLiA36.get(j).getJRbirthDay();
+				String JRyear =JRbirthDay.substring(0,4);			
+				int i = Integer.parseInt(JRyear);
+				Calendar date = Calendar.getInstance();
+				String year = String.valueOf(date.get(Calendar.YEAR));
+				int k = Integer.parseInt(year);
+				int age =k-i;
+				cell28.setCellValue(age);//A3607 家人出生年月  算出年龄
+				
+				Cell cell29=row.createCell(7);
+				cell29.setCellStyle(utils.Style6(workbook));
+				cell29.setCellValue(jianLiA36.get(j).getJRpolitics());//A3627 家人政治面貌
+	        	
+	        }
 	        
 	        
 			String title = "简历表";
@@ -412,6 +450,12 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="") {
 				list.get(i).setGradeTime("-");
+			}else {
+				if(list.get(i).getGradeTime().length()<7) {
+					list.get(i).setGradeTime(list.get(i).getGradeTime().substring(0, 4)+"."+list.get(i).getGradeTime().substring(4));
+				}else {
+					list.get(i).setGradeTime(list.get(i).getGradeTime().substring(0, 4)+"."+list.get(i).getGradeTime().substring(4,6)+"."+list.get(i).getGradeTime().substring(6));
+				}
 			}
 			if(list.get(i).getJobLevel()==null ||list.get(i).getJobLevel()=="") {
 				list.get(i).setJobLevel("-");
@@ -421,7 +465,13 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="") {
 				list.get(i).setJobLevelTime("-");
-			}		
+			}else {
+				if(list.get(i).getJobLevelTime().length()<7) {
+					list.get(i).setJobLevelTime(list.get(i).getJobLevelTime().substring(0, 4)+"."+list.get(i).getJobLevelTime().substring(4));
+				}else {
+					list.get(i).setJobLevelTime(list.get(i).getJobLevelTime().substring(0, 4)+"."+list.get(i).getJobLevelTime().substring(4,6)+"."+list.get(i).getJobLevelTime().substring(6));
+				}
+			}
 		}
 		return list ;
 	}
