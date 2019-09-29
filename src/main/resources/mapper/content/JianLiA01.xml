@@ -3,7 +3,6 @@
 <mapper namespace="com.toughguy.committeeSystem.model.content.JianLiA01">
 	
 	<select id="selectA01" resultType="JianLiA01" parameterType="Map">
-	
 		select 
 		    a.ID as Aid,
 			b.name as sex,
