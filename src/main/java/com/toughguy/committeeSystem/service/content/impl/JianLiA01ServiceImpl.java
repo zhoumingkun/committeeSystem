@@ -320,6 +320,32 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			sh.addMergedRegion(region16);
 	        cell21.setCellValue("");//拟免职务
 	        
+	        Row row13 = sh.createRow(13);
+	        Row row14 = sh.createRow(14);
+	        CellRangeAddress region17 = new CellRangeAddress(13, (short) 14, 1, (short) 23);
+			Cell cell22=row13.createCell(1);
+			utils.setRegionStyle(sh, region17, utils.Style6(workbook));
+			sh.addMergedRegion(region17);
+	        cell22.setCellValue(jianLiA01.getResume());////A1701  简历
+	        
+	      //对应Excel文件中的sheet，0代表第一个
+			Sheet sh1 = xssfWorkbook.getSheetAt(1); 
+			
+			Row row001 = sh1.createRow(1);
+	        CellRangeAddress region18 = new CellRangeAddress(1, (short) 1, 2, (short) 23);
+			Cell cell23=row001.createCell(2);
+			utils.setRegionStyle1(sh1, region18, utils.Style6(workbook));
+			sh.addMergedRegion(region18);
+	        cell23.setCellValue(jianLiA01.getAwardAndPenalty());//A14Z101  奖罚情况
+	        
+	        Row row002 = sh1.createRow(2);
+	        CellRangeAddress region19 = new CellRangeAddress(2, (short) 2, 2, (short) 23);
+			Cell cell24=row002.createCell(2);
+			utils.setRegionStyle(sh, region19, utils.Style6(workbook));
+			sh.addMergedRegion(region19);
+	        cell24.setCellValue(jianLiA01.getYearResult());//A15Z101  年度考核结果
+	        
+	        
 			String title = "简历表";
 			OutputStream out = response.getOutputStream();
 //			response.reset();
@@ -373,28 +399,28 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		List<JianLiA01> list = jianLiA01Dao.selectList(map);
 		for(int i=0;i<list.size();i++) {
 			if(list.get(i).getAid()==null || list.get(i).getAid()=="") {
-				list.get(i).setAid("null");
+				list.get(i).setAid("-");
 			}
 			if(list.get(i).getName()==null || list.get(i).getName()=="") {
-				list.get(i).setName("null");
+				list.get(i).setName("-");
 			}
 			if(list.get(i).getIdCard()==null || list.get(i).getIdCard()=="") {
-				list.get(i).setIdCard("null");
+				list.get(i).setIdCard("-");
 			}
 			if(list.get(i).getJobNameL()==null ||list.get(i).getJobNameL()=="") {
-				list.get(i).setJobNameL("null");
+				list.get(i).setJobNameL("-");
 			}
 			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="") {
-				list.get(i).setGradeTime("null");
+				list.get(i).setGradeTime("-");
 			}
 			if(list.get(i).getJobLevel()==null ||list.get(i).getJobLevel()=="") {
-				list.get(i).setJobLevel("null");
+				list.get(i).setJobLevel("-");
 			}
 			if(list.get(i).getGrade()==null || list.get(i).getGrade()=="") {
-				list.get(i).setGrade("null");
+				list.get(i).setGrade("-");
 			}
 			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="") {
-				list.get(i).setJobLevelTime("null");
+				list.get(i).setJobLevelTime("-");
 			}		
 		}
 		return list ;
