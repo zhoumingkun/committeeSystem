@@ -272,6 +272,23 @@ public class POIUtils {
 			  }
 			 }
 			}
+			 
+			 /**
+				* 设置单元格边框（解决合并单元格显示部分边框问题）
+				* @param sheet 
+				* @param region
+				* @param cs
+				*/
+				@SuppressWarnings("deprecation")
+				public void setRegionStyle1(Sheet sh1, CellRangeAddress region, CellStyle cs) {
+				 for (int i = region.getFirstRow(); i <= region.getLastRow(); i++) {
+				  Row row = CellUtil.getRow(i, sh1);
+				  for (int j = region.getFirstColumn(); j <= region.getLastColumn(); j++) {
+				   Cell cell = CellUtil.getCell(row, (short) j);
+				   cell.setCellStyle(cs);
+				  }
+				 }
+			}
 			
 			
 			
