@@ -1,11 +1,14 @@
 package com.toughguy.committeeSystem.controller.content;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +53,7 @@ public class JianLiA01Controller {
 		}
 	
 		/**
-		 * 根据名字  身份证 查询用户信息
+		 * 根据用户id 查询用户信息
 		 * @param jianli
 		 * @return
 		 */
@@ -60,12 +63,47 @@ public class JianLiA01Controller {
 			return JianLiA01Service.selectOne(jianli);
 		}
 	
-
+		/**
+		 * 根据名字和身份证查询列表
+		 * @param name
+		 * @param idCard
+		 * @param NowPage
+		 * @param Nums
+		 * @return
+		 */
 		@RequestMapping("/selectList")
-		public List<JianLiA01> selectList(JianLiA01 jianli){
-			return JianLiA01Service.selectList(jianli);
+		public Map<String,Object> selectList(String name,String idCard,String NowPage,String Nums){
+			JianLiA01 jl = new JianLiA01();
+			jl.setName(name);
+			jl.setIdCard(idCard);
+			List<JianLiA01> selectList = JianLiA01Service.selectList(jl);
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("total", selectList.size());
+			if(selectList.size()<=9) {
+				map.put("rows",selectList);
+				return map;
+			}
+			int i =(Integer.parseInt(NowPage)*9)-1;
+			if(i>(selectList.size()-1)) {			
+				int s=i-8;
+				List<JianLiA01> list = new ArrayList<JianLiA01>();
+				for(int g =s;g<selectList.size();g++) {
+					list.add(selectList.get(g));
+				}
+				map.put("rows",list);
+				return map;
+			}
+			if(i<(selectList.size()-1)) {
+				int s=i-8;
+				List<JianLiA01> list = new ArrayList<JianLiA01>();
+				for(int g =s;g<=i;g++) {
+					list.add(selectList.get(g));
+				}
+				map.put("rows",list);
+				return map;
+			}
+			Map<String,Object> obj = new HashMap<>();
+			obj.put("错误", "报错了");
+			 return obj;
 		}
-		
-		
-		
 }

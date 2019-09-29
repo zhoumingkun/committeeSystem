@@ -35,12 +35,7 @@
 			dic_rs_zb125 d,
 			dic_rs_zb130 e
 		where 
-			<if test="name != 'null' and name !='' ">
-				A0101 like #{name} AND 
-			</if>                             
-			<if test="idCard != 'null' and idCard !='' ">
-		 		A0184=#{idCard} AND 
-			</if>
+		 	a.ID=#{ID} AND 
 			a.A0104=b.code AND
 			a.A0117=c.code AND
 			a.A0160=d.code AND
@@ -108,12 +103,13 @@
 			a.A0173 as jobLevelTime
 		from 
 			rs_a01 a
-		where 
-			<if test="name != 'null' and name !='' ">
-				A0101 like #{name} AND
+		where  
+			1=1 
+			<if test="name != null and name !='' ">
+				AND A0101 like #{name} 
 			</if>                             
-			<if test="idCard != 'null' and idCard !='' ">
-		 		A0184=#{idCard} 
+			<if test="idCard != null and idCard !='' ">
+		 	  	AND A0184=#{idCard} 
 			</if>
 	</select>
 </mapper>
