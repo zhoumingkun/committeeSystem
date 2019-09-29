@@ -31,5 +31,13 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * @param jianli
 	 * @return
 	 */
-	public Map<String,Object> selectOne(JianLiA01 jianli);
+	public List<Map<String,Object>> selectOne(JianLiA01 jianli);
+	
+	/**
+	 * 通过姓名身份证查询列表信息
+	 * @param jianli
+	 * @return
+	 */
+	public List<JianLiA01> selectList(JianLiA01 jianli);
+	
 }

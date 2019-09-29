@@ -321,22 +321,64 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 
 	
 	@Override
-	public Map<String,Object> selectOne(JianLiA01 jianli) {
+	public List<Map<String,Object>> selectOne(JianLiA01 jianli) {
 		// TODO Auto-generated method stub
 		Map<String,String> map = new HashMap<>();
-		Map<String,Object> map2=new HashMap<>();
+		List<Map<String,Object>> list = new ArrayList<>();
 		String name = "%"+jianli.getName()+"%";
 		map.put("name",name);		//模糊
 		map.put("idCard",jianli.getIdCard());	//不模糊
-		JianLiA01 selectA01 = jianLiA01Dao.selectA01(map);
-		map2.put("A01", selectA01);
-		List<JianLiA08> selectA08 = jianLiA08Dao.selectA08(selectA01.getAid());
-		map2.put("A08", selectA08);
-		List<JianLiA36> selectA36 = jianLiA36Dao.selectA36(selectA01.getAid());
-		map2.put("A36", selectA36);
-		JianLiA39 selectA39 = jianLiA39Dao.selectA39(selectA01.getAid());
-		map2.put("A39", selectA39);
-		return map2;
+		List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
+		for(int i =0;i<selectA01.size();i++) {
+			Map<String,Object> map2=new HashMap<>();
+			map2.put("A01", selectA01.get(i));
+			List<JianLiA08> selectA08 = jianLiA08Dao.selectA08(selectA01.get(i).getAid());
+			map2.put("A08", selectA08);
+			List<JianLiA36> selectA36 = jianLiA36Dao.selectA36(selectA01.get(i).getAid());
+			map2.put("A36", selectA36);
+			JianLiA39 selectA39 = jianLiA39Dao.selectA39(selectA01.get(i).getAid());
+			map2.put("A39", selectA39);
+			list.add(map2);
+		}
+		return list;
+	}
+
+
+	@Override
+	public List<JianLiA01> selectList(JianLiA01 jianli) {
+		// TODO Auto-generated method stub
+		Map<String,String> map = new HashMap<>();
+		String name = "%"+jianli.getName()+"%";
+		map.put("name",name);		//模糊
+		map.put("idCard",jianli.getIdCard());	//不模糊
+		List<JianLiA01> list = jianLiA01Dao.selectList(map);
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getAid()==null || list.get(i).getAid()=="") {
+				list.get(i).setAid("null");
+			}
+			if(list.get(i).getName()==null || list.get(i).getName()=="") {
+				list.get(i).setName("null");
+			}
+			if(list.get(i).getIdCard()==null || list.get(i).getIdCard()=="") {
+				list.get(i).setIdCard("null");
+			}
+			if(list.get(i).getJobNameL()==null ||list.get(i).getJobNameL()=="") {
+				list.get(i).setJobNameL("null");
+			}
+			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="") {
+				list.get(i).setGradeTime("null");
+			}
+			if(list.get(i).getJobLevel()==null ||list.get(i).getJobLevel()=="") {
+				list.get(i).setJobLevel("null");
+			}
+			if(list.get(i).getGrade()==null || list.get(i).getGrade()=="") {
+				list.get(i).setGrade("null");
+			}
+			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="") {
+				list.get(i).setJobLevelTime("null");
+			}		
+		}
+		return list ;
 	}
 
 	

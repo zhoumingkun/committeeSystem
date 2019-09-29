@@ -28,9 +28,15 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 
 
 	@Override
-	public JianLiA01 selectA01(Map<String, String> map) {
+	public List<JianLiA01> selectA01(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectA01", map);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectA01", map);
+	}
+
+	@Override
+	public List<JianLiA01> selectList(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectList", map);
 	}
 
 

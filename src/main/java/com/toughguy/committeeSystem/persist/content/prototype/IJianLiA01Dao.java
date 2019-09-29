@@ -29,5 +29,12 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 * @param jianli
 	 * @return
 	 */
-	public JianLiA01 selectA01(Map<String,String> map);
+	public List<JianLiA01> selectA01(Map<String,String> map);
+	
+	/**
+	 * 通过名字和身份证列表信息
+	 * @param jianli
+	 * @return
+	 */
+	public List<JianLiA01> selectList(Map<String,String> map);
 }

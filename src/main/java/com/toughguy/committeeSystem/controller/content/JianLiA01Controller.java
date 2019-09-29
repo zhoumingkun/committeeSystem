@@ -1,5 +1,6 @@
 package com.toughguy.committeeSystem.controller.content;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -54,10 +55,17 @@ public class JianLiA01Controller {
 		 * @return
 		 */
 		@RequestMapping("/findNameAndCard")
-		public Map<String,Object> selectOne(JianLiA01 jianli) {
+		public List<Map<String,Object>> selectOne(JianLiA01 jianli) {
 			
 			return JianLiA01Service.selectOne(jianli);
 		}
 	
 
+		@RequestMapping("/selectList")
+		public List<JianLiA01> selectList(JianLiA01 jianli){
+			return JianLiA01Service.selectList(jianli);
+		}
+		
+		
+		
 }
