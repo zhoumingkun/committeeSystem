@@ -299,6 +299,27 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			sh.addMergedRegion(region13);
 	        cell18.setCellValue(jianLiA01.getGraduateSchool2());//QRZXLXX 毕业院校系及专业下 
 	        
+	        Row row10 = sh.createRow(10);
+	        CellRangeAddress region14 = new CellRangeAddress(10, (short) 10, 4, (short) 23);
+			Cell cell19=row10.createCell(4);
+			utils.setRegionStyle(sh, region14, utils.Style6(workbook));
+			sh.addMergedRegion(region14);
+	        cell19.setCellValue(jianLiA01.getJobNameL());//A0192A  工作单位及职务全称
+	        
+	        Row row11 = sh.createRow(11);
+	        CellRangeAddress region15 = new CellRangeAddress(11, (short) 11, 4, (short) 23);
+			Cell cell20=row11.createCell(4);
+			utils.setRegionStyle(sh, region15, utils.Style6(workbook));
+			sh.addMergedRegion(region15);
+	        cell20.setCellValue("");//拟任职务
+	        
+	        Row row12 = sh.createRow(12);
+	        CellRangeAddress region16 = new CellRangeAddress(12, (short) 12, 4, (short) 23);
+			Cell cell21=row12.createCell(4);
+			utils.setRegionStyle(sh, region16, utils.Style6(workbook));
+			sh.addMergedRegion(region16);
+	        cell21.setCellValue("");//拟免职务
+	        
 			String title = "简历表";
 			OutputStream out = response.getOutputStream();
 //			response.reset();
@@ -325,9 +346,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		// TODO Auto-generated method stub
 		Map<String,String> map = new HashMap<>();
 		List<Map<String,Object>> list = new ArrayList<>();
-		String name = "%"+jianli.getName()+"%";
-		map.put("name",name);		//模糊
-		map.put("idCard",jianli.getIdCard());	//不模糊
+		map.put("ID",jianli.getAid());	
 		List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
 		for(int i =0;i<selectA01.size();i++) {
 			Map<String,Object> map2=new HashMap<>();
