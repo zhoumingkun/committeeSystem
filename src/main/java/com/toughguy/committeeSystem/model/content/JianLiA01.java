@@ -29,6 +29,7 @@ public class JianLiA01 extends AbstractModel {
 	private String jobNameL;	  //A0192A  工作单位及职务全称
 	private String jobNameS;	  //A0192  工作单位及职务简称
 	private String yearResult;	  //A15Z101  年度考核结果
+	private String awardAndPenalty;	  //A14Z101  奖罚情况
 	private String specialityPost;	  //A0196  专业技术职务
 	private String gradeTime;	  //A0192c  任现职级时间
 	private String jobLevel;	  //A0172  职务层次
@@ -180,16 +181,23 @@ public class JianLiA01 extends AbstractModel {
 	public void setJobLevelTime(String jobLevelTime) {
 		this.jobLevelTime = jobLevelTime;
 	}
+	
+	public String getAwardAndPenalty() {
+		return awardAndPenalty;
+	}
+	public void setAwardAndPenalty(String awardAndPenalty) {
+		this.awardAndPenalty = awardAndPenalty;
+	}
 	@Override
 	public String toString() {
 		return "JianLiA01 [Aid=" + Aid + ", sex=" + sex + ", birthDay=" + birthDay + ", nation=" + nation
 				+ ", workingTime=" + workingTime + ", personType=" + personType + ", idCard=" + idCard + ", name="
 				+ name + ", homeTown=" + homeTown + ", birthPlace=" + birthPlace + ", healthState=" + healthState
 				+ ", manageType=" + manageType + ", speciality=" + speciality + ", resume=" + resume + ", jobNameL="
-				+ jobNameL + ", jobNameS=" + jobNameS + ", yearResult=" + yearResult + ", specialityPost="
-				+ specialityPost + ", gradeTime=" + gradeTime + ", jobLevel=" + jobLevel + ", grade=" + grade
-				+ ", graduateSchool1=" + graduateSchool1 + ", graduateSchool2=" + graduateSchool2 + ", jobLevelTime="
-				+ jobLevelTime + "]";
+				+ jobNameL + ", jobNameS=" + jobNameS + ", yearResult=" + yearResult + ", awardAndPenalty="
+				+ awardAndPenalty + ", specialityPost=" + specialityPost + ", gradeTime=" + gradeTime + ", jobLevel="
+				+ jobLevel + ", grade=" + grade + ", graduateSchool1=" + graduateSchool1 + ", graduateSchool2="
+				+ graduateSchool2 + ", jobLevelTime=" + jobLevelTime + "]";
 	}
 	
 	
