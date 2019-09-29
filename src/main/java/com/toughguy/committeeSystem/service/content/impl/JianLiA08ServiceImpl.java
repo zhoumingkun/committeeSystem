@@ -24,6 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.toughguy.committeeSystem.model.content.JianLiA08;
+import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA01Dao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA08Dao;
 import com.toughguy.committeeSystem.service.content.prototype.IJianLiA08Service;
 import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
@@ -40,5 +41,17 @@ public class JianLiA08ServiceImpl extends GenericServiceImpl<JianLiA08, Integer>
 	
 	@Autowired
 	IJianLiA08Dao  jianLiA08Dao;
+
+	@Override
+	public JianLiA08 selectQRZ(String id) {
+		// TODO Auto-generated method stub
+		return ((IJianLiA08Dao)dao).selectQRZ(id);
+	}
+
+	@Override
+	public JianLiA08 selectZZ(String id) {
+		// TODO Auto-generated method stub
+		return ((IJianLiA08Dao)dao).selectZZ(id);
+	}
 
 }

@@ -11,5 +11,12 @@ import com.toughguy.committeeSystem.service.prototype.IGenericService;
  *
  */
 public interface IJianLiA08Service extends IGenericService<JianLiA08, Integer>{
+	/**
+	 * 根据id查询某人的全日制教育和在职教育情况
+	 * @param id
+	 * @return
+	 */
+	public JianLiA08 selectQRZ(String id);
+	public JianLiA08 selectZZ(String id);
 	
 }
