@@ -149,4 +149,20 @@
 		 	  	AND A0184=#{idCard} 
 			</if>
 	</select>
+	
+	<select id="selectAllList" resultType="JianLiA01">
+		select 
+		    a.ID as Aid,
+			a.A0184 as idCard,
+			a.A0101 as name,
+			a.A0192A as jobNameL,
+			a.A0192c as gradeTime,
+			(SELECT q.name FROM dic_rs_zb09 q WHERE  a.A0172=q.code) as jobLevel,
+			(SELECT w.name FROM dic_rs_njszj w WHERE  a.A0192d=w.code) as grade,
+			a.A0173 as jobLevelTime
+		from 
+			rs_a01 a
+		where  
+			1=1 
+	</select>
 </mapper>
