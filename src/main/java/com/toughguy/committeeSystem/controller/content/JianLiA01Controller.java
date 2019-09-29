@@ -27,7 +27,7 @@ public class JianLiA01Controller {
 	@ResponseBody	
 	@RequestMapping(value = "/ExportReport")
 //	@RequiresPermissions("jianliA01:ExportReport")
-	public String ExportReport(HttpServletResponse response,String[] ids) {
+	public String ExportReport(HttpServletResponse response,String ids) {
 		try {
 			JianLiA01Service.ExportReport(response, ids);
 			return "{ \"success\" : true }";
@@ -105,5 +105,47 @@ public class JianLiA01Controller {
 			Map<String,Object> obj = new HashMap<>();
 			obj.put("错误", "报错了");
 			 return obj;
+		}
+		
+		/**
+		 * 根据名字和身份证查询列表
+		 * @param name
+		 * @param idCard
+		 * @param NowPage
+		 * @param Nums
+		 * @return
+		 */
+		@RequestMapping("/selectAllList")
+		public Map<String,Object> selectAllList(String NowPage,String Nums){
+			System.out.println(NowPage+""+Nums);
+			List<JianLiA01> selectList = JianLiA01Service.selectAllList();
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("total", selectList.size());
+			if(selectList.size()<=9) {
+				map.put("rows",selectList);
+				return map;
+			}
+			int i =(Integer.parseInt(NowPage)*9)-1;
+			if(i>(selectList.size()-1)) {			
+				int s=i-8;
+				List<JianLiA01> list = new ArrayList<JianLiA01>();
+				for(int g =s;g<selectList.size();g++) {
+					list.add(selectList.get(g));
+				}
+				map.put("rows",list);
+				return map;
+			}
+			if(i<(selectList.size()-1)) {
+				int s=i-8;
+				List<JianLiA01> list = new ArrayList<JianLiA01>();
+				for(int g =s;g<=i;g++) {
+					list.add(selectList.get(g));
+				}
+				map.put("rows",list);
+				return map;
+			}
+			Map<String,Object> obj = new HashMap<>();
+			obj.put("错误", "报错了");
+			return obj;
 		}
 }

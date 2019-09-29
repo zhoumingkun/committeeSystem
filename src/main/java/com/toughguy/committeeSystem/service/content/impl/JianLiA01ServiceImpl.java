@@ -79,19 +79,19 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 
 	
 	
-	public void ExportReport(HttpServletResponse response,String[] ids) { 
+	public void ExportReport(HttpServletResponse response,String ids) { 
 		try {
 			
 			//输入模板文件
-			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new FileInputStream("upload/base/人事人员查询表（模板） .xlsx"));
+			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new FileInputStream("upload/base/人事人员查询表（模板）.xlsx"));
 			SXSSFWorkbook workbook = new SXSSFWorkbook(xssfWorkbook, 1000);
 			workbook.setCompressTempFiles(false);
 			POIUtils utils = new POIUtils();
 			//对应Excel文件中的sheet，0代表第一个
 			Sheet sh = xssfWorkbook.getSheetAt(0); 
-			
-			for(int j=0; j<ids.length; j++) {
-				JianLiA01 jianLiA01 = jianLiA01Dao.findExport(ids[j]);
+			String[] id = ids.split(",");
+			for(int j=0; j<id.length; j++) {
+				JianLiA01 jianLiA01 = jianLiA01Dao.findExport(id[j]);
 				Row row = sh.createRow(j+1);
 				row.setHeightInPoints(18);
 				
@@ -117,31 +117,43 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				
 				Cell createCell6 = row.createCell(5);
 				createCell6.setCellStyle(utils.Style6(workbook));
-				String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
-				String month =jianLiA01.getJobLevelTime().substring(5,7);
-				String day =jianLiA01.getJobLevelTime().substring(8);//09
-				if(day!=null){
+				if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()==0){
+					createCell6.setCellValue("");//A0173  任现职务层次时间
+			    }else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>4){
+					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+					createCell6.setCellValue(year);//A0173  任现职务层次时间
+				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>7){
+					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+					String month =jianLiA01.getJobLevelTime().substring(5,7);
+					createCell6.setCellValue(year+"."+month);//A0173  任现职务层次时间
+				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>8){
+					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+					String month =jianLiA01.getJobLevelTime().substring(5,7);
+					String day =jianLiA01.getJobLevelTime().substring(8);//09
 					String  jobLevelTime= year+"."+month+"."+day+".";
 					createCell6.setCellValue(jobLevelTime);//A0173  任现职务层次时间
-				}else{
-					String  jobLevelTime= year+"."+month;
-					createCell6.setCellValue(jobLevelTime);//A0173  任现职务层次时间
 				}
-				
+					
 				Cell createCell7 = row.createCell(6);
 				createCell7.setCellStyle(utils.Style6(workbook));
 				createCell7.setCellValue(jianLiA01.getGrade()); //A0192d  现职级
 				
 				Cell createCell8 = row.createCell(7);
 				createCell8.setCellStyle(utils.Style6(workbook));
-				String year1 =jianLiA01.getGradeTime().substring(0,4);			//2019
-				String month1 =jianLiA01.getGradeTime().substring(5,7);
-				String day1 =jianLiA01.getGradeTime().substring(8);//09
-				if(day1!=null){
-					String  gradeTime= year1+"."+month1+"."+day1+".";
-					createCell8.setCellValue(gradeTime); //A0192c  任现职级时间
-				}else{
-					String  gradeTime= year1+"."+month1;
+				if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()==0){
+					createCell8.setCellValue(""); //A0192c  任现职级时间
+			    }else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>4){
+					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+					createCell8.setCellValue(year); //A0192c  任现职级时间
+				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>7){
+					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+					String month =jianLiA01.getGradeTime().substring(5,7);
+					createCell8.setCellValue(year+"."+month); //A0192c  任现职级时间
+				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>8){
+					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+					String month =jianLiA01.getGradeTime().substring(5,7);
+					String day =jianLiA01.getGradeTime().substring(8);//09
+					String  gradeTime= year+"."+month+"."+day+".";
 					createCell8.setCellValue(gradeTime); //A0192c  任现职级时间
 				}
 				
@@ -448,7 +460,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			if(list.get(i).getJobNameL()==null ||list.get(i).getJobNameL()=="") {
 				list.get(i).setJobNameL("-");
 			}
-			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="") {
+			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="" || list.get(i).getGradeTime().length()==0) {
 				list.get(i).setGradeTime("-");
 			}else {
 				if(list.get(i).getGradeTime().length()<7) {
@@ -463,7 +475,53 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			if(list.get(i).getGrade()==null || list.get(i).getGrade()=="") {
 				list.get(i).setGrade("-");
 			}
-			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="") {
+			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="" || list.get(i).getJobLevelTime().length()==0) {
+				list.get(i).setJobLevelTime("-");
+			}else {
+				if(list.get(i).getJobLevelTime().length()<7) {
+					list.get(i).setJobLevelTime(list.get(i).getJobLevelTime().substring(0, 4)+"."+list.get(i).getJobLevelTime().substring(4));
+				}else {
+					list.get(i).setJobLevelTime(list.get(i).getJobLevelTime().substring(0, 4)+"."+list.get(i).getJobLevelTime().substring(4,6)+"."+list.get(i).getJobLevelTime().substring(6));
+				}
+			}
+		}
+		return list ;
+	}
+
+
+	@Override
+	public List<JianLiA01> selectAllList() {
+		// TODO Auto-generated method stub
+		List<JianLiA01> list = jianLiA01Dao.selectAllList();
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getAid()==null || list.get(i).getAid()=="") {
+				list.get(i).setAid("-");
+			}
+			if(list.get(i).getName()==null || list.get(i).getName()=="") {
+				list.get(i).setName("-");
+			}
+			if(list.get(i).getIdCard()==null || list.get(i).getIdCard()=="") {
+				list.get(i).setIdCard("-");
+			}
+			if(list.get(i).getJobNameL()==null ||list.get(i).getJobNameL()=="") {
+				list.get(i).setJobNameL("-");
+			}
+			if(list.get(i).getGradeTime()==null || list.get(i).getGradeTime()=="" || list.get(i).getGradeTime().length()==0) {
+				list.get(i).setGradeTime("-");
+			}else {
+				if(list.get(i).getGradeTime().length()<7) {
+					list.get(i).setGradeTime(list.get(i).getGradeTime().substring(0, 4)+"."+list.get(i).getGradeTime().substring(4));
+				}else {
+					list.get(i).setGradeTime(list.get(i).getGradeTime().substring(0, 4)+"."+list.get(i).getGradeTime().substring(4,6)+"."+list.get(i).getGradeTime().substring(6));
+				}
+			}
+			if(list.get(i).getJobLevel()==null ||list.get(i).getJobLevel()=="") {
+				list.get(i).setJobLevel("-");
+			}
+			if(list.get(i).getGrade()==null || list.get(i).getGrade()=="") {
+				list.get(i).setGrade("-");
+			}
+			if(list.get(i).getJobLevelTime()==null || list.get(i).getJobLevelTime()=="" || list.get(i).getJobLevelTime().length()==0) {
 				list.get(i).setJobLevelTime("-");
 			}else {
 				if(list.get(i).getJobLevelTime().length()<7) {

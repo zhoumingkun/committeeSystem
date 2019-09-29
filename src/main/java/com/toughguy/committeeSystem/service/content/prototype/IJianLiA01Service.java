@@ -17,7 +17,7 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 */
 	public JianLiA01 findExport(String id);
 	
-	public void ExportReport(HttpServletResponse response,String[] ids);
+	public void ExportReport(HttpServletResponse response,String ids);
 	/**
 	 * 导出大excel简历表查询方法
 	 * 
@@ -40,4 +40,10 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 */
 	public List<JianLiA01> selectList(JianLiA01 jianli);
 	
+	/**
+	 * 通过姓名身份证查询全部列表信息
+	 * @param jianli
+	 * @return
+	 */
+	public List<JianLiA01> selectAllList();
 }

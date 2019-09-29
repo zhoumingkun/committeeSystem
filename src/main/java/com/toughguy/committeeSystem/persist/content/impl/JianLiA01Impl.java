@@ -38,6 +38,11 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList(typeNameSpace + ".selectList", map);
 	}
+	@Override
+	public List<JianLiA01> selectAllList() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectAllList");
+	}
 
 
 }
