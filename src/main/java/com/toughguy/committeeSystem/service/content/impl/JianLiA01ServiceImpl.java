@@ -183,7 +183,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		try {
 			
 			//输入模板文件
-			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new FileInputStream("upload/base/简历表（模板） .xlsx"));
+			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new FileInputStream("upload/base/简历表（模板）.xlsx"));
 			SXSSFWorkbook workbook = new SXSSFWorkbook(xssfWorkbook, 1000);
 			workbook.setCompressTempFiles(false);
 			POIUtils utils = new POIUtils();
@@ -359,11 +359,11 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        cell24.setCellValue(jianLiA01.getYearResult());//A15Z101  年度考核结果
 	        
 	        Row row003 = sh1.createRow(3);
-	        CellRangeAddress region20 = new CellRangeAddress(3, (short) 3, 2, (short) 23);
+	        CellRangeAddress region20 = new CellRangeAddress(3, (short) 5, 2, (short) 23);
 			Cell cell25=row003.createCell(2);
 			utils.setRegionStyle1(sh1, region20, utils.Style6(workbook));
 			sh.addMergedRegion(region20);
-	        cell25.setCellValue(" ");//A15Z101  年度考核结果
+	        cell25.setCellValue(" ");//任免理由
 	        
 	        List<JianLiA36> jianLiA36 = jianLiA36Dao.selectA36(id);
 	        for(int j=0; j<jianLiA36.size(); j++) {
