@@ -37,6 +37,65 @@ public class JianLiA01 extends AbstractModel {
 	private String graduateSchool1;	  //ZZXLXX  毕业院校系及专业上
 	private String graduateSchool2;	  //QRZXLXX 毕业院校系及专业下
 	private String jobLevelTime;	  //A0173  任现职务层次时间
+	private String examination;		  //A99Z101  是否考虑
+	private String employTime;			//A99Z102  录用时间
+	private String transferring;		//A99Z103  是否选调生
+	private String transferringTime;	//A99Z104  进入选调生时间
+	private String qualification;		//专业技术任职资格(暂没找到与之对应正确字段)
+	private String grow_old;			//A0115A  成长地
+	private String level;				//A0120   级别
+	private String remarks;				//备注(暂没找到与之对应正确字段)
+	private String imgUrl;				//图片路径
+	
+	
+	public JianLiA01() {
+		super();
+	}
+
+	public JianLiA01(String aid, String sex, String birthDay, String nation, String workingTime, String personType,
+			String idCard, String name, String homeTown, String birthPlace, String healthState, String manageType,
+			String speciality, String resume, String jobNameL, String jobNameS, String yearResult,
+			String awardAndPenalty, String specialityPost, String gradeTime, String jobLevel, String grade,
+			String graduateSchool1, String graduateSchool2, String jobLevelTime, String examination, String employTime,
+			String transferring, String transferringTime, String qualification, String grow_old, String level,
+			String remarks, String imgUrl) {
+		super();
+		Aid = aid;
+		this.sex = sex;
+		this.birthDay = birthDay;
+		this.nation = nation;
+		this.workingTime = workingTime;
+		this.personType = personType;
+		this.idCard = idCard;
+		this.name = name;
+		this.homeTown = homeTown;
+		this.birthPlace = birthPlace;
+		this.healthState = healthState;
+		this.manageType = manageType;
+		this.speciality = speciality;
+		this.resume = resume;
+		this.jobNameL = jobNameL;
+		this.jobNameS = jobNameS;
+		this.yearResult = yearResult;
+		this.awardAndPenalty = awardAndPenalty;
+		this.specialityPost = specialityPost;
+		this.gradeTime = gradeTime;
+		this.jobLevel = jobLevel;
+		this.grade = grade;
+		this.graduateSchool1 = graduateSchool1;
+		this.graduateSchool2 = graduateSchool2;
+		this.jobLevelTime = jobLevelTime;
+		this.examination = examination;
+		this.employTime = employTime;
+		this.transferring = transferring;
+		this.transferringTime = transferringTime;
+		this.qualification = qualification;
+		this.grow_old = grow_old;
+		this.level = level;
+		this.remarks = remarks;
+		this.imgUrl = imgUrl;
+	}
+	
 	public String getAid() {
 		return Aid;
 	}
@@ -188,6 +247,61 @@ public class JianLiA01 extends AbstractModel {
 	public void setAwardAndPenalty(String awardAndPenalty) {
 		this.awardAndPenalty = awardAndPenalty;
 	}
+	
+	public String getExamination() {
+		return examination;
+	}
+	public void setExamination(String examination) {
+		this.examination = examination;
+	}
+	public String getEmployTime() {
+		return employTime;
+	}
+	public void setEmployTime(String employTime) {
+		this.employTime = employTime;
+	}
+	public String getTransferring() {
+		return transferring;
+	}
+	public void setTransferring(String transferring) {
+		this.transferring = transferring;
+	}
+	public String getTransferringTime() {
+		return transferringTime;
+	}
+	public void setTransferringTime(String transferringTime) {
+		this.transferringTime = transferringTime;
+	}
+	public String getQualification() {
+		return qualification;
+	}
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
+	}
+	public String getGrow_old() {
+		return grow_old;
+	}
+	public void setGrow_old(String grow_old) {
+		this.grow_old = grow_old;
+	}
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	@Override
 	public String toString() {
 		return "JianLiA01 [Aid=" + Aid + ", sex=" + sex + ", birthDay=" + birthDay + ", nation=" + nation
@@ -197,13 +311,12 @@ public class JianLiA01 extends AbstractModel {
 				+ jobNameL + ", jobNameS=" + jobNameS + ", yearResult=" + yearResult + ", awardAndPenalty="
 				+ awardAndPenalty + ", specialityPost=" + specialityPost + ", gradeTime=" + gradeTime + ", jobLevel="
 				+ jobLevel + ", grade=" + grade + ", graduateSchool1=" + graduateSchool1 + ", graduateSchool2="
-				+ graduateSchool2 + ", jobLevelTime=" + jobLevelTime + "]";
+				+ graduateSchool2 + ", jobLevelTime=" + jobLevelTime + ", examination=" + examination + ", employTime="
+				+ employTime + ", transferring=" + transferring + ", transferringTime=" + transferringTime
+				+ ", qualification=" + qualification + ", grow_old=" + grow_old + ", level=" + level + ", remarks="
+				+ remarks + ", imgUrl=" + imgUrl + "]";
 	}
-	
-	
 
-	
-	
 
 	
 }
