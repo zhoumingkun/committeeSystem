@@ -26,5 +26,17 @@ public class JianLiA08Impl extends GenericDaoImpl<JianLiA08, Integer> implements
 		return sqlSessionTemplate.selectList(typeNameSpace + ".selectZZ", id);
 	}
 
+	@Override
+	public List<JianLiA08> selectQRZYX(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectQRZYX", id);
+	}
+
+	@Override
+	public List<JianLiA08> selectZZYX(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectZZYX", id);
+	}
+
 
 }

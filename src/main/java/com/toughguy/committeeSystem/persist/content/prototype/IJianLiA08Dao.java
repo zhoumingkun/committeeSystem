@@ -21,4 +21,12 @@ public interface IJianLiA08Dao extends IGenericDao<JianLiA08, Integer>{
 	public List<JianLiA08> selectQRZ(String id);
 	public List<JianLiA08> selectZZ(String id);
 	
+	/**
+	 * 根据id查询某人的全日制教育和在职教育学院和专业情况
+	 * @param id
+	 * @return
+	 */
+	public List<JianLiA08> selectQRZYX(String id);
+	public List<JianLiA08> selectZZYX(String id);
+	
 }

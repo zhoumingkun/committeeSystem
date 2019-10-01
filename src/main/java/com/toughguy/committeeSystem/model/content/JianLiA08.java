@@ -16,6 +16,9 @@ public class JianLiA08 extends AbstractModel {
 	private String educationType;	  //A0837  教育类型  1全日制教育  2在职教育
 	private String educational;	      //A0801A  学历  
 	private String degree;	          //A0901A  学位
+	private String college;	  		  //A0814       毕业院校
+	private String major;			  //A0824       专业
+	
 	public String getSID() {
 		return SID;
 	}
@@ -40,11 +43,26 @@ public class JianLiA08 extends AbstractModel {
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
+	
+	
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
 	@Override
 	public String toString() {
 		return "JianLiA08 [SID=" + SID + ", educationType=" + educationType + ", educational=" + educational
-				+ ", degree=" + degree + "]";
+				+ ", degree=" + degree + ", college=" + college + ", major=" + major + "]";
 	}
+
 	
 	
 	

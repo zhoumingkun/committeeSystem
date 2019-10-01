@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+
+import com.toughguy.committeeSystem.dto.ScreeningDTO;
 import com.toughguy.committeeSystem.model.content.JianLiA01;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA01Dao;
 import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
@@ -42,6 +44,48 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 	public List<JianLiA01> selectAllList() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList(typeNameSpace + ".selectAllList");
+	}
+
+	@Override
+	public List<JianLiA01> screenA01(Map<String,Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenA01",map);
+	}
+
+	@Override
+	public JianLiA01 screenA02(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA02",jl);
+	}
+
+	@Override
+	public JianLiA01 screenA03(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA03",jl);
+	}
+
+	@Override
+	public JianLiA01 screenA04(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA04",jl);
+	}
+
+	@Override
+	public JianLiA01 screenA05(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA05",jl);
+	}
+
+	@Override
+	public JianLiA01 screenA06(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA06",jl);
+	}
+
+	@Override
+	public JianLiA01 selectImgUrl(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectImgUrl",jl);
 	}
 
 

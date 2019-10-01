@@ -28,7 +28,13 @@
 			(SELECT w.name FROM dic_rs_njszj w WHERE  a.A0192d=w.code) as grade,
 			a.ZZXLXX as graduateSchool1,
 			a.QRZXLXX as graduateSchool2,
-			a.A0173 as jobLevelTime
+			a.A0173 as jobLevelTime,
+			a.A99Z101 as examination,
+			a.A99Z102 as employTime,
+			a.A99Z103 as transferring,
+			a.A99Z104 as transferringTime,
+			a.A0115A  as grow_old,
+			a.A0120 as level
 		from 
 			rs_a01 a,
 			dic_rs_ax b ,
@@ -41,6 +47,10 @@
 			a.A0117=c.code AND
 			a.A0160=d.code AND
 			a.A0165=e.code 
+	</select>
+	
+	<select id="selectImgUrl" parameterType="JianLiA01" resultType="JianLiA01">
+		select picpath as imgUrl from rs_a01_userpic where SID =#{Aid}
 	</select>
 	
 	<!-- 查询大简历表 -->
@@ -165,4 +175,85 @@
 		where  
 			1=1 
 	</select>
+	
+	<select id="screenA01" parameterType="Map" resultType="JianLiA01">
+		SELECT
+			a.id AS Aid
+		FROM
+ 			rs_a01 a,
+			rs_a08 b,
+			rs_a02 c
+
+		WHERE 
+			<if test="sexValue != null and sexValue !='' and sexValue!='null' ">
+				a.A0104=#{sexValue} AND    
+			</if> 
+			<if test="age_highest != null and age_highest !=''  and age_highest !='null' ">
+				#{age_highest}&gt;a.A0107 AND
+			</if> 
+			<if test="age_highest != null and age_highest !=''  and age_highest !='null' ">
+				a.A0107 like concat(concat('%', #{age_highest, jdbcType=VARCHAR}),'%') AND
+			</if> 
+			<if test="age_lowest != null and age_lowest !=''  and age_lowest !='null' ">
+				a.A0107&gt;#{age_lowest} AND
+			</if> 
+			<if test="age_lowest != null and age_lowest !=''  and age_lowest !='null' ">
+				a.A0107 like concat(concat('%', #{age_lowest, jdbcType=VARCHAR}),'%') AND
+			</if> 
+			<if test="nationValue != null and nationValue !=''  and nationValue !='null' ">
+				a.A0117=(SELECT CODE FROM dic_rs_ae WHERE NAME=#{nationValue} ) AND
+			</if> 
+			<if test="place != null and place !=''  and place !='null' ">
+				a.A0111A=#{place} AND
+			</if> 
+			<if test="CurrentLevel != null and CurrentLevel !=''  and CurrentLevel !='null' ">
+				a.A0192d=(select code from dic_rs_njszj where name=#{CurrentLevel}) AND  
+			</if> 
+			<if test="Joblevel != null and Joblevel !=''  and Joblevel !='null' ">
+				a.A0172=(select code from dic_rs_zb09 where name=#{Joblevel} ) AND 
+			</if> 
+			<if test="personnel != null and personnel !=''  and personnel !='null' ">
+				a.A0160=(select code from dic_rs_zb125 where name=#{personnel} ) AND 
+			</if> 
+			<if test="manage != null and manage !=''  and manage !='null' ">
+				a.A0165=(select code from dic_rs_zb130 where name=#{manage}) AND 
+			</if> 
+			<if test="Compile != null and Compile !=''  and Compile !='null' ">
+				a.A0121=(select code from dic_rs_zb135 where name=#{Compile}) AND
+			</if> 
+			<if test="NewJoblevel != null and NewJoblevel !=''  and NewJoblevel !='null' ">
+				a.A0173=#{NewJoblevel} AND
+			</if> 
+			<if test="employTime != null and employTime !=''  and employTime !='null' ">
+				a.A99Z102=#{employTime} AND 
+			</if> 
+			<if test="joinTime != null and joinTime !=''  and joinTime !='null' ">
+				a.id=(select SID from rs_a39 where A0144=#{joinTime})
+			</if> 
+			<if test="transferring != null and transferring !=''  and transferring !='null' ">
+				a.A99Z103=#{transferring}
+			</if> 
+			
+	</select>
+	
+	<select id="screenA02" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID from rs_a08  where SID=#{Aid} AND A0837=1 AND A0801A like concat(concat('%', #{educationBg_one, jdbcType=VARCHAR}),'%')  )
+	</select>
+	
+	<select id="screenA03" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID from rs_a08 where SID=#{Aid} AND A0837=2 AND A0801A like concat(concat('%', #{educationBg_two, jdbcType=VARCHAR}),'%')  )
+	</select>
+	
+	<select id="screenA04" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID from rs_a02 where SID=#{Aid} AND A0201A like concat(concat('%', #{department, jdbcType=VARCHAR}),'%')  )	
+	</select>
+	
+	<select id="screenA05" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID from rs_a02 where  SID=#{Aid} AND  A0215A like concat(concat('%', #{duty, jdbcType=VARCHAR}),'%') 
+	</select>
+	
+	<select id="screenA06" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID from rs_a39 where SID=#{Aid} AND A0144=#{joinTime}
+	</select>
+	
 </mapper>

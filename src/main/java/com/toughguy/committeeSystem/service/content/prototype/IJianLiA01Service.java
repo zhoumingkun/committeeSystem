@@ -2,6 +2,8 @@ package com.toughguy.committeeSystem.service.content.prototype;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
+
+import com.toughguy.committeeSystem.dto.ScreeningDTO;
 import com.toughguy.committeeSystem.model.content.JianLiA01;
 import com.toughguy.committeeSystem.service.prototype.IGenericService;
 
@@ -46,4 +48,10 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * @return
 	 */
 	public List<JianLiA01> selectAllList();
+	
+	/**
+	 * 通过很多筛选条件查询用户
+	 * @return
+	 */
+	public List<JianLiA01> screenList(ScreeningDTO sc);
 }
