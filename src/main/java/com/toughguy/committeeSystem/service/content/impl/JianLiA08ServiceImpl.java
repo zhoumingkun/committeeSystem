@@ -43,13 +43,13 @@ public class JianLiA08ServiceImpl extends GenericServiceImpl<JianLiA08, Integer>
 	IJianLiA08Dao  jianLiA08Dao;
 
 	@Override
-	public JianLiA08 selectQRZ(String id) {
+	public List<JianLiA08> selectQRZ(String id) {
 		// TODO Auto-generated method stub
 		return ((IJianLiA08Dao)dao).selectQRZ(id);
 	}
 
 	@Override
-	public JianLiA08 selectZZ(String id) {
+	public List<JianLiA08> selectZZ(String id) {
 		// TODO Auto-generated method stub
 		return ((IJianLiA08Dao)dao).selectZZ(id);
 	}

@@ -16,7 +16,7 @@ public interface IJianLiA08Service extends IGenericService<JianLiA08, Integer>{
 	 * @param id
 	 * @return
 	 */
-	public JianLiA08 selectQRZ(String id);
-	public JianLiA08 selectZZ(String id);
+	public List<JianLiA08> selectQRZ(String id);
+	public List<JianLiA08> selectZZ(String id);
 	
 }
