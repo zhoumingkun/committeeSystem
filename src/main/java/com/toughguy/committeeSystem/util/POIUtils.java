@@ -139,7 +139,7 @@ public class POIUtils {
 			}
 			
 			/**
-			* 导出样品交接单样式
+			* 字号11 上下左右 不换行 居中
 			*/
 			public CellStyle Style6(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
@@ -155,6 +155,9 @@ public class POIUtils {
 				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
 				return style;
 			}
+			/**
+			* 字号11 上左右 不换行 居中
+			*/
 			public CellStyle Style7(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
@@ -165,10 +168,13 @@ public class POIUtils {
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
 				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
-				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
 				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
+				style.setWrapText(true); // 设置为自动换行
 				return style;
 			}
+			/**
+			* 字号11 上下左右 换行 居左
+			*/
 			public CellStyle Style81(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
@@ -177,7 +183,11 @@ public class POIUtils {
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_LEFT);//居左
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
+				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
 				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
+				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
+				style.setWrapText(true); // 设置为自动换行
 				return style;
 			}
 			public CellStyle Style82(SXSSFWorkbook wb) {
@@ -188,7 +198,10 @@ public class POIUtils {
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_RIGHT);//居右
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
+				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
 				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
+				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
 				return style;
 			}
 			public CellStyle Style83(SXSSFWorkbook wb) {
@@ -202,6 +215,9 @@ public class POIUtils {
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				return style;
 			}
+			/**
+			* 字号11  下左右 不换行 居中
+			*/
 			public CellStyle Style8(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
@@ -210,9 +226,15 @@ public class POIUtils {
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
+				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
 				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
+				style.setWrapText(true); // 设置为自动换行
 				return style;
 			}
+			/**
+			* 字号11 上下左右 换行 居中
+			*/
 			public CellStyle Style9(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
@@ -240,14 +262,17 @@ public class POIUtils {
 				fon.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);// 粗体显示
 				return style;
 			}
+			/**
+			* 字号8 上下左右 换行 居左
+			*/
 			public CellStyle Style11(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
 				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 11);// 设置字体大小
+				fon.setFontHeightInPoints((short) 8);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
-				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
-				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+				style.setAlignment(HSSFCellStyle.ALIGN_LEFT);//居左
+//				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
 				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
 				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
