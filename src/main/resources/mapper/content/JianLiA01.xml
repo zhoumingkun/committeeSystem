@@ -160,6 +160,22 @@
 			</if>
 	</select>
 	
+	<select id="selectIdList" parameterType="JianLiA01" resultType="JianLiA01">
+		select 
+		    a.ID as Aid,
+			a.A0184 as idCard,
+			a.A0101 as name,
+			a.A0192A as jobNameL,
+			a.A0192c as gradeTime,
+			(SELECT q.name FROM dic_rs_zb09 q WHERE  a.A0172=q.code) as jobLevel,
+			(SELECT w.name FROM dic_rs_njszj w WHERE  a.A0192d=w.code) as grade,
+			a.A0173 as jobLevelTime
+		from 
+			rs_a01 a
+		where  
+			a.id=#{Aid}
+	</select>
+	
 	<select id="selectAllList" resultType="JianLiA01">
 		select 
 		    a.ID as Aid,
@@ -180,80 +196,80 @@
 		SELECT
 			a.id AS Aid
 		FROM
- 			rs_a01 a,
-			rs_a08 b,
-			rs_a02 c
-
-		WHERE 
+ 			rs_a01 a
+		WHERE  
+			1=1
 			<if test="sexValue != null and sexValue !='' and sexValue!='null' ">
-				a.A0104=#{sexValue} AND    
+				 AND a.A0104=#{sexValue}     
 			</if> 
 			<if test="age_highest != null and age_highest !=''  and age_highest !='null' ">
-				#{age_highest}&gt;a.A0107 AND
-			</if> 
-			<if test="age_highest != null and age_highest !=''  and age_highest !='null' ">
-				a.A0107 like concat(concat('%', #{age_highest, jdbcType=VARCHAR}),'%') AND
+				AND #{age_highest}&gt;=a.A0107 
 			</if> 
 			<if test="age_lowest != null and age_lowest !=''  and age_lowest !='null' ">
-				a.A0107&gt;#{age_lowest} AND
-			</if> 
-			<if test="age_lowest != null and age_lowest !=''  and age_lowest !='null' ">
-				a.A0107 like concat(concat('%', #{age_lowest, jdbcType=VARCHAR}),'%') AND
+				AND a.A0107&gt;=#{age_lowest} 
 			</if> 
 			<if test="nationValue != null and nationValue !=''  and nationValue !='null' ">
-				a.A0117=(SELECT CODE FROM dic_rs_ae WHERE NAME=#{nationValue} ) AND
+				AND a.A0117=(SELECT CODE FROM dic_rs_ae WHERE NAME=#{nationValue} ) 
 			</if> 
 			<if test="place != null and place !=''  and place !='null' ">
-				a.A0111A=#{place} AND
+				AND a.A0111A=#{place} 
 			</if> 
 			<if test="CurrentLevel != null and CurrentLevel !=''  and CurrentLevel !='null' ">
-				a.A0192d=(select code from dic_rs_njszj where name=#{CurrentLevel}) AND  
+				AND a.A0192d=(select code from dic_rs_njszj where name=#{CurrentLevel})   
 			</if> 
 			<if test="Joblevel != null and Joblevel !=''  and Joblevel !='null' ">
-				a.A0172=(select code from dic_rs_zb09 where name=#{Joblevel} ) AND 
+				AND a.A0172=(select code from dic_rs_zb09 where name=#{Joblevel} ) 
 			</if> 
 			<if test="personnel != null and personnel !=''  and personnel !='null' ">
-				a.A0160=(select code from dic_rs_zb125 where name=#{personnel} ) AND 
+				AND a.A0160=(select code from dic_rs_zb125 where name=#{personnel} ) 
 			</if> 
 			<if test="manage != null and manage !=''  and manage !='null' ">
-				a.A0165=(select code from dic_rs_zb130 where name=#{manage}) AND 
+				 AND a.A0165=(select code from dic_rs_zb130 where name=#{manage}) 
 			</if> 
 			<if test="Compile != null and Compile !=''  and Compile !='null' ">
-				a.A0121=(select code from dic_rs_zb135 where name=#{Compile}) AND
+				AND a.A0121=(select code from dic_rs_zb135 where name=#{Compile}) 
 			</if> 
 			<if test="NewJoblevel != null and NewJoblevel !=''  and NewJoblevel !='null' ">
-				a.A0173=#{NewJoblevel} AND
+				AND a.A0173=#{NewJoblevel} 
 			</if> 
 			<if test="employTime != null and employTime !=''  and employTime !='null' ">
-				a.A99Z102=#{employTime} AND 
+				AND a.A99Z102 like concat('%', #{employTime} ,'%') 
 			</if> 
 			<if test="joinTime != null and joinTime !=''  and joinTime !='null' ">
-				a.id=(select SID from rs_a39 where A0144=#{joinTime})
+				AND a.id=(select SID from rs_a39 where A0144 like concat('%', #{joinTime},'%')  )
 			</if> 
 			<if test="transferring != null and transferring !=''  and transferring !='null' ">
-				a.A99Z103=#{transferring}
+				 AND a.A99Z103=#{transferring}
 			</if> 
 			
 	</select>
 	
-	<select id="screenA02" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID from rs_a08  where SID=#{Aid} AND A0837=1 AND A0801A like concat(concat('%', #{educationBg_one, jdbcType=VARCHAR}),'%')  )
+	<select id="screenEducationBgOne" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID as Aid from rs_a08  where SID=#{Aid} AND A0837=1 AND A0801A like concat('%', #{sex},'%')
 	</select>
 	
-	<select id="screenA03" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID from rs_a08 where SID=#{Aid} AND A0837=2 AND A0801A like concat(concat('%', #{educationBg_two, jdbcType=VARCHAR}),'%')  )
+	<select id="screenEducationBgTwo" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID as Aid from rs_a08 where SID=#{Aid} AND A0837=2 AND A0801A like concat('%', #{sex},'%')
 	</select>
 	
-	<select id="screenA04" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID from rs_a02 where SID=#{Aid} AND A0201A like concat(concat('%', #{department, jdbcType=VARCHAR}),'%')  )	
+	<select id="screenDepartment" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID as Aid from rs_a02 where SID=#{Aid} AND A0201A like concat('%', #{sex},'%')
 	</select>
 	
-	<select id="screenA05" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID from rs_a02 where  SID=#{Aid} AND  A0215A like concat(concat('%', #{duty, jdbcType=VARCHAR}),'%') 
+	<select id="screenDuty" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID as Aid from rs_a02 where  SID=#{Aid} AND  A0215A like concat('%', #{sex},'%') 
 	</select>
 	
-	<select id="screenA06" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID from rs_a39 where SID=#{Aid} AND A0144=#{joinTime}
+	<select id="screenJoinTime" parameterType="JianLiA01" resultType="JianLiA01" >
+		select SID as Aid from rs_a39 where SID=#{Aid} AND A0144 like concat('%', #{sex},'%')
+	</select>
+	
+	<select id="selectSexRatio" resultType="JianLiA01" >
+		SELECT A0104 as sex, COUNT(A0104) as birthDay FROM rs_a01 GROUP BY A0104
+	</select>
+	
+	<select id="selectAGE" resultType="JianLiA01"  >
+		select AGE as birthDay from rs_a01 
 	</select>
 	
 </mapper>

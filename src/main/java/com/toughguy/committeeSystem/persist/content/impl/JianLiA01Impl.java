@@ -53,39 +53,63 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 	}
 
 	@Override
-	public JianLiA01 screenA02(JianLiA01 jl) {
+	public List<JianLiA01> screenEducationBgOne(JianLiA01 jl) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA02",jl);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenEducationBgOne",jl);
 	}
 
 	@Override
-	public JianLiA01 screenA03(JianLiA01 jl) {
+	public List<JianLiA01> screenEducationBgTwo(JianLiA01 jl) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA03",jl);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenEducationBgTwo",jl);
 	}
 
 	@Override
-	public JianLiA01 screenA04(JianLiA01 jl) {
+	public List<JianLiA01> screenDepartment(JianLiA01 jl) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA04",jl);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenDepartment",jl);
 	}
 
 	@Override
-	public JianLiA01 screenA05(JianLiA01 jl) {
+	public List<JianLiA01> screenDuty(JianLiA01 jl) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA05",jl);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenDuty",jl);
 	}
 
 	@Override
-	public JianLiA01 screenA06(JianLiA01 jl) {
+	public List<JianLiA01> screenJoinTime(JianLiA01 jl) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(typeNameSpace + ".screenA06",jl);
+		return sqlSessionTemplate.selectList(typeNameSpace + ".screenJoinTime",jl);
 	}
 
 	@Override
 	public JianLiA01 selectImgUrl(JianLiA01 jl) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectImgUrl",jl);
+	}
+
+	@Override
+	public JianLiA01 selectIdList(JianLiA01 jl) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectIdList",jl);
+	}
+
+	@Override
+	public List<JianLiA01> selectSexRatio() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectSexRatio");
+	}
+
+	@Override
+	public List<JianLiA01> selectAGE() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectAGE");
+	}
+
+	@Override
+	public List<JianLiA01> selectGradeTime() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectGradeTime");
 	}
 
 

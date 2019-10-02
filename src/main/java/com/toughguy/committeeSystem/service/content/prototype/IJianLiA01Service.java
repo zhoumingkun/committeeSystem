@@ -54,4 +54,10 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * @return
 	 */
 	public List<JianLiA01> screenList(ScreeningDTO sc);
+	
+	/**
+	 * 政法委数据分析
+	 * @return
+	 */
+	public Map<String,Object> dataAnalysis();
 }

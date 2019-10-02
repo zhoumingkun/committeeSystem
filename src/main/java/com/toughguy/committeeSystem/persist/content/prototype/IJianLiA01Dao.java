@@ -47,11 +47,17 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 */
 	public List<JianLiA01> selectList(Map<String,String> map);
 	/**
-	 * 通过名字和身份证列表信息
+	 * 查询全部列表信息
 	 * @param jianli
 	 * @return
 	 */
 	public List<JianLiA01> selectAllList();
+	
+	/**
+	 * 通过用户id查询数据库返回列表信息
+	 * @return
+	 */
+	public JianLiA01 selectIdList(JianLiA01 jl);
 	
 	/**
 	 * 通过很多筛选条件查询用户
@@ -60,33 +66,51 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	public List<JianLiA01> screenA01(Map<String,Object> map);
 	
 	/**
-	 * 通过很多筛选条件查询用户
+	 * 通过第一学历筛选条件查询用户
 	 * @return
 	 */
-	public JianLiA01 screenA02(JianLiA01 jl);
+	public List<JianLiA01> screenEducationBgOne(JianLiA01 jl);
 	
 	/**
-	 * 通过很多筛选条件查询用户
+	 * 通过第二学历筛选条件查询用户
 	 * @return
 	 */
-	public JianLiA01 screenA03(JianLiA01 jl);
+	public List<JianLiA01> screenEducationBgTwo(JianLiA01 jl);
 	
 	/**
-	 * 通过很多筛选条件查询用户
+	 * 通过所属部门筛选条件查询用户
 	 * @return
 	 */
-	public JianLiA01 screenA04(JianLiA01 jl);
+	public List<JianLiA01> screenDepartment(JianLiA01 jl);
 	
 	/**
-	 * 通过很多筛选条件查询用户
+	 * 通过职务筛选条件查询用户
 	 * @return
 	 */
-	public JianLiA01 screenA05(JianLiA01 jl);
+	public List<JianLiA01> screenDuty(JianLiA01 jl);
 	
 	/**
-	 * 通过很多筛选条件查询用户
+	 * 通过入党时间筛选条件查询用户
 	 * @return
 	 */
-	public JianLiA01 screenA06(JianLiA01 jl);
+	public List<JianLiA01> screenJoinTime(JianLiA01 jl);
+	
+	/**
+	 * 查询男女性别数量
+	 * @return
+	 */
+	public List<JianLiA01> selectSexRatio();
+	
+	/**
+	 * 查询年龄
+	 * @return
+	 */
+	public List<JianLiA01> selectAGE();
+	
+	/**
+	 * 查询职务层次
+	 * @return
+	 */
+	public List<JianLiA01> selectGradeTime();
 
 }
