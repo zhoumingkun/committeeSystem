@@ -18,17 +18,23 @@
 	
 	<select id="selectQRZYX" resultType="JianLiA08" parameterType="String">
 		select 
+			sid, 
+			b.name as educationType,
 			a.A0814 as college,
 			a.A0824 as major 
-		from rs_a08 a 
-		where sid=#{id} AND a.A0837="1"
+		from 
+			rs_a08 a ,dic_rs_jylb b 
+		where sid=#{id} AND a.A0837="1" AND a.A0837=b.code
 	</select>
 	
 	<select id="selectZZYX" resultType="JianLiA08" parameterType="String">
 		select 
+			sid, 
+			b.name as educationType,
 			a.A0814 as college,
 			a.A0824 as major 
-		from rs_a08 a 
-		where sid=#{id} AND a.A0837="2"
+		from 
+			rs_a08 a ,dic_rs_jylb b 
+		where sid=#{id} AND a.A0837="2" AND a.A0837=b.code
 	</select>
 </mapper>
