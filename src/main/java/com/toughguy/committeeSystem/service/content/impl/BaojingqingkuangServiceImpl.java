@@ -337,12 +337,12 @@ public class BaojingqingkuangServiceImpl extends GenericServiceImpl<Baojingqingk
 				String year =tjyf.substring(0,4);			//2019
 				String month =tjyf.substring(5,7);         //09
 				
-				Row row0 = sh.createRow(0);
-				CellRangeAddress region0 = new CellRangeAddress(0, (short) 0, 0, (short) 16);
-				Cell cell00000=row0.createCell(0);
-				utils.setRegionStyle(sh, region0, utils.Style10(workbook));
-				sh.addMergedRegion(region0);
-		        cell00000.setCellValue(year+"年"+month+"月"+"报警情况统计月报表");//填报时间（当前导出时间）
+//				Row row0 = sh.createRow(0);
+//				CellRangeAddress region0 = new CellRangeAddress(0, (short) 0, 0, (short) 16);
+//				Cell cell00000=row0.createCell(0);
+//				utils.setRegionStyle(sh, region0, utils.Style10(workbook));
+//				sh.addMergedRegion(region0);
+//		        cell00000.setCellValue(year+"年"+month+"月"+"报警情况统计月报表");//填报时间（当前导出时间）
 				//第一行数据内容
 				Row row1 = sh.createRow(1);
 		        
@@ -1909,12 +1909,12 @@ public class BaojingqingkuangServiceImpl extends GenericServiceImpl<Baojingqingk
 					String year =tjyf.substring(0,4);			//2019
 					String month =tjyf.substring(5,7);         //09
 					
-					Row row0 = sh.createRow(0);
-					CellRangeAddress region0 = new CellRangeAddress(0, (short) 0, 0, (short) 16);
-					Cell cell00000=row0.createCell(0);
-					utils.setRegionStyle(sh, region0, utils.Style10(workbook));
-					sh.addMergedRegion(region0);
-			        cell00000.setCellValue(year+"年"+month+"月"+"报警情况统计月报表");//填报时间（当前导出时间）
+//					Row row0 = sh.createRow(0);
+//					CellRangeAddress region0 = new CellRangeAddress(0, (short) 0, 0, (short) 16);
+//					Cell cell00000=row0.createCell(0);
+//					utils.setRegionStyle(sh, region0, utils.Style10(workbook));
+//					sh.addMergedRegion(region0);
+//			        cell00000.setCellValue(year+"年"+month+"月"+"报警情况统计月报表");//填报时间（当前导出时间）
 					
 					
 //					Cell cell0=row1.createCell(7);
