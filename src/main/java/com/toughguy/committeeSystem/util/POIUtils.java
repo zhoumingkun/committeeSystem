@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.xslf.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 public class POIUtils {
@@ -190,28 +191,28 @@ public class POIUtils {
 				style.setWrapText(true); // 设置为自动换行
 				return style;
 			}
+			//只有上
 			public CellStyle Style82(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
 				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 11);// 设置字体大小
+				fon.setFontHeightInPoints((short) 8);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_RIGHT);//居右
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
-				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
-				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
-				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
+				
 				return style;
 			}
+			//只有下
 			public CellStyle Style83(SXSSFWorkbook wb) {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
 				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 11);// 设置字体大小
+				fon.setFontHeightInPoints((short) 8);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
-				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
-				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
+				style.setAlignment(HSSFCellStyle.ALIGN_LEFT);//居左
+				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				return style;
 			}
@@ -251,17 +252,17 @@ public class POIUtils {
 				style.setWrapText(true); // 设置为自动换行
 				return style;
 			}
-			public CellStyle Style10(SXSSFWorkbook wb) {
-				CellStyle style = wb.createCellStyle();
-				Font fon = wb.createFont();
-				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 20);// 设置字体大小
-				style.setFont(fon);// 选择需要用到的字体格式
-				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
-				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
-				fon.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);// 粗体显示
-				return style;
-			}
+//			public CellStyle Style10(SXSSFWorkbook wb) {
+//				CellStyle style = wb.createCellStyle();
+//				Font fon = wb.createFont();
+//				fon.setFontName("宋体");
+//				fon.setFontHeightInPoints((short) 20);// 设置字体大小
+//				style.setFont(fon);// 选择需要用到的字体格式
+//				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
+//				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+//				fon.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);// 粗体显示
+//				return style;
+//			}
 			/**
 			* 字号8 上下左右 换行 居左
 			*/
@@ -272,6 +273,25 @@ public class POIUtils {
 				fon.setFontHeightInPoints((short) 8);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_LEFT);//居左
+//				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+//				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
+				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
+//				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
+				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
+				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);// 垂直对齐居中
+				style.setWrapText(true); // 设置为自动换行
+				return style;
+			}
+			/**
+			* 字号8 上下左右 换行 居中   竖向居中
+			*/
+			public CellStyle Style12(SXSSFWorkbook wb) {
+				CellStyle style = wb.createCellStyle();
+				Font fon = wb.createFont();
+				fon.setFontName("宋体");
+				fon.setFontHeightInPoints((short) 8);// 设置字体大小
+				style.setFont(fon);// 选择需要用到的字体格式
+				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
 //				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
 				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
 				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
