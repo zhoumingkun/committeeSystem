@@ -27,7 +27,7 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	public JianLiA01 findJianli(String id);
 	
 	/**
-	 * 通过名字模糊查询和通过身份证完全匹配查询
+	 * 通过ID完全匹配查询
 	 * @param jianli
 	 * @return
 	 */
@@ -108,9 +108,29 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	public List<JianLiA01> selectAGE();
 	
 	/**
-	 * 查询职务层次
+	 * 查询职务层次时间
 	 * @return
 	 */
 	public List<JianLiA01> selectGradeTime();
+	
+	
+	/**
+	 * 查询职务层次
+	 * @return
+	 */
+	public List<JianLiA01> selectJobLevel(JianLiA01 jianli);
+	
+	/**
+	 * 查询职务层次是null的数据
+	 * @return
+	 */
+	public List<JianLiA01> selectJobLevelIsNull();
+	
+	
+	/**
+	 * 根据id查询某人的信息
+	 * @return
+	 */
+	public JianLiA01 selectAll(Map<String,String> map);
 
 }

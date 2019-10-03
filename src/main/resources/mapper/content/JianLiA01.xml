@@ -272,4 +272,20 @@
 		select AGE as birthDay from rs_a01 
 	</select>
 	
+	<select id="selectGradeTime" resultType="JianLiA01"  >
+		select id as Aid, A0173 as birthDay from rs_a01 
+	</select>
+	
+	<select id="selectJobLevel"  resultType="JianLiA01" parameterType="JianLiA01" >
+		SELECT ID as Aid FROM rs_a01 WHERE A0172=#{jobLevel}
+	</select>
+	
+	<select id="selectJobLevelIsNull"  resultType="JianLiA01"  >
+		SELECT ID as Aid FROM rs_a01 WHERE A0172 is null
+	</select>
+	
+	<select id="selectAll"  resultType="JianLiA01" >
+		SELECT id as Aid,A0104 as sex FROM rs_a01 WHERE id=#{ID}
+	</select>
+	
 </mapper>

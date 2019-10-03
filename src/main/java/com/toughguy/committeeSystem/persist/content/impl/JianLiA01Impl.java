@@ -112,5 +112,23 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 		return sqlSessionTemplate.selectList(typeNameSpace + ".selectGradeTime");
 	}
 
+	@Override
+	public List<JianLiA01> selectJobLevel(JianLiA01 jianli) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectJobLevel",jianli);
+	}
+
+	@Override
+	public JianLiA01 selectAll(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectAll",map);
+	}
+
+	@Override
+	public List<JianLiA01> selectJobLevelIsNull() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectJobLevelIsNull");
+	}
+
 
 }
