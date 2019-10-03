@@ -270,7 +270,7 @@ public class POIUtils {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
 				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 8);// 设置字体大小
+				fon.setFontHeightInPoints((short) 9);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_LEFT);//居左
 //				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
@@ -289,13 +289,13 @@ public class POIUtils {
 				CellStyle style = wb.createCellStyle();
 				Font fon = wb.createFont();
 				fon.setFontName("宋体");
-				fon.setFontHeightInPoints((short) 8);// 设置字体大小
+				fon.setFontHeightInPoints((short) 11);// 设置字体大小
 				style.setFont(fon);// 选择需要用到的字体格式
 				style.setAlignment(HSSFCellStyle.ALIGN_CENTER);//居中
-//				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
-				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
+				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);//上下居中 
+//				style.setBorderTop(HSSFCellStyle.BORDER_THIN);//上边框
 				style.setBorderRight(HSSFCellStyle.BORDER_THIN);//右边框
-				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
+//				style.setBorderBottom(HSSFCellStyle.BORDER_THIN); //下边框
 				style.setBorderLeft(HSSFCellStyle.BORDER_THIN);//左边框
 				style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);// 垂直对齐居中
 				style.setWrapText(true); // 设置为自动换行

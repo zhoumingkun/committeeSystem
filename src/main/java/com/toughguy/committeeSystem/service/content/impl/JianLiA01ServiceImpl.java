@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -131,46 +132,82 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				
 				Cell createCell6 = row.createCell(5);
 				createCell6.setCellStyle(utils.Style6(workbook));
-				if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()==0){
+//				if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()==0){
+//					createCell6.setCellValue("");//A0173  任现职务层次时间
+//			    }else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>4){
+//					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+//					createCell6.setCellValue(year);//A0173  任现职务层次时间
+//				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>7){
+//					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+//					String month =jianLiA01.getJobLevelTime().substring(5,7);
+//					createCell6.setCellValue(year+"."+month);//A0173  任现职务层次时间
+//				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>8){
+//					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+//					String month =jianLiA01.getJobLevelTime().substring(5,7);
+//					String day =jianLiA01.getJobLevelTime().substring(8);//09
+//					String  jobLevelTime= year+"."+month+"."+day+".";
+//					createCell6.setCellValue(jobLevelTime);//A0173  任现职务层次时间
+//				}
+				
+				if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime()!=" "&& !jianLiA01.getJobLevelTime().equals("")&&jianLiA01.getJobLevelTime().length()!=0){
+				    if(jianLiA01.getJobLevelTime().length()==4){
+						String year =jianLiA01.getWorkingTime().substring(0,4);		//2019
+						createCell6.setCellValue(year);//A0173  任现职务层次时间
+					}else if(jianLiA01.getJobLevelTime().length()>4&&jianLiA01.getJobLevelTime().length()<7){
+						String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+						String month =jianLiA01.getJobLevelTime().substring(4);
+						createCell6.setCellValue(year+"."+month);//A0173  任现职务层次时间
+					}else if(jianLiA01.getJobLevelTime().length()==8){
+						String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
+						String month =jianLiA01.getJobLevelTime().substring(4,6);
+						String day =jianLiA01.getJobLevelTime().substring(6);//09
+						String  BirthDay= year+"."+month+"."+day+".";
+						createCell6.setCellValue(BirthDay);//A0173  任现职务层次时间
+					}
+				}else{
 					createCell6.setCellValue("");//A0173  任现职务层次时间
-			    }else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>4){
-					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
-					createCell6.setCellValue(year);//A0173  任现职务层次时间
-				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>7){
-					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
-					String month =jianLiA01.getJobLevelTime().substring(5,7);
-					createCell6.setCellValue(year+"."+month);//A0173  任现职务层次时间
-				}else if(jianLiA01.getJobLevelTime()!=null&&jianLiA01.getJobLevelTime().length()>8){
-					String year =jianLiA01.getJobLevelTime().substring(0,4);		//2019
-					String month =jianLiA01.getJobLevelTime().substring(5,7);
-					String day =jianLiA01.getJobLevelTime().substring(8);//09
-					String  jobLevelTime= year+"."+month+"."+day+".";
-					createCell6.setCellValue(jobLevelTime);//A0173  任现职务层次时间
 				}
-					
+				
 				Cell createCell7 = row.createCell(6);
 				createCell7.setCellStyle(utils.Style6(workbook));
 				createCell7.setCellValue(jianLiA01.getGrade()); //A0192d  现职级
 				
 				Cell createCell8 = row.createCell(7);
 				createCell8.setCellStyle(utils.Style6(workbook));
-				if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()==0){
-					createCell8.setCellValue(""); //A0192c  任现职级时间
-			    }else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>4){
-					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
-					createCell8.setCellValue(year); //A0192c  任现职级时间
-				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>7){
-					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
-					String month =jianLiA01.getGradeTime().substring(5,7);
-					createCell8.setCellValue(year+"."+month); //A0192c  任现职级时间
-				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>8){
-					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
-					String month =jianLiA01.getGradeTime().substring(5,7);
-					String day =jianLiA01.getGradeTime().substring(8);//09
-					String  gradeTime= year+"."+month+"."+day+".";
-					createCell8.setCellValue(gradeTime); //A0192c  任现职级时间
+//				if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()==0){
+//					createCell8.setCellValue(""); //A0192c  任现职级时间
+//			    }else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>4){
+//					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+//					createCell8.setCellValue(year); //A0192c  任现职级时间
+//				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>7){
+//					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+//					String month =jianLiA01.getGradeTime().substring(5,7);
+//					createCell8.setCellValue(year+"."+month); //A0192c  任现职级时间
+//				}else if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime().length()>8){
+//					String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+//					String month =jianLiA01.getGradeTime().substring(5,7);
+//					String day =jianLiA01.getGradeTime().substring(8);//09
+//					String  gradeTime= year+"."+month+"."+day+".";
+//					createCell8.setCellValue(gradeTime); //A0192c  任现职级时间
+//				}
+				if(jianLiA01.getGradeTime()!=null&&jianLiA01.getGradeTime()!=" "&& !jianLiA01.getGradeTime().equals("")&&jianLiA01.getGradeTime().length()!=0){
+				    if(jianLiA01.getGradeTime().length()==4){
+						String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+						createCell8.setCellValue(year);//A0192c  任现职级时间
+					}else if(jianLiA01.getGradeTime().length()>4&&jianLiA01.getGradeTime().length()<7){
+						String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+						String month =jianLiA01.getGradeTime().substring(4);
+						createCell8.setCellValue(year+"."+month);//A0192c  任现职级时间
+					}else if(jianLiA01.getGradeTime().length()==8){
+						String year =jianLiA01.getGradeTime().substring(0,4);		//2019
+						String month =jianLiA01.getGradeTime().substring(4,6);
+						String day =jianLiA01.getGradeTime().substring(6);//09
+						String  BirthDay= year+"."+month+"."+day+".";
+						createCell8.setCellValue(BirthDay);//A0192c  任现职级时间
+					}
+				}else{
+					createCell8.setCellValue("");//A0192c  任现职级时间
 				}
-				
 			}
 			
 			String title = "人事人员查询";
@@ -498,20 +535,31 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 						}
 					}
 				}
+				if(aa.get(0).getEducational()!=null&&aa.get(0).getEducational()!=" "&& !aa.get(0).getEducational().equals("")){
+					cell13.setCellValue(aa.get(0).getEducational());//A0801A  在职学历
+				}else{
+					cell13.setCellValue("");//A0801A  在职学历
+				}
+				if(aa.get(0).getDegree()!=null&&aa.get(0).getDegree()!=" "&& !aa.get(0).getDegree().equals("")){
+					cell14.setCellValue(aa.get(0).getDegree());//A0901A  在职学位
+				}else{
+					cell14.setCellValue("");//A0901A  在职学位
+				}
 			}else{
 				cell13.setCellValue("");//A0801A  全日制学历  
+				cell14.setCellValue("");//A0901A  全日制学位  
 			}
 			
 //	        CellRangeAddress region8 = new CellRangeAddress(6, (short) 6, 2, (short) 3);
 //			Cell cell13=row6.createCell(2);
 //			utils.setRegionStyle(sh, region8, utils.Style7(workbook));
 //			sh.addMergedRegion(region8);
-			if(aa.get(0).getEducational()!=null&&aa.get(0).getEducational()!=" "&& !aa.get(0).getEducational().equals("")){
-				cell13.setCellValue(aa.get(0).getEducational());//A0801A  全日制学历  
-			}else{
-				cell13.setCellValue("");//A0801A  全日制学历  
-				cell14.setCellValue("");//A0901A  全日制学位
-			}
+//			if(aa.get(0).getEducational()!=null&&aa.get(0).getEducational()!=" "&& !aa.get(0).getEducational().equals("")){
+//				cell13.setCellValue(aa.get(0).getEducational());//A0801A  全日制学历  
+//			}else{
+//				cell13.setCellValue("");//A0801A  全日制学历  
+//				cell14.setCellValue("");//A0901A  全日制学位
+//			}
 	        
 //	        Row row7 = sh.createRow(7);
 //	        row7.setHeightInPoints(16);
@@ -542,11 +590,46 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				cell14.setCellValue("");//A0901A  全日制学位
 			}
 			
-	        CellRangeAddress region10 = new CellRangeAddress(6, (short) 7, 5, (short) 6);
+			List<JianLiA08> jianLiA08QRZYX = jianLiA08Dao.selectQRZYX(id);
+//			System.out.println(jianLiA08QRZYX);
+			CellRangeAddress region10 = new CellRangeAddress(6, (short) 7, 5, (short) 6);
 			Cell cell15=row6.createCell(5);
 			utils.setRegionStyle(sh, region10, utils.Style9(workbook));
 			sh.addMergedRegion(region10);
-	        cell15.setCellValue(jianLiA01.getGraduateSchool1());//ZZXLXX  毕业院校系及专业上 
+			
+			List<JianLiA08> bb = new ArrayList<>();
+			int jj=0;
+			if(jianLiA08QRZYX!=null&&jianLiA08QRZYX.size()>0) {
+				for(int w=0;w<jianLiA08QRZYX.size();w++) {
+					if(jianLiA08QRZYX.size()==1 && jj<1) {			//只查询出一条全日制学院
+						bb.add(jianLiA08QRZYX.get(w));
+						jj++;
+					}else if(jianLiA08QRZYX.size()>1 && jj<1) {								//查询出多条全日制
+						if(jianLiA08QRZYX.get(w).getMajor()!=null && jianLiA08QRZYX.get(w).getMajor()!="" && !jianLiA08QRZYX.get(w).getMajor().equals("") ) {		
+							bb.add(jianLiA08QRZYX.get(w));
+							jj++;
+						}else if(w==(jianLiA08QRZYX.size()-1)) {
+							bb.add(jianLiA08QRZYX.get(w));
+							jj++;
+						}
+					}
+				}
+				if(bb.get(0).getCollege()!=null&&bb.get(0).getCollege()!=" "&& !bb.get(0).getCollege().equals("")){
+					if(bb.get(0).getMajor()!=null&&bb.get(0).getMajor()!=" "&& !bb.get(0).getMajor().equals("")){
+						cell15.setCellValue(bb.get(0).getCollege()+bb.get(0).getMajor()+"专业");//ZZXLXX  毕业院校系及专业上 
+					}else{
+						cell15.setCellValue(bb.get(0).getCollege());//ZZXLXX  毕业院校系及专业上
+					}
+				}else{
+					cell15.setCellValue("");//ZZXLXX  毕业院校系及专业上 
+				}
+			}else{
+				 cell15.setCellValue("");//ZZXLXX  毕业院校系及专业上 
+			}
+//	        CellRangeAddress region10 = new CellRangeAddress(6, (short) 7, 5, (short) 6);
+//			Cell cell15=row6.createCell(5);
+//			utils.setRegionStyle(sh, region10, utils.Style9(workbook));
+//			sh.addMergedRegion(region10);
 	        
 	        Row row8 = sh.createRow(8);
 	        row8.setHeightInPoints(16);
@@ -576,6 +659,12 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			utils.setRegionStyle(sh, region12, utils.Style8(workbook));
 			sh.addMergedRegion(region12);
 			
+			CellRangeAddress region121 = new CellRangeAddress(8, (short) 9, 0, (short) 0);
+			Cell cell0171=row8.createCell(0);
+			utils.setRegionStyle(sh, region121, utils.Style6(workbook));
+			sh.addMergedRegion(region121);
+		    cell0171.setCellValue("学 位");  
+		        
 	        List<JianLiA08> jianLiA08ZZ= jianLiA08Dao.selectZZ(id);
 	        System.out.println(jianLiA08ZZ);
 	        List<JianLiA08> aa1 = new ArrayList<>();
@@ -583,7 +672,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        if(jianLiA08ZZ!=null&&jianLiA08ZZ.size()>0) {
 	        	System.out.println("进来了");
 				for(int w=0;w<jianLiA08ZZ.size();w++) {
-					if(jianLiA08ZZ.size()==1 && ii<1) {			//只查询出一条在职教育
+					if(jianLiA08ZZ.size()==1 && ii1<1) {			//只查询出一条在职教育
 						aa1.add(jianLiA08ZZ.get(w));
 						ii1++;
 					}else if(jianLiA08ZZ.size()>1 && ii1<1) {								//查询出多条在职教育
@@ -643,6 +732,40 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 //			}else{
 //				cell17.setCellValue("");//A0901A  在职学位
 //			}
+	        List<JianLiA08> jianLiA08ZZYX = jianLiA08Dao.selectZZYX(id);
+	        CellRangeAddress region101 = new CellRangeAddress(8, (short) 9, 5, (short) 6);
+			Cell cell151=row8.createCell(5);
+			utils.setRegionStyle(sh, region101, utils.Style9(workbook));
+			sh.addMergedRegion(region101);
+	        List<JianLiA08> bb1 = new ArrayList<>();
+			int jj1=0;
+			if(jianLiA08ZZYX!=null&&jianLiA08ZZYX.size()>0) {
+				for(int w=0;w<jianLiA08ZZYX.size();w++) {
+					if(jianLiA08ZZYX.size()==1 && jj1<1) {			//只查询出一条在职学院
+						bb1.add(jianLiA08ZZYX.get(w));
+						jj1++;
+					}else if(jianLiA08ZZYX.size()>1 && jj1<1) {								//查询出多条在职
+						if(jianLiA08ZZYX.get(w).getMajor()!=null && jianLiA08ZZYX.get(w).getMajor()!="" && !jianLiA08ZZYX.get(w).getMajor().equals("") ) {		
+							bb1.add(jianLiA08ZZYX.get(w));
+							jj1++;
+						}else if(w==(jianLiA08ZZYX.size()-1)) {
+							bb1.add(jianLiA08ZZYX.get(w));
+							jj1++;
+						}
+					}
+				}
+				if(bb1.get(0).getCollege()!=null&&bb1.get(0).getCollege()!=" "&& !bb1.get(0).getCollege().equals("")){
+					if(bb1.get(0).getMajor()!=null&&bb1.get(0).getMajor()!=" "&& !bb1.get(0).getMajor().equals("")){
+						cell151.setCellValue(bb1.get(0).getCollege()+bb1.get(0).getMajor()+"专业");//ZZXLXX  毕业院校系及专业上 
+					}else{
+						cell151.setCellValue(bb1.get(0).getCollege());//ZZXLXX  毕业院校系及专业下
+					}
+				}else{
+					cell151.setCellValue("");//ZZXLXX  毕业院校系及专业上下
+				}
+			}else{
+				 cell151.setCellValue("");//ZZXLXX  毕业院校系及专业上下
+			}
 
 	        Row row10 = sh.createRow(10);
 	        row10.setHeightInPoints(32);
@@ -694,18 +817,73 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        cell21.setCellValue("");//拟免职务
 	        
 	        Row row13 = sh.createRow(13);
-	        row13.setHeightInPoints(350);
+	        row13.setHeightInPoints(12);
+//	        Row row14 = sh.createRow(14);
+//	        row14.setHeightInPoints(12);
+//	        Row row15 = sh.createRow(15);
+//	        row15.setHeightInPoints(12);
+//	        Row row16 = sh.createRow(16);
+//	        row16.setHeightInPoints(12);
+//	        Row row17 = sh.createRow(17);
+//	        row17.setHeightInPoints(12);
+//	        Row row18 = sh.createRow(18);
+//	        row18.setHeightInPoints(12);
+//	        Row row19 = sh.createRow(19);
+//	        row19.setHeightInPoints(12);
+//	        Row row20 = sh.createRow(20);
+//	        row20.setHeightInPoints(12);
+//	        Row row21 = sh.createRow(21);
+//	        row21.setHeightInPoints(12);
+//	        Row row22 = sh.createRow(22);
+//	        row22.setHeightInPoints(12);
+//	        Row row23 = sh.createRow(23);
+//	        row23.setHeightInPoints(12);
+//	        Row row24 = sh.createRow(24);
+//	        row24.setHeightInPoints(12);
+//	        Row row25 = sh.createRow(25);
+//	        row25.setHeightInPoints(12);
+//	        Row row26 = sh.createRow(26);
+//	        row26.setHeightInPoints(12);
+//	        Row row27 = sh.createRow(27);
+//	        row27.setHeightInPoints(12);
+//	        Row row28 = sh.createRow(28);
+//	        row28.setHeightInPoints(12);
+//	        Row row29 = sh.createRow(29);
+//	        row29.setHeightInPoints(12);
+//	        Row row30 = sh.createRow(30);
+//	        row30.setHeightInPoints(12);
+//	        Row row31 = sh.createRow(31);
+//	        row31.setHeightInPoints(12);
+//	        Row row32 = sh.createRow(32);
+//	        row32.setHeightInPoints(12);
+//	        Row row33 = sh.createRow(33);
+//	        row33.setHeightInPoints(12);
+//	        Row row34 = sh.createRow(34);
+//	        row34.setHeightInPoints(12);
+//	        Row row35 = sh.createRow(35);
+//	        row35.setHeightInPoints(12);
+//	        Row row36 = sh.createRow(36);
+//	        row36.setHeightInPoints(12);
+//	        Row row37 = sh.createRow(37);
+//	        row37.setHeightInPoints(12);
+//	        Row row38 = sh.createRow(38);
+//	        row38.setHeightInPoints(12);
+//	        Row row39 = sh.createRow(39);
+//	        row39.setHeightInPoints(12);
+//	        Row row40 = sh.createRow(40);
+//	        row40.setHeightInPoints(12);
+//	        Row row41 = sh.createRow(41);
+//	        row41.setHeightInPoints(12);
+//	        Row row42 = sh.createRow(42);
+//	        row42.setHeightInPoints(12);
 	        
-	        CellRangeAddress region1701 = new CellRangeAddress(13, (short) 42, 0, (short) 0);
-			Cell cell024=row13.createCell(0);
-			utils.setRegionStyle(sh, region1701, utils.Style9(workbook));
-			sh.addMergedRegion(region1701);
-	        cell024.setCellValue("简   \r\n 历");
 	        
-//	        CellRangeAddress region17 = new CellRangeAddress(13, (short) 13, 1, (short) 6);
-//			Cell cell22=row13.createCell(1);
-//			utils.setRegionStyle(sh, region17, utils.Style11(workbook));
-//			sh.addMergedRegion(region17);
+//	        CellRangeAddress region1701 = new CellRangeAddress(13, (short) 42, 0, (short) 0);
+//			Cell cell024=row13.createCell(0);
+//			utils.setRegionStyle(sh, region1701, utils.Style9(workbook));
+//			sh.addMergedRegion(region1701);
+//	        cell024.setCellValue("简历");
+	        
 			String jianli =jianLiA01.getResume();
 			String[] jianli1 = jianli.split("\r");
 //			String jianli1 = jianli.replaceAll("\r\n", "WWW");
@@ -726,7 +904,28 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 //			cell22.setCellValue(jianli1);
 //			System.out.println(jianli1);
 			}
+	        CellRangeAddress region1703 = new CellRangeAddress(13, (short) 42, 0, (short) 0);
+			Cell cell0242=row13.createCell(0);
+			utils.setRegionStyle(sh, region1703, utils.Style6(workbook));
+			sh.addMergedRegion(region1703);
+	        cell0242.setCellValue("简历");
 	        
+//			Row row22 = sh.createRow(22);
+//			row22.setHeightInPoints(12);
+//			Row row32 = sh.createRow(32);
+//			row32.setHeightInPoints(12);
+//			
+//			CellRangeAddress region1701 = new CellRangeAddress(22, (short) 23, 0, (short) 0);
+//			Cell cell024=row22.createCell(0);
+//			utils.setRegionStyle(sh, region1701, utils.Style12(workbook));
+//			sh.addMergedRegion(region1701);
+//	        cell024.setCellValue("简");
+//	        
+//	        CellRangeAddress region1702 = new CellRangeAddress(32, (short) 33, 0, (short) 0);
+//			Cell cell0241=row32.createCell(0);
+//			utils.setRegionStyle(sh, region1702, utils.Style12(workbook));
+//			sh.addMergedRegion(region1702);
+//	        cell0241.setCellValue("历");
 	        
 	      //对应Excel文件中的sheet，0代表第一个
 			Sheet sh1 = xssfWorkbook.getSheetAt(1); 
@@ -1205,12 +1404,11 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		}
 		
 		//循环上面添加进去的bb 然后拼接字符串返回前端
-		System.out.println("666666666666666666666666666666666"+bb);
 		for(int e= 0;e<bb.size();e++) {
 			if(bb.get(e).getMajor()!=null && bb.get(e).getMajor()!=" " && !bb.get(e).getMajor().equals("") ) {
 				bb.get(e).setCollege(bb.get(e).getCollege().concat(bb.get(e).getMajor()).concat("专业"))	;		//拼接学院和专业
 			}else if(bb.get(e).getMajor()==null || bb.get(e).getMajor()==" " || bb.get(e).getMajor().equals("")) {
-				bb.get(e).setCollege(bb.get(e).getCollege())	;	
+				bb.get(e).setCollege(bb.get(e).getCollege());	
 			}
 			
 		}
@@ -1483,16 +1681,19 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			if(list.get(i).getSex().equals("1")) {		//是男
 				int a=selectAllList.size();
 				int b=Integer.parseInt(list.get(i).getBirthDay());
-				float c =b/a;
-				System.out.println(c);
-				String s =c*100+"%";
-				map.put("sexRatio1", s);
+				DecimalFormat df = new DecimalFormat("0.00");
+				String num = df.format((float) b/a);
+				double d = Double.valueOf(num);
+				int cc =(int)(d*100);
+				map.put("sexRatio1", cc+"%");
 			}else if(list.get(i).getSex().equals("2")) {		//是女
 				int a=selectAllList.size();
 				int b=Integer.parseInt(list.get(i).getBirthDay());
-				double c =(b/a)*100;
-				String s =c+"%";
-				map.put("sexRatio2", s);
+				DecimalFormat df = new DecimalFormat("0.00");
+				String num = df.format((float) b/a);
+				double d = Double.valueOf(num);
+				int cc =(int)(d*100);
+				map.put("sexRatio2", cc+"%");
 			}
 		}
 		
@@ -1522,8 +1723,109 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		map.put("59", d);
 		map.put("60", e);
 		
+		List<JianLiA01> selectGradeTime = jianLiA01Dao.selectGradeTime();
+		Date date = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("YYYY");
+		int year = Integer.parseInt(sf.format(date));
+		int f=0;
+		int g=0;
+		int h=0;
+		for(int i =0;i<selectGradeTime.size();i++) {
+			if(selectGradeTime.get(i).getBirthDay()!=null && selectGradeTime.get(i).getBirthDay()!=" " && !selectGradeTime.get(i).getBirthDay().equals("")) {
+				int gradeTime =Integer.parseInt(selectGradeTime.get(i).getBirthDay().substring(0, 4));
+				if((year-gradeTime)<5) {
+					f=f+1;
+				}else if((year-gradeTime)>=5 && (year-gradeTime)<10 ) {
+					g=g+1;
+				}else if((year-gradeTime)>10) {
+					h=h+1;
+				}
+				
+			}
+		}
+		map.put("dutyLevelFive", f);
+		map.put("dutyLevelNine", g);
+		map.put("dutyLevelTen", h);
+		List<JianLiA01> jl=new ArrayList<>();
+		JianLiA01 jl21= new JianLiA01();
+		jl21.setJobLevel("1A21");
+		jl.add(jl21);
+		JianLiA01 jl22= new JianLiA01();
+		jl22.setJobLevel("1A22");
+		jl.add(jl22);
+		
+		JianLiA01 jl31= new JianLiA01();
+		jl31.setJobLevel("1A31");
+		jl.add(jl31);
+		JianLiA01 jl32= new JianLiA01();
+		jl32.setJobLevel("1A32");
+		jl.add(jl32);
+		
+		JianLiA01 jl41= new JianLiA01();
+		jl41.setJobLevel("1A41");
+		jl.add(jl41);
+		JianLiA01 jl42= new JianLiA01();
+		jl42.setJobLevel("1A42");
+		jl.add(jl42);
+		
+		int o=0;
+		int l=0;
+		for(int i =0;i<jl.size();i++) {
+			List<JianLiA01> idList = jianLiA01Dao.selectJobLevel(jl.get(i));  
+			for(int q=0;q<idList.size();q++) {
+				Map<String,String> map2 = new HashMap<>();;
+				map2.put("ID",idList.get(q).getAid());
+				JianLiA01 selectAll = jianLiA01Dao.selectAll(map2);
+				if(selectAll.getSex().equals("1")) {		//是男
+					o=o+1;
+				}else if(selectAll.getSex().equals("2")) {		//是女
+					l=l+1;
+				}
+				
+			}
+			map.put(jl.get(i).getJobLevel()+"-1", o);
+			map.put(jl.get(i).getJobLevel()+"-2", l);
+			o=0;
+			l=0;
+		}
+		jl.clear();
+
+		JianLiA01 jl50= new JianLiA01();
+		jl50.setJobLevel("1A50");
+		jl.add(jl50);
+		JianLiA01 jl99= new JianLiA01();
+		jl99.setJobLevel("1A99");
+		jl.add(jl99);
+		Set<String> set = new HashSet<>();
+		for(int i =0;i<jl.size();i++) {
+			List<JianLiA01> idList = jianLiA01Dao.selectJobLevel(jl.get(i));  
+			for(int q=0;q<idList.size();q++) {
+				set.add(idList.get(q).getAid());
+			}
+		}
+		List<JianLiA01> jobLevelIsNull = jianLiA01Dao.selectJobLevelIsNull();
+		for(int x=0;x<jobLevelIsNull.size();x++) {
+			set.add(jobLevelIsNull.get(x).getAid());
+		}
+		int m=0;
+		int n=0;
+		for(String str : set) {
+			Map<String,String> map2 = new HashMap<>();;
+			map2.put("ID",str);
+			JianLiA01 selectAll = jianLiA01Dao.selectAll(map2);
+			if(selectAll.getSex().equals("1")) {		//是男
+				m=m+1;
+			}else if(selectAll.getSex().equals("2")) {		//是女
+				n=n+1;
+			}
+		}
+		map.put("KY1", m);
+		map.put("KY2", n);
+		
+		
 		return map;
 	}
+
 
 	
 
