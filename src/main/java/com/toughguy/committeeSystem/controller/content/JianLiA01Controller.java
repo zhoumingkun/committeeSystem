@@ -79,29 +79,40 @@ public class JianLiA01Controller {
 			jl.setIdCard(idCard);
 			List<JianLiA01> selectList = JianLiA01Service.selectList(jl);
 			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("total", selectList.size());
-			if(selectList.size()<=9) {
-				map.put("rows",selectList);
-				return map;
-			}
-			int i =(Integer.parseInt(NowPage)*9)-1;
-			if(i>(selectList.size()-1)) {			
-				int s=i-8;
-				List<JianLiA01> list = new ArrayList<JianLiA01>();
-				for(int g =s;g<selectList.size();g++) {
-					list.add(selectList.get(g));
+			if(selectList!=null) {
+				map.put("total", selectList.size());
+				if(selectList.size()<=9) {
+					map.put("rows",selectList);
+					return map;
 				}
-				map.put("rows",list);
-				return map;
-			}
-			if(i<(selectList.size()-1)) {
-				int s=i-8;
-				List<JianLiA01> list = new ArrayList<JianLiA01>();
-				for(int g =s;g<=i;g++) {
-					list.add(selectList.get(g));
+				int i =(Integer.parseInt(NowPage)*9);
+				if(i>(selectList.size())) {			
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<selectList.size();g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
 				}
-				map.put("rows",list);
-				return map;
+				if(i<(selectList.size())) {
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<i;g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
+				}
+				if(i==selectList.size()) {
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<i;g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
+				}
 			}
 			Map<String,Object> obj = new HashMap<>();
 			obj.put("错误", "报错了");
@@ -121,29 +132,40 @@ public class JianLiA01Controller {
 			System.out.println(NowPage+""+Nums);
 			List<JianLiA01> selectList = JianLiA01Service.selectAllList();
 			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("total", selectList.size());
-			if(selectList.size()<=9) {
-				map.put("rows",selectList);
-				return map;
-			}
-			int i =(Integer.parseInt(NowPage)*9)-1;
-			if(i>(selectList.size()-1)) {			
-				int s=i-8;
-				List<JianLiA01> list = new ArrayList<JianLiA01>();
-				for(int g =s;g<selectList.size();g++) {
-					list.add(selectList.get(g));
+			if(selectList!=null) {
+				map.put("total", selectList.size());
+				if(selectList.size()<=9) {
+					map.put("rows",selectList);
+					return map;
 				}
-				map.put("rows",list);
-				return map;
-			}
-			if(i<(selectList.size()-1)) {
-				int s=i-8;
-				List<JianLiA01> list = new ArrayList<JianLiA01>();
-				for(int g =s;g<=i;g++) {
-					list.add(selectList.get(g));
+				int i =(Integer.parseInt(NowPage)*9);
+				if(i>(selectList.size())) {			
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<selectList.size();g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
 				}
-				map.put("rows",list);
-				return map;
+				if(i<(selectList.size())) {
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<i;g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
+				}
+				if(i==selectList.size()) {
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<i;g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
+				}
 			}
 			Map<String,Object> obj = new HashMap<>();
 			obj.put("错误", "报错了");
@@ -153,8 +175,6 @@ public class JianLiA01Controller {
 		
 		@RequestMapping("/screenList")
 		public Map<String,Object> screenList(ScreeningDTO sc){
-			System.out.println("接受到筛选的条件"+sc);
-			System.out.println(sc.getCurrentLevel());
 			List<JianLiA01> selectList = JianLiA01Service.screenList(sc);
 			Map<String,Object> map = new HashMap<String, Object>();
 			if(selectList!=null) {
@@ -163,9 +183,9 @@ public class JianLiA01Controller {
 					map.put("rows",selectList);
 					return map;
 				}
-				int i =(Integer.parseInt(sc.getNowPage())*9)-1;
-				if(i>(selectList.size()-1)) {			
-					int s=i-8;
+				int i =(Integer.parseInt(sc.getNowPage())*9);
+				if(i>(selectList.size())) {			
+					int s=i-9;
 					List<JianLiA01> list = new ArrayList<JianLiA01>();
 					for(int g =s;g<selectList.size();g++) {
 						list.add(selectList.get(g));
@@ -173,10 +193,19 @@ public class JianLiA01Controller {
 					map.put("rows",list);
 					return map;
 				}
-				if(i<(selectList.size()-1)) {
-					int s=i-8;
+				if(i<(selectList.size())) {
+					int s=i-9;
 					List<JianLiA01> list = new ArrayList<JianLiA01>();
-					for(int g =s;g<=i;g++) {
+					for(int g =s;g<i;g++) {
+						list.add(selectList.get(g));
+					}
+					map.put("rows",list);
+					return map;
+				}
+				if(i==selectList.size()) {
+					int s=i-9;
+					List<JianLiA01> list = new ArrayList<JianLiA01>();
+					for(int g =s;g<i;g++) {
 						list.add(selectList.get(g));
 					}
 					map.put("rows",list);

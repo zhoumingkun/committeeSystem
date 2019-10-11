@@ -1562,15 +1562,24 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		for(int x=0 ;x<screenA01.size();x++) {
 			list.add(screenA01.get(x));
 		}
+		String [] xl = {"小学","初中","高中","中专","大专","大学","研究生","博士"};
 		if(sc.getEducationBg_one()!=null && sc.getEducationBg_one()!="" && sc.getEducationBg_one()!=" " && !sc.getEducationBg_one().equals("")) {
 			List<JianLiA01> list2 = new ArrayList<>();
+			int s =0;
 			for(int a =0;a<list.size();a++) {
 				JianLiA01 jl= new JianLiA01();
 				jl.setAid(list.get(a).getAid());
-				jl.setSex(sc.getEducationBg_one());			//传入sql中的sex其实是第一学历
-				List<JianLiA01> screenA02 = jianLiA01Dao.screenEducationBgOne(jl);
-				if(screenA02!=null && screenA02.size()>0) {
-					list2.add(screenA02.get(0));
+				for(int i=0;i<xl.length;i++) {
+					if(xl[i].equals(sc.getEducationBg_one())) {
+						s=i;
+					}
+				}
+				for(int i=s;i<xl.length;i++) {
+					jl.setSex(xl[i]);			//传入sql中的sex其实是第一学历
+					List<JianLiA01> screenA02 = jianLiA01Dao.screenEducationBgOne(jl);
+					if(screenA02!=null && screenA02.size()>0) {
+						list2.add(screenA02.get(0));
+					}
 				}
 			}
 			if(list2!=null && list2.size()>0) {
@@ -1584,14 +1593,24 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		if(sc.getEducationBg_two()!=null && sc.getEducationBg_two()!="" && sc.getEducationBg_two()!=" " && !sc.getEducationBg_two().equals("") && list!=null) {
 			List<JianLiA01> list2 = new ArrayList<>();
+			int s =0;
 			for(int b=0;b<list.size();b++) {
 				JianLiA01 jl= new JianLiA01();
 				jl.setAid(list.get(b).getAid());
-				jl.setSex(sc.getEducationBg_two());
-				List<JianLiA01> screenA03 = jianLiA01Dao.screenEducationBgTwo(jl);
-				if(screenA03!=null && screenA03.size()>0) {
-					list2.add(screenA03.get(0));
+				for(int i=0;i<xl.length;i++) {
+					if(xl[i].equals(sc.getEducationBg_two())) {
+						s=i;
+					}
 				}
+				for(int i=s;i<xl.length;i++) {
+					jl.setSex(xl[i]);
+					List<JianLiA01> screenA03 = jianLiA01Dao.screenEducationBgTwo(jl);
+					if(screenA03!=null && screenA03.size()>0) {
+						list2.add(screenA03.get(0));
+					}
+				}
+				
+				
 			}
 			if(list2!=null && list2.size()>0) {
 				list.clear();
