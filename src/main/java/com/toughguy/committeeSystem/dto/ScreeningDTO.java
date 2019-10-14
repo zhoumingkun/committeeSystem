@@ -21,6 +21,9 @@ public class ScreeningDTO {
 	private String transferring;	//是否为选调生
 	private String NowPage;			//当前页
 	private String Nums;			//每页显示条数
+	private String rewardPunishment;	//奖惩情况
+	private String yearResult;		//年度考核结果
+	
 	public ScreeningDTO() {
 		super();
 	}
@@ -28,7 +31,8 @@ public class ScreeningDTO {
 	public ScreeningDTO(String sexValue, String age_highest, String age_lowest, String nationValue, String place,
 			String educationBg_one, String educationBg_two, String department, String duty, String currentLevel,
 			String joblevel, String personnel, String manage, String compile, String newJoblevel, String employTime,
-			String joinTime, String transferring, String nowPage, String nums) {
+			String joinTime, String transferring, String nowPage, String nums, String rewardPunishment,
+			String yearResult) {
 		super();
 		this.sexValue = sexValue;
 		this.age_highest = age_highest;
@@ -50,6 +54,8 @@ public class ScreeningDTO {
 		this.transferring = transferring;
 		NowPage = nowPage;
 		Nums = nums;
+		this.rewardPunishment = rewardPunishment;
+		this.yearResult = yearResult;
 	}
 
 	public String getSexValue() {
@@ -213,6 +219,22 @@ public class ScreeningDTO {
 		Nums = nums;
 	}
 
+	public String getRewardPunishment() {
+		return rewardPunishment;
+	}
+
+	public void setRewardPunishment(String rewardPunishment) {
+		this.rewardPunishment = rewardPunishment;
+	}
+
+	public String getYearResult() {
+		return yearResult;
+	}
+
+	public void setYearResult(String yearResult) {
+		this.yearResult = yearResult;
+	}
+
 	@Override
 	public String toString() {
 		return "ScreeningDTO [sexValue=" + sexValue + ", age_highest=" + age_highest + ", age_lowest=" + age_lowest
@@ -221,10 +243,7 @@ public class ScreeningDTO {
 				+ ", CurrentLevel=" + CurrentLevel + ", Joblevel=" + Joblevel + ", personnel=" + personnel + ", manage="
 				+ manage + ", Compile=" + Compile + ", NewJoblevel=" + NewJoblevel + ", employTime=" + employTime
 				+ ", joinTime=" + joinTime + ", transferring=" + transferring + ", NowPage=" + NowPage + ", Nums="
-				+ Nums + "]";
+				+ Nums + ", rewardPunishment=" + rewardPunishment + ", yearResult=" + yearResult + "]";
 	}
-
-
-
 	
 }

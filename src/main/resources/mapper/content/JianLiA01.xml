@@ -241,6 +241,12 @@
 			<if test="transferring != null and transferring !=''  and transferring !='null' ">
 				 AND a.A99Z103=#{transferring}
 			</if> 
+			<if test="rewardPunishment != null and rewardPunishment !=''  and rewardPunishment !='null' ">
+				 AND a.A14Z101 like concat('%', #{rewardPunishment},'%')
+			</if> 
+			<if test="yearResult != null and yearResult !=''  and yearResult !='null' ">
+				 AND a.A15Z101 like concat('%', #{yearResult},'%')
+			</if> 
 			
 	</select>
 	

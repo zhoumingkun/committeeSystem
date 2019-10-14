@@ -1534,6 +1534,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				sc.getNewJoblevel().equals("") && 
 				sc.getEmployTime().equals("") && 
 				sc.getJoinTime().equals("") && 
+				sc.getRewardPunishment().equals("") && 
+				sc.getYearResult().equals("") && 
 				sc.getTransferring().equals("")) {
 			List<JianLiA01> selectAllList = jianLiA01Dao.selectAllList();
 			return selectAllList;
@@ -1556,6 +1558,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		map1.put("NewJoblevel", sc.getNewJoblevel());
 		map1.put("employTime", sc.getEmployTime());
 		map1.put("joinTime", sc.getJoinTime());
+		map1.put("rewardPunishment", sc.getRewardPunishment());
+		map1.put("yearResult", sc.getYearResult());
 		map1.put("transferring", sc.getTransferring());
 		List<JianLiA01> screenA01 = jianLiA01Dao.screenA01(map1);
 		List<JianLiA01> list =  new ArrayList<>();		//存放查询完A02的  结果ID
