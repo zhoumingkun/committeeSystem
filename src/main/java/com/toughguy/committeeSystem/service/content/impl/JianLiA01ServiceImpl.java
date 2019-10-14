@@ -1746,15 +1746,18 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		Date date = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("YYYY");
 		int year = Integer.parseInt(sf.format(date));
+		int u=0;
 		int f=0;
 		int g=0;
 		int h=0;
 		for(int i =0;i<selectGradeTime.size();i++) {
 			if(selectGradeTime.get(i).getBirthDay()!=null && selectGradeTime.get(i).getBirthDay()!=" " && !selectGradeTime.get(i).getBirthDay().equals("")) {
 				int gradeTime =Integer.parseInt(selectGradeTime.get(i).getBirthDay().substring(0, 4));
-				if((year-gradeTime)<5) {
+				if((year-gradeTime)<2) {
+					u=u+1;
+				}else if((year-gradeTime)>=2 && (year-gradeTime)<5 ) {
 					f=f+1;
-				}else if((year-gradeTime)>=5 && (year-gradeTime)<10 ) {
+				} else if((year-gradeTime)>=5 && (year-gradeTime)<10 ) {
 					g=g+1;
 				}else if((year-gradeTime)>10) {
 					h=h+1;
@@ -1762,6 +1765,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				
 			}
 		}
+		map.put("dutyLevelTwo", u);
 		map.put("dutyLevelFive", f);
 		map.put("dutyLevelNine", g);
 		map.put("dutyLevelTen", h);
@@ -1841,7 +1845,31 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		map.put("KY1", m);
 		map.put("KY2", n);
 		
-		
+		List<JianLiA01> list2 = jianLiA01Dao.selectAllList();
+		map.put("total", list2.size());
+		int aa=0;
+		int bb=0;
+		for(int k=0;k<list2.size();k++) {
+			JianLiA01 jianli = new JianLiA01();
+			jianli.setAid(list2.get(k).getAid());
+			jianli.setSex("大学");
+			List<JianLiA01> screenEducationBgOne = jianLiA01Dao.screenEducationBgOne(jianli);
+			if(screenEducationBgOne!=null) {
+				for(int kk=0;kk<screenEducationBgOne.size();kk++) {
+					aa=aa+1;
+				}
+			}
+			
+			jianli.setSex("研究生");
+			List<JianLiA01> educationBgOne = jianLiA01Dao.screenEducationBgOne(jianli);
+			if(educationBgOne!=null) {
+				for(int kk=0;kk<educationBgOne.size();kk++) {
+					bb=bb+1;
+				}
+			}
+		}
+		map.put("University", aa);
+		map.put("postgraduate", bb);
 		return map;
 	}
 

@@ -253,7 +253,7 @@
 	</select>
 	
 	<select id="screenDepartment" parameterType="JianLiA01" resultType="JianLiA01" >
-		select SID as Aid from rs_a02 where SID=#{Aid} AND A0201A like concat('%', #{sex},'%')
+		select SID as Aid from rs_a02 where SID=#{Aid} AND A0201A = #{sex} AND A0265 is null
 	</select>
 	
 	<select id="screenDuty" parameterType="JianLiA01" resultType="JianLiA01" >
