@@ -46,12 +46,10 @@ import com.toughguy.committeeSystem.model.content.JianLiA01;
 import com.toughguy.committeeSystem.model.content.JianLiA08;
 import com.toughguy.committeeSystem.model.content.JianLiA36;
 import com.toughguy.committeeSystem.model.content.JianLiA39;
-import com.toughguy.committeeSystem.persist.content.prototype.IBaojingqingkuangDao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA01Dao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA08Dao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA36Dao;
 import com.toughguy.committeeSystem.persist.content.prototype.IJianLiA39Dao;
-import com.toughguy.committeeSystem.service.content.prototype.IBaojingqingkuangService;
 import com.toughguy.committeeSystem.service.content.prototype.IJianLiA01Service;
 import com.toughguy.committeeSystem.service.impl.GenericServiceImpl;
 import com.toughguy.committeeSystem.util.Base64Transformation;
@@ -1727,18 +1725,21 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		int d=0;
 		int e=0;
 		for(int i=0;i<age.size();i++) {
-			int intage = Integer.parseInt(age.get(i).getBirthDay());
-			if(intage<=30) {
-				a=a+1;
-			}else if(intage>=31 && intage<=40 ) {
-				b=b+1;
-			}else if(intage>=41 && intage<=50 ) {
-				c=c+1;
-			}else if(intage>=51 && intage<=59 ) {
-				d=d+1;
-			}else if(intage>=60) {
-				e=e+1;
+			if(age.get(i)!=null && !age.get(i).equals("")) {
+				int intage = Integer.parseInt(age.get(i).getBirthDay());
+				if(intage<=30) {
+					a=a+1;
+				}else if(intage>=31 && intage<=40 ) {
+					b=b+1;
+				}else if(intage>=41 && intage<=50 ) {
+					c=c+1;
+				}else if(intage>=51 && intage<=59 ) {
+					d=d+1;
+				}else if(intage>=60) {
+					e=e+1;
+				}
 			}
+			
 		}
 		map.put("30", a);
 		map.put("40", b);
