@@ -12,9 +12,9 @@ import com.toughguy.committeeSystem.persist.impl.GenericDaoImpl;
 public class DropdowndataImpl extends GenericDaoImpl<Dropdowndata, Integer> implements IDropdowndataDao {
 
 	@Override
-	public List<String> selectDepartment() {
+	public List<String> selectDepartment(String card) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList(typeNameSpace + ".selectDepartment");
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectDepartment",card);
 	}
 
 	@Override

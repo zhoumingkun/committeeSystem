@@ -15,12 +15,22 @@ public class DropdowndataController {
 	private IDropdowndataService dropdowndataService;
 	
 	/**
-	 * 查询页面部分下拉框中数据
+	 * 查询政法委页面部分下拉框中数据
 	 * @return
 	 */
-	@RequestMapping("/selectAll")
-	public Dropdowndata selectAll() {
-		return dropdowndataService.selectAll();
+	@RequestMapping("/findZFWPullData")
+	public Dropdowndata findZFWPullData() {
+		return dropdowndataService.findZFWPullData();
+	}
+	
+	
+	/**
+	 * 查询其他机构页面部分下拉框中数据
+	 * @return
+	 */
+	@RequestMapping("/findQTPullData")
+	public Dropdowndata findQTPullData(String card) {
+		return dropdowndataService.findQTPullData(card);
 	}
 
 }

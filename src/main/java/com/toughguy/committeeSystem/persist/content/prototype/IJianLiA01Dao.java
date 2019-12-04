@@ -99,19 +99,19 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 * 查询男女性别数量
 	 * @return
 	 */
-	public List<JianLiA01> selectSexRatio();
+	public List<JianLiA01> selectSexRatio(List<String> list);
 	
 	/**
 	 * 查询年龄
 	 * @return
 	 */
-	public List<JianLiA01> selectAGE();
+	public List<JianLiA01> selectAGE(List<String> list);
 	
 	/**
 	 * 查询职务层次时间
 	 * @return
 	 */
-	public List<JianLiA01> selectGradeTime();
+	public List<JianLiA01> selectGradeTime(List<String> list);
 	
 	
 	/**
@@ -132,5 +132,21 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 * @return
 	 */
 	public JianLiA01 selectAll(Map<String,String> map);
+
+	
+	//根据除政法委的其他机构的根id查询全部人员id
+	public List<JianLiA01> findZFWCodeID(String userID);
+	
+	
+	//根据除政法委外的其他机构根id查询全部人员id
+	public List<JianLiA01> findQTCodeID(String userID);
+	
+	
+	/**
+	 * 根据组织架构id查询列表
+	 * @param uID
+	 * @return
+	 */
+	public List<JianLiA01> findUidAllList(String UID);
 
 }

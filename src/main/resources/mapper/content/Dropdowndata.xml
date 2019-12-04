@@ -4,7 +4,7 @@
 	
 	<!-- 查询部门详细信息 -->
 	<select id="selectDepartment" resultType="String">
-		select name from rs_unmk  
+		select name from rs_unmk  where LEFT(ID,7)=#{card}
 	</select>
 	
 	<!-- 查询职务层次详细信息 -->

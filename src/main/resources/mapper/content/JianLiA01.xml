@@ -34,7 +34,8 @@
 			a.A99Z103 as transferring,
 			a.A99Z104 as transferringTime,
 			a.A0115A  as grow_old,
-			a.A0120 as level
+			a.A0120 as level,
+			a.AGE as remarks
 		from 
 			rs_a01 a,
 			dic_rs_ax b ,
@@ -271,15 +272,25 @@
 	</select>
 	
 	<select id="selectSexRatio" resultType="JianLiA01" >
-		SELECT A0104 as sex, COUNT(A0104) as birthDay FROM rs_a01 GROUP BY A0104
+		SELECT A0104 as sex, COUNT(A0104) as birthDay FROM rs_a01 
+		<foreach collection="list"  item="item"  open="WHERE id IN (" separator="," close=")">
+			#{item}
+		</foreach>
+		GROUP BY A0104
 	</select>
 	
 	<select id="selectAGE" resultType="JianLiA01"  >
 		select AGE as birthDay from rs_a01 
+		<foreach collection="list"  item="item"  open="WHERE id IN (" separator="," close=")">
+			#{item}
+		</foreach>
 	</select>
 	
 	<select id="selectGradeTime" resultType="JianLiA01"  >
 		select id as Aid, A0173 as birthDay from rs_a01 
+		<foreach collection="list"  item="item"  open="WHERE id IN (" separator="," close=")">
+			#{item}
+		</foreach>
 	</select>
 	
 	<select id="selectJobLevel"  resultType="JianLiA01" parameterType="JianLiA01" >
@@ -292,6 +303,19 @@
 	
 	<select id="selectAll"  resultType="JianLiA01" >
 		SELECT id as Aid,A0104 as sex FROM rs_a01 WHERE id=#{ID}
+	</select>
+	
+	<select id="findQTCodeID" parameterType="String" resultType="JianLiA01">
+		select SID as Aid from rs_a02 where LEFT(A0201B,7)=#{userID} group by SID
+	</select>
+	
+	<!-- 查询政法委组织架构下的所有人员id -->
+	<select id="findZFWCodeID" parameterType="String" resultType="JianLiA01">
+		select SID as Aid from rs_a02 where LEFT(A0201B,7)=#{userID} group by SID
+	</select>
+	
+	<select id="findUidAllList" parameterType="String" resultType="JianLiA01">
+		select SID as Aid from rs_a02 where A0201B=#{UID} GROUP BY SID
 	</select>
 	
 </mapper>

@@ -11,7 +11,7 @@ public interface IDropdowndataDao extends IGenericDao<Dropdowndata, Integer> {
 	 * 查询部门详细信息
 	 * @return
 	 */
-	public List<String> selectDepartment();
+	public List<String> selectDepartment(String card);
 	
 	/**
 	 * 查询职务层次详细信息

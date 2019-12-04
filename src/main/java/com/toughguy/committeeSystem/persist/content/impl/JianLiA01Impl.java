@@ -95,21 +95,21 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 	}
 
 	@Override
-	public List<JianLiA01> selectSexRatio() {
+	public List<JianLiA01> selectSexRatio(List<String> list) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList(typeNameSpace + ".selectSexRatio");
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectSexRatio",list);
 	}
 
 	@Override
-	public List<JianLiA01> selectAGE() {
+	public List<JianLiA01> selectAGE(List<String> list) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList(typeNameSpace + ".selectAGE");
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectAGE",list);
 	}
 
 	@Override
-	public List<JianLiA01> selectGradeTime() {
+	public List<JianLiA01> selectGradeTime(List<String> list) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList(typeNameSpace + ".selectGradeTime");
+		return sqlSessionTemplate.selectList(typeNameSpace + ".selectGradeTime",list);
 	}
 
 	@Override
@@ -128,6 +128,24 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 	public List<JianLiA01> selectJobLevelIsNull() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList(typeNameSpace + ".selectJobLevelIsNull");
+	}
+
+	@Override
+	public List<JianLiA01> findQTCodeID(String userID) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findQTCodeID",userID);
+	}
+
+	@Override
+	public List<JianLiA01> findZFWCodeID(String userID) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findZFWCodeID",userID);
+	}
+
+	@Override
+	public List<JianLiA01> findUidAllList(String UID) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList(typeNameSpace + ".findUidAllList",UID);
 	}
 
 

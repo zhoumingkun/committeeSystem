@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toughguy.committeeSystem.model.content.RsUnmk">
+
+	<!-- 根据法人编号查询政法委的各个根目录 -->
+	<select id="findZFWCode" parameterType="Map" resultType="RsUnmk">
+		select id as UID,
+		 SID,
+		 B0121 as code,
+		 name 
+		from rs_unmk where sid="0"  
+		<if test="gaj!='' and gaj !=null">
+			and B0121 &lt;&gt; #{gaj}  
+		</if>
+		<if test="jcy!='' and jcy !=null">
+			and B0121 &lt;&gt; #{jcy}  
+		</if>
+		<if test="sfj!='' and sfj !=null">
+			and B0121 &lt;&gt; #{sfj}  
+		</if>
+		<if test="fy!='' and fy !=null">
+			and B0121 &lt;&gt; #{fy}  
+		</if>
+	</select>
+
+	<!-- 根据法人编号查询除政法委外的其他根目录代码 -->
+	<select id="findQTCode" resultType="RsUnmk" parameterType="String">
+		select  id as UID,SID,B0121 as code,name  from rs_unmk where sid="0"  and B0121 = #{code}
+	</select>
+	
+	<!-- 根据父id查询子id -->
+	<select id="findID" resultType="RsUnmk" parameterType="RsUnmk">
+		select id as UID,
+		 SID,
+		 B0121 as code,
+		 name  from rs_unmk where sid=#{UID}
+	</select>
+	
+	<select id="findRootID" resultType="RsUnmk" >
+		select id as UID,
+		 SID,
+		 B0121 as code,
+		 name 
+		from rs_unmk where sid="-1"  
+	</select>
+	
+
+</mapper>

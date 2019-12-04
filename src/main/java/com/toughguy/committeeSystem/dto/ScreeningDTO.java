@@ -23,6 +23,7 @@ public class ScreeningDTO {
 	private String Nums;			//每页显示条数
 	private String rewardPunishment;	//奖惩情况
 	private String yearResult;		//年度考核结果
+	private String card;			//法人编号
 	
 	public ScreeningDTO() {
 		super();
@@ -32,7 +33,7 @@ public class ScreeningDTO {
 			String educationBg_one, String educationBg_two, String department, String duty, String currentLevel,
 			String joblevel, String personnel, String manage, String compile, String newJoblevel, String employTime,
 			String joinTime, String transferring, String nowPage, String nums, String rewardPunishment,
-			String yearResult) {
+			String yearResult, String card) {
 		super();
 		this.sexValue = sexValue;
 		this.age_highest = age_highest;
@@ -56,6 +57,7 @@ public class ScreeningDTO {
 		Nums = nums;
 		this.rewardPunishment = rewardPunishment;
 		this.yearResult = yearResult;
+		this.card = card;
 	}
 
 	public String getSexValue() {
@@ -235,6 +237,14 @@ public class ScreeningDTO {
 		this.yearResult = yearResult;
 	}
 
+	public String getCard() {
+		return card;
+	}
+
+	public void setCard(String card) {
+		this.card = card;
+	}
+
 	@Override
 	public String toString() {
 		return "ScreeningDTO [sexValue=" + sexValue + ", age_highest=" + age_highest + ", age_lowest=" + age_lowest
@@ -243,7 +253,8 @@ public class ScreeningDTO {
 				+ ", CurrentLevel=" + CurrentLevel + ", Joblevel=" + Joblevel + ", personnel=" + personnel + ", manage="
 				+ manage + ", Compile=" + Compile + ", NewJoblevel=" + NewJoblevel + ", employTime=" + employTime
 				+ ", joinTime=" + joinTime + ", transferring=" + transferring + ", NowPage=" + NowPage + ", Nums="
-				+ Nums + ", rewardPunishment=" + rewardPunishment + ", yearResult=" + yearResult + "]";
+				+ Nums + ", rewardPunishment=" + rewardPunishment + ", yearResult=" + yearResult + ", card=" + card
+				+ "]";
 	}
 	
 }
