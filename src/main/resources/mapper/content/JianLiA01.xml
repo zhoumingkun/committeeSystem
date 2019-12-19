@@ -315,7 +315,7 @@
 	</select>
 	
 	<select id="findUidAllList" parameterType="String" resultType="JianLiA01">
-		select SID as Aid from rs_a02 where A0201B=#{UID} GROUP BY SID
+		select SID as Aid from rs_a02 where A0201B=#{UID} AND A0281="Y"
 	</select>
 	
 </mapper>

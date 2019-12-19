@@ -109,4 +109,12 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * @return
 	 */
 	public Map<String, Object> findIndexData();
+
+	/**
+	 * 根据部门id查询部门人员进行数据分析
+	 * @param uID
+	 * @return
+	 */
+	public Map<String, Object> screenDataAnalysis(String UID);
+
 }

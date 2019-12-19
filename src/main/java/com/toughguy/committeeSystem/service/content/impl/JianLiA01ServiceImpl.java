@@ -1533,7 +1533,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		r.setCode("A49.F09.329");
 		r.setSID("-1");
 		rsUnmkList.add(r);
-		System.out.println("--------------"+rsUnmkList);
 		Set<String> set = new HashSet<>();
 		for(int i=0;i<rsUnmkList.size();i++) {
 			List<JianLiA01> rsA02UserId = jianLiA01Dao.findZFWCodeID(rsUnmkList.get(i).getUID());
@@ -2646,11 +2645,11 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		int fySexNum=0;				//法院年龄总和
 		int sfjSexNum=0;			//司法局年龄总和
 		
-		int zfwEthnicMinorityNum = 0;				//政法委少数名族总和
-		int gajEthnicMinorityNum = 0;				//公安局少数名族总和
-		int jcyEthnicMinorityNum = 0;				//检察院少数名族总和
-		int fyEthnicMinorityNum = 0;				//法院少数名族总和
-		int sfjEthnicMinorityNum = 0;				//司法局少数名族总和
+		//int zfwEthnicMinorityNum = 0;				//政法委少数名族总和
+		//int gajEthnicMinorityNum = 0;				//公安局少数名族总和
+		//int jcyEthnicMinorityNum = 0;				//检察院少数名族总和
+		//int fyEthnicMinorityNum = 0;				//法院少数名族总和
+		//int sfjEthnicMinorityNum = 0;				//司法局少数名族总和
 		
 		int zfwManNum=0;							//政法委男女人数
 		int zfwGirlNum=0;
@@ -2702,7 +2701,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		for(int i=0;i<ZFWAllList.size();i++) {
 			zfwSexNum+=Integer.parseInt(ZFWAllList.get(i).getRemarks());
 			if(ZFWAllList.get(i).getNation()!="汉族" || !ZFWAllList.get(i).getNation().equals("汉族")) {
-				zfwEthnicMinorityNum=zfwEthnicMinorityNum+1;
+				//zfwEthnicMinorityNum=zfwEthnicMinorityNum+1;
 			}
 			if(ZFWAllList.get(i).getSex()=="男" ||  ZFWAllList.get(i).getSex().equals("男")) {
 				zfwManNum=zfwManNum+1;
@@ -2873,7 +2872,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		for(int i=0;i<FYAllList.size();i++) {
 			fySexNum+=Integer.parseInt(FYAllList.get(i).getRemarks());
 			if(FYAllList.get(i).getNation()!="汉族" ||  !FYAllList.get(i).getNation().equals("汉族")) {
-				fyEthnicMinorityNum=fyEthnicMinorityNum+1;
+				//fyEthnicMinorityNum=fyEthnicMinorityNum+1;
 			}
 			if(FYAllList.get(i).getSex()=="男" ||  FYAllList.get(i).getSex().equals("男")) {
 				fyManNum=fyManNum+1;
@@ -2955,7 +2954,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		for(int i=0;i<JCYAllList.size();i++) {  
 			jcySexNum+=Integer.parseInt(JCYAllList.get(i).getRemarks());
 			if(JCYAllList.get(i).getNation()!="汉族" ||  !JCYAllList.get(i).getNation().equals("汉族")) {
-				jcyEthnicMinorityNum=jcyEthnicMinorityNum+1;
+				//jcyEthnicMinorityNum=jcyEthnicMinorityNum+1;
 			}
 			if(JCYAllList.get(i).getSex()=="男" ||  JCYAllList.get(i).getSex().equals("男")) {
 				jcyManNum=jcyManNum+1;
@@ -3037,7 +3036,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		for(int i=0;i<SFJAllList.size();i++) {
 			sfjSexNum+=Integer.parseInt(SFJAllList.get(i).getRemarks());
 			if(SFJAllList.get(i).getNation()!="汉族" ||  !SFJAllList.get(i).getNation().equals("汉族")) {
-				sfjEthnicMinorityNum=sfjEthnicMinorityNum+1;
+				//sfjEthnicMinorityNum=sfjEthnicMinorityNum+1;
 			}
 			if(SFJAllList.get(i).getSex()=="男" ||  SFJAllList.get(i).getSex().equals("男")) {
 				sfjManNum=sfjManNum+1;
@@ -3119,11 +3118,12 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		bossMap.put("ageRatio", ageRatio);
 		
 		Map<String,Integer> ethnicMinorityRatio = new HashMap<>();			//少数名族占比
-		ethnicMinorityRatio.put("zfwEthnicMinority", zfwEthnicMinorityNum/zfwidList.size());
+		//ethnicMinorityRatio.put("zfwEthnicMinority", zfwEthnicMinorityNum/zfwidList.size());
 		//ethnicMinorityRatio.put("gajEthnicMinority", gajEthnicMinorityNum/gajidList.size());
-		ethnicMinorityRatio.put("jcyEthnicMinority", jcyEthnicMinorityNum/jcyidList.size());
-		ethnicMinorityRatio.put("fyEthnicMinority", fyEthnicMinorityNum/fyidList.size());
-		ethnicMinorityRatio.put("sfjEthnicMinority", sfjEthnicMinorityNum/sfjidList.size());
+		//ethnicMinorityRatio.put("jcyEthnicMinority", jcyEthnicMinorityNum/jcyidList.size());
+		//ethnicMinorityRatio.put("fyEthnicMinority", fyEthnicMinorityNum/fyidList.size());
+		//ethnicMinorityRatio.put("sfjEthnicMinority", sfjEthnicMinorityNum/sfjidList.size());
+		//bossMap.put("ethnicMinorityRatio", ethnicMinorityRatio);
 		bossMap.put("ethnicMinorityRatio", ethnicMinorityRatio);
 	
 		Map<String,Integer> sexRatio = new HashMap<>();			//男女
@@ -3160,7 +3160,264 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		education.put("sfjbk", sfjbk*100/sfjidList.size());
 		education.put("sfjyjs", sfjyjs*100/sfjidList.size());
 		bossMap.put("education", education);
+		
+		Map<String,String> aaa= new HashMap<>();
+		aaa.put("ZFWTotal", ZFWAllList.size()+"");
+		aaa.put("SFJTotal", SFJAllList.size()+"");
+		aaa.put("JCYTotal", JCYAllList.size()+"");
+		aaa.put("FYTotal", FYAllList.size()+"");
+		//aaa.put("GAJTotal", GAJAllList.size()+"");
+		bossMap.put("Total", aaa);
 		return bossMap;
+	}
+
+
+	@Override
+	public Map<String, Object> screenDataAnalysis(String UID) {
+		// TODO Auto-generated method stub
+		List<JianLiA01> zfwList = jianLiA01Dao.findUidAllList(UID);
+		System.out.println(zfwList+"---------------");
+		if(zfwList.size()<=0 ) {
+			Map<String,Object> map = new HashMap<>();
+			map.put("sexRatio1", 0+"%");
+			map.put("sexRatio2", 0+"%");
+			map.put("30", 0);
+			map.put("40", 0);
+			map.put("50", 0);
+			map.put("59", 0);
+			map.put("60", 0);
+			map.put("dutyLevelTwo", 0);
+			map.put("dutyLevelFive", 0);
+			map.put("dutyLevelNine", 0);
+			map.put("dutyLevelTen", 0);
+			map.put("1A41-1", 0);
+			map.put("1A41-2", 0);
+			map.put("1A21-1", 0);
+			map.put("1A21-2", 0);
+			map.put("1A22-1", 0);
+			map.put("1A22-2", 0);
+			map.put("1A31-1", 0);
+			map.put("1A31-2", 0);
+			map.put("1A32-1", 0);
+			map.put("1A32-2", 0);
+			map.put("1A42-1", 0);
+			map.put("1A42-2", 0);
+			map.put("KY1", 0);
+			map.put("KY2", 0);
+			map.put("total", 0);
+			map.put("University", 0);
+			map.put("postgraduate", 0);
+			
+			return map;
+		}
+		List<String> zfwidList = new ArrayList<>(); 
+		for(int i=0;i<zfwList.size();i++) {
+			zfwidList.add(zfwList.get(i).getAid());
+		}
+		
+		Map<String,Object> map = new HashMap<>();
+		List<JianLiA01> list = jianLiA01Dao.selectSexRatio(zfwidList);
+		for(int i = 0;i<list.size();i++) {
+			if(list.get(i).getSex().equals("1")) {		//是男
+				int a=zfwidList.size();
+				int b=Integer.parseInt(list.get(i).getBirthDay());
+				DecimalFormat df = new DecimalFormat("0.00");
+				String num = df.format((float) b/a);
+				double d = Double.valueOf(num);
+				int cc =(int)(d*100);
+				map.put("sexRatio1", cc+"%");
+			}else if(list.get(i).getSex().equals("2")) {		//是女
+				int a=zfwidList.size();
+				int b=Integer.parseInt(list.get(i).getBirthDay());
+				DecimalFormat df = new DecimalFormat("0.00");
+				String num = df.format((float) b/a);
+				double d = Double.valueOf(num);
+				int cc =(int)(d*100);
+				map.put("sexRatio2", cc+"%");
+			}
+		}
+		
+		List<JianLiA01> age = jianLiA01Dao.selectAGE(zfwidList);				
+		int a=0;
+		int b=0;
+		int c=0;
+		int d=0;
+		int e=0;
+		for(int i=0;i<age.size();i++) {
+			if(age.get(i)!=null && !age.get(i).equals("")) {
+				int intage = Integer.parseInt(age.get(i).getBirthDay());
+				if(intage<=30) {
+					a=a+1;
+				}else if(intage>=31 && intage<=40 ) {
+					b=b+1;
+				}else if(intage>=41 && intage<=50 ) {
+					c=c+1;
+				}else if(intage>=51 && intage<=59 ) {
+					d=d+1;
+				}else if(intage>=60) {
+					e=e+1;
+				}
+			}
+			
+		}
+		map.put("30", a);
+		map.put("40", b);
+		map.put("50", c);
+		map.put("59", d);
+		map.put("60", e);
+		
+		List<JianLiA01> selectGradeTime = jianLiA01Dao.selectGradeTime(zfwidList);			
+		Date date = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("YYYY");
+		int year = Integer.parseInt(sf.format(date));
+		int u=0;
+		int f=0;
+		int g=0;
+		int h=0;
+		for(int i =0;i<selectGradeTime.size();i++) {
+			if(selectGradeTime.get(i).getBirthDay()!=null && selectGradeTime.get(i).getBirthDay()!=" " && !selectGradeTime.get(i).getBirthDay().equals("")) {
+				int gradeTime =Integer.parseInt(selectGradeTime.get(i).getBirthDay().substring(0, 4));
+				if((year-gradeTime)<2) {
+					u=u+1;
+				}else if((year-gradeTime)>=2 && (year-gradeTime)<5 ) {
+					f=f+1;
+				} else if((year-gradeTime)>=5 && (year-gradeTime)<10 ) {
+					g=g+1;
+				}else if((year-gradeTime)>10) {
+					h=h+1;
+				}
+				
+			}
+		}
+		map.put("dutyLevelTwo", u);
+		map.put("dutyLevelFive", f);
+		map.put("dutyLevelNine", g);
+		map.put("dutyLevelTen", h);
+		List<JianLiA01> jl=new ArrayList<>();
+		JianLiA01 jl21= new JianLiA01();
+		jl21.setJobLevel("1A21");
+		jl.add(jl21);
+		JianLiA01 jl22= new JianLiA01();
+		jl22.setJobLevel("1A22");
+		jl.add(jl22);
+		
+		JianLiA01 jl31= new JianLiA01();
+		jl31.setJobLevel("1A31");
+		jl.add(jl31);
+		JianLiA01 jl32= new JianLiA01();
+		jl32.setJobLevel("1A32");
+		jl.add(jl32);
+		
+		JianLiA01 jl41= new JianLiA01();
+		jl41.setJobLevel("1A41");
+		jl.add(jl41);
+		JianLiA01 jl42= new JianLiA01();
+		jl42.setJobLevel("1A42");
+		jl.add(jl42);
+		
+		int o=0;
+		int l=0;
+		for(int i =0;i<jl.size();i++) {
+			List<JianLiA01> alist = jianLiA01Dao.selectJobLevel(jl.get(i));  				
+			List<JianLiA01> idList= new ArrayList<>(); 
+			if(alist !=null && alist.size()>0) {
+				for(int ii=0;ii<zfwidList.size();ii++) {
+					for(int iii=0;iii<alist.size();iii++) {
+						if(zfwidList.get(ii)==alist.get(iii).getAid() || zfwidList.get(ii).equals(alist.get(iii).getAid())) {
+							idList.add(alist.get(iii));
+						}
+					}
+				}
+				for(int q=0;q<idList.size();q++) {
+					Map<String,String> map2 = new HashMap<>();;
+					map2.put("ID",idList.get(q).getAid());
+					JianLiA01 selectAll = jianLiA01Dao.selectAll(map2);					//循环id查询集合用户性别
+					if(selectAll.getSex().equals("1")) {		//是男
+						o=o+1;
+					}else if(selectAll.getSex().equals("2")) {		//是女
+						l=l+1;
+					}
+					
+				}
+				map.put(jl.get(i).getJobLevel()+"-1", o);
+				map.put(jl.get(i).getJobLevel()+"-2", l);
+				
+			}else {
+				map.put(jl.get(i).getJobLevel()+"-1", "0");
+				map.put(jl.get(i).getJobLevel()+"-2", "0");
+			}
+			o=0;
+			l=0;
+		}
+		jl.clear();
+
+		JianLiA01 jl50= new JianLiA01();
+		jl50.setJobLevel("1A50");
+		jl.add(jl50);
+		JianLiA01 jl99= new JianLiA01();
+		jl99.setJobLevel("1A99");
+		jl.add(jl99);
+		Set<String> set3 = new HashSet<>();
+		Set<String> set = new HashSet<>();
+		for(int i =0;i<jl.size();i++) {
+			List<JianLiA01> idList = jianLiA01Dao.selectJobLevel(jl.get(i));  					
+			for(int q=0;q<idList.size();q++) {
+				set3.add(idList.get(q).getAid());
+			}
+		}
+		List<JianLiA01> jobLevelIsNull = jianLiA01Dao.selectJobLevelIsNull();					
+		for(int x=0;x<jobLevelIsNull.size();x++) {
+			set3.add(jobLevelIsNull.get(x).getAid());
+		}
+		for(int i=0;i<zfwidList.size();i++) {
+			for(String ss:set3) {
+				if(zfwidList.get(i)==ss || zfwidList.get(i).equals(ss)) {
+					set.add(ss);
+				}
+			}
+		}
+		int m=0;
+		int n=0;
+		for(String str : set) {
+			Map<String,String> map2 = new HashMap<>();;
+			map2.put("ID",str);
+			JianLiA01 selectAll = jianLiA01Dao.selectAll(map2);							//循环id查询集合用户性别
+			if(selectAll.getSex().equals("1")) {		//是男
+				m=m+1;
+			}else if(selectAll.getSex().equals("2")) {		//是女
+				n=n+1;
+			}
+		}
+		map.put("KY1", m);
+		map.put("KY2", n);
+		
+		//List<JianLiA01> list2 = jianLiA01Dao.selectAllList();
+		map.put("total", zfwidList.size());
+		int aa=0;
+		int bb=0;
+		for(int k=0;k<zfwidList.size();k++) {
+			JianLiA01 jianli = new JianLiA01();
+			jianli.setAid(zfwidList.get(k));
+			jianli.setSex("大学");
+			List<JianLiA01> screenEducationBgOne = jianLiA01Dao.screenEducationBgOne(jianli);			
+			if(screenEducationBgOne!=null) {
+				for(int kk=0;kk<screenEducationBgOne.size();kk++) {
+					aa=aa+1;
+				}
+			}
+			
+			jianli.setSex("研究生");
+			List<JianLiA01> educationBgOne = jianLiA01Dao.screenEducationBgOne(jianli);					
+			if(educationBgOne!=null) {
+				for(int kk=0;kk<educationBgOne.size();kk++) {
+					bb=bb+1;
+				}
+			}
+		}
+		map.put("University", aa);
+		map.put("postgraduate", bb);
+		return map;
+
 	}
 
 

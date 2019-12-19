@@ -98,7 +98,6 @@ public class JianLiA01Controller {
 			r.setCode("A49.F09.329");
 			r.setSID("-1");
 			rsUnmkList.add(r);
-			System.out.println("--------------"+rsUnmkList);
 			Set<String> set = new HashSet<>();
 			for(int i=0;i<rsUnmkList.size();i++) {
 				List<JianLiA01> rsA02UserId = JianLiA01Service.findZFWCodeID(rsUnmkList.get(i).getUID());
@@ -188,7 +187,6 @@ public class JianLiA01Controller {
 			}
 			
 			RsUnmk rsUnmkList = rsUnmkServiceImpl.findQTCode(ss);		//1.查询出全政法委的全部部门id
-			System.out.println(rsUnmkList);
 			Set<String> set = new HashSet<>();
 			List<JianLiA01> rsA02UserId = JianLiA01Service.findQTCodeID(rsUnmkList.getUID());
 			if(rsA02UserId!=null && rsA02UserId.size()>0 ) {
@@ -260,7 +258,6 @@ public class JianLiA01Controller {
 		 */
 		@RequestMapping("/selectZFWAllList")
 		public Map<String,Object> selectZFWAllList(String NowPage,String Nums){
-			System.out.println(NowPage+""+Nums);
 			Map<String,String> rsUnmkMap = new HashMap<>();
 			//rsUnmkMap.put("gaj", "");		//公安局
 			rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
@@ -771,5 +768,13 @@ public class JianLiA01Controller {
 		public Map<String,Object> findIndexData(){
 			return JianLiA01Service.findIndexData();
 		}
+		
+		
+		@RequestMapping("/screenDataAnalysis")
+		public Map<String,Object> screenDataAnalysis(String UID){
+			return JianLiA01Service.screenDataAnalysis(UID);
+		}
+		
+		
 		
 }
