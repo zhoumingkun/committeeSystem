@@ -50,10 +50,11 @@ public class RsUnmkServiceImpl extends GenericServiceImpl<RsUnmk, Integer> imple
 		map= new HashMap<>();
 		LinkedHashMap<String,String> rsUnmkMap = new LinkedHashMap<>();
 		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 		rsUnmkMap.put("fy", "A49.F09.281");			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
+		System.out.println("-----------------------------"+rsUnmkList);
 		List<RsUnmk> findRootID = rsUnmkDaoImpl.findRootID();		//调用方法查询数据库父id是-1 的并返回一个map
 		map.put("1", findRootID);
 		map.put("2", rsUnmkList);
@@ -70,7 +71,7 @@ public class RsUnmkServiceImpl extends GenericServiceImpl<RsUnmk, Integer> imple
 			s="公安局的法人编号";
 		}*/
 		if(card=="jcy" || card.equals("jcy")) {
-			s="A49.F09.291";
+			s="A49.F09.291.000";
 		}
 		if(card=="fy" || card.equals("fy")) {
 			s="A49.F09.281";

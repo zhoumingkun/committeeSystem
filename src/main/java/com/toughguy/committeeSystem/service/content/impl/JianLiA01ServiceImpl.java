@@ -461,7 +461,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        jianliA01.setAid(id);
 	        JianLiA01 imageurl = jianLiA01Dao.selectImgUrl(jianliA01);
 	        if(imageurl!=null&& !imageurl.equals("")){
-	        	String imgurl="D:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+imageurl.getImgUrl();
+	        	String imgurl="C:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+imageurl.getImgUrl();
 				ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();     
 	            bufferImg = ImageIO.read(new File(imgurl));     
 	            ImageIO.write(bufferImg, "jpg", byteArrayOut); 
@@ -1362,7 +1362,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		JianLiA01 url = jianLiA01Dao.selectImgUrl(jianli);
 		if(url!=null) {
-			String imgurl="D:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+url.getImgUrl();
+			String imgurl="C:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+url.getImgUrl();
 			String base64Str = Base64Transformation.imageToBase64Str(imgurl).replaceAll("\r\n","");
 			map2.put("url", base64Str);
 		}
@@ -1523,7 +1523,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		// TODO Auto-generated method stuby
 		Map<String,String> rsUnmkMap = new HashMap<>();
 		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 		rsUnmkMap.put("fy", "A49.F09.281");			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -1761,7 +1761,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		ss="公安局的法人编号";
 		}*/
 		if(sc.getCard()=="jcy" || sc.getCard().equals("jcy")) {
-			ss="A49.F09.291";
+			ss="A49.F09.291.000";
 		}
 		if(sc.getCard()=="fy" || sc.getCard().equals("fy")) {
 			ss="A49.F09.281";
@@ -1992,7 +1992,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		// TODO Auto-generated method stub
 		Map<String,String> rsUnmkMap = new HashMap<>();
 		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 		rsUnmkMap.put("fy", "A49.F09.281");			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -2228,7 +2228,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			s="公安局的法人编号";
 		}*/
 		if(card=="jcy" || card.equals("jcy")) {
-			s="A49.F09.291";
+			s="A49.F09.291.000";
 		}
 		if(card=="fy" || card.equals("fy")) {
 			s="A49.F09.281";
@@ -2499,7 +2499,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		Map<String,Object> bossMap = new HashMap<>();
 		Map<String,String> rsUnmkMap = new HashMap<>();
 		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 		rsUnmkMap.put("fy", "A49.F09.281");			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -2564,7 +2564,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		List<JianLiA01> JCYAllList = new ArrayList<>();
 		Set<String> setB = new HashSet<>();
-		String b="A49.F09.291";		//检察院的法人编号
+		String b="A49.F09.291.000";		//检察院的法人编号
 		RsUnmk bb = rsUnmkDaoImpl.findQTCode(b);
 		List<JianLiA01> JCYList = jianLiA01Dao.findQTCodeID(bb.getUID());		//根据部门id查询全部的人员id
 		if(JCYList!=null && JCYList.size()>0 ) {

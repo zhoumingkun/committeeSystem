@@ -88,7 +88,7 @@ public class JianLiA01Controller {
 			jl.setIdCard(idCard);
 			Map<String,String> rsUnmkMap = new HashMap<>();
 			//rsUnmkMap.put("gaj", "");		//公安局
-			rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+			rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 			rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 			rsUnmkMap.put("fy", "A49.F09.281");			//法院
 			List<RsUnmk> rsUnmkList = rsUnmkServiceImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -177,7 +177,7 @@ public class JianLiA01Controller {
 				ss="公安局的法人编号";
 			}*/
 			if(card=="jcy" || card.equals("jcy")) {
-				ss="A49.F09.291";
+				ss="A49.F09.291.000";
 			}
 			if(card=="fy" || card.equals("fy")) {
 				ss="A49.F09.281";
@@ -260,7 +260,7 @@ public class JianLiA01Controller {
 		public Map<String,Object> selectZFWAllList(String NowPage,String Nums){
 			Map<String,String> rsUnmkMap = new HashMap<>();
 			//rsUnmkMap.put("gaj", "");		//公安局
-			rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+			rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 			rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 			rsUnmkMap.put("fy", "A49.F09.281");			//法院
 			List<RsUnmk> rsUnmkList = rsUnmkServiceImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -380,7 +380,7 @@ public class JianLiA01Controller {
 				ss="公安局的法人编号";
 			}*/
 			if(card=="jcy" || card.equals("jcy")) {
-				ss="A49.F09.291";
+				ss="A49.F09.291.000";
 			}
 			if(card=="fy" || card.equals("fy")) {
 				ss="A49.F09.281";

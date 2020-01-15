@@ -9,18 +9,6 @@
 		 B0121 as code,
 		 name 
 		from rs_unmk where sid="0"  
-		<if test="gaj!='' and gaj !=null">
-			and B0121 &lt;&gt; #{gaj}  
-		</if>
-		<if test="jcy!='' and jcy !=null">
-			and B0121 &lt;&gt; #{jcy}  
-		</if>
-		<if test="sfj!='' and sfj !=null">
-			and B0121 &lt;&gt; #{sfj}  
-		</if>
-		<if test="fy!='' and fy !=null">
-			and B0121 &lt;&gt; #{fy}  
-		</if>
 	</select>
 
 	<!-- 根据法人编号查询除政法委外的其他根目录代码 -->

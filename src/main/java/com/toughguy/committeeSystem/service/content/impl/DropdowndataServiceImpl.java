@@ -33,7 +33,7 @@ public class DropdowndataServiceImpl extends GenericServiceImpl<Dropdowndata, In
 		Dropdowndata data = new Dropdowndata();
 		Map<String,String> rsUnmkMap = new HashMap<>();
 		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291");		//检察院
+		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
 		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
 		rsUnmkMap.put("fy", "A49.F09.281");			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
@@ -80,7 +80,7 @@ public class DropdowndataServiceImpl extends GenericServiceImpl<Dropdowndata, In
 			ss="公安局的法人编号";
 		}*/
 		if(card=="jcy" || card.equals("jcy")) {
-			ss="A49.F09.291";
+			ss="A49.F09.291.000";
 		}
 		if(card=="fy" || card.equals("fy")) {
 			ss="A49.F09.281";
