@@ -148,5 +148,11 @@ public class JianLiA01Impl extends GenericDaoImpl<JianLiA01, Integer> implements
 		return sqlSessionTemplate.selectList(typeNameSpace + ".findUidAllList",UID);
 	}
 
+	@Override
+	public JianLiA01 selectIdData(String Aid) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(typeNameSpace + ".selectIdData",Aid);
+	}
+
 
 }

@@ -148,5 +148,13 @@ public interface IJianLiA01Dao extends IGenericDao<JianLiA01, Integer>{
 	 * @return
 	 */
 	public List<JianLiA01> findUidAllList(String UID);
+	
+	
+	
+	/**
+	 * 通过用户id查询数据库返回列表信息
+	 * @return
+	 */
+	public JianLiA01 selectIdData(String Aid);
 
 }

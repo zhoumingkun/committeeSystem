@@ -1,25 +1,40 @@
 package com.toughguy.committeeSystem.controller.content;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.toughguy.committeeSystem.dto.ScreeningDTO;
 import com.toughguy.committeeSystem.model.content.JianLiA01;
 import com.toughguy.committeeSystem.model.content.RsUnmk;
+import com.toughguy.committeeSystem.service.content.impl.JianLiA01ServiceImpl;
 import com.toughguy.committeeSystem.service.content.prototype.IJianLiA01Service;
 import com.toughguy.committeeSystem.service.content.prototype.IRsUnmkService;
+import com.toughguy.committeeSystem.util.RedisUtils;
+
+
 
 @RequestMapping("/jianliA01")
 @RestController
@@ -30,6 +45,49 @@ public class JianLiA01Controller {
 	
 	@Autowired
 	private IRsUnmkService rsUnmkServiceImpl;
+	
+	@Autowired
+	private  RedisUtils redisUtils;
+	
+	
+	@Autowired
+	private  RedisTemplate<String, String> rTrmplate; 	
+	
+	@Value("${Gwy.jcy}")
+	private String Gwyjcy;
+	
+	@Value("${Gwy.sfj}")
+	private String Gwysfj;
+	
+	@Value("${Gwy.fy}")
+	private String Gwyfy;
+	
+	@Value("${Gwy.zfw}")
+	private String Gwyzfw;
+	
+	@Value("${Gwy.gaj}")
+	private String Gwygaj;
+	
+	
+	
+	
+	@RequestMapping("/selectUnitAllList")
+	 public List<JianLiA01> selectUnitAllList(String ss){
+		 	RsUnmk rsUnmkList = rsUnmkServiceImpl.findQTCode(ss);		//1.查询出单位的部门id
+			Set<String> set = new HashSet<>();			//存放单位用户的唯一id
+			List<JianLiA01> rsA02UserId = JianLiA01Service.findQTCodeID(rsUnmkList.getUID());		//根据部门id查询全部的人员id
+			if(rsA02UserId!=null && rsA02UserId.size()>0 ) {
+				for(int j=0;j<rsA02UserId.size();j++) {
+					set.add(rsA02UserId.get(j).getAid());
+				}
+			}
+			List<JianLiA01> selectList = new LinkedList<>();
+			for(String aa:set) {
+				JianLiA01 jla01 = JianLiA01Service.selectIdData(aa);
+				selectList.add(jla01);
+			}
+			return selectList;
+	 }
 	
 	
 	//导出人事报表
@@ -87,15 +145,15 @@ public class JianLiA01Controller {
 			jl.setName(name);
 			jl.setIdCard(idCard);
 			Map<String,String> rsUnmkMap = new HashMap<>();
-			//rsUnmkMap.put("gaj", "");		//公安局
-			rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-			rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-			rsUnmkMap.put("fy", "A49.F09.281");			//法院
+			rsUnmkMap.put("gaj", "Gwygaj");		//公安局
+			rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+			rsUnmkMap.put("sfj", Gwysfj);		//司法局
+			rsUnmkMap.put("fy", Gwyfy);			//法院
 			List<RsUnmk> rsUnmkList = rsUnmkServiceImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 			RsUnmk r = new RsUnmk();
 			r.setUID("0");
 			r.setName("中国共产党太原市委员会政法委员会");
-			r.setCode("A49.F09.329");
+			r.setCode(Gwyzfw);
 			r.setSID("-1");
 			rsUnmkList.add(r);
 			Set<String> set = new HashSet<>();
@@ -173,17 +231,17 @@ public class JianLiA01Controller {
 			jl.setName(name);
 			jl.setIdCard(idCard);
 			String ss=null;
-			/*if(card=="gaj" || card.equals("gaj")) {
-				ss="公安局的法人编号";
-			}*/
+			if(card=="gaj" || card.equals("gaj")) {
+				ss=Gwygaj;
+			}
 			if(card=="jcy" || card.equals("jcy")) {
-				ss="A49.F09.291.000";
+				ss=Gwyjcy;
 			}
 			if(card=="fy" || card.equals("fy")) {
-				ss="A49.F09.281";
+				ss=Gwyfy;
 			}
 			if(card=="sfj" || card.equals("sfj")) {
-				ss="A49.F09.435";
+				ss=Gwysfj;
 			}
 			
 			RsUnmk rsUnmkList = rsUnmkServiceImpl.findQTCode(ss);		//1.查询出全政法委的全部部门id
@@ -259,15 +317,15 @@ public class JianLiA01Controller {
 		@RequestMapping("/selectZFWAllList")
 		public Map<String,Object> selectZFWAllList(String NowPage,String Nums){
 			Map<String,String> rsUnmkMap = new HashMap<>();
-			//rsUnmkMap.put("gaj", "");		//公安局
-			rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-			rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-			rsUnmkMap.put("fy", "A49.F09.281");			//法院
+			rsUnmkMap.put("gaj", "Gwygaj");		//公安局
+			rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+			rsUnmkMap.put("sfj", Gwysfj);		//司法局
+			rsUnmkMap.put("fy", Gwyfy);			//法院
 			List<RsUnmk> rsUnmkList = rsUnmkServiceImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 			RsUnmk r = new RsUnmk();
 			r.setUID("0");
 			r.setName("中国共产党太原市委员会政法委员会");
-			r.setCode("A49.F09.329");
+			r.setCode(Gwyzfw);
 			r.setSID("-1");
 			rsUnmkList.add(r);
 			Set<String> set = new HashSet<>();			//存放唯一政法委的用户id
@@ -376,33 +434,31 @@ public class JianLiA01Controller {
 		@RequestMapping("/selectQTAllList")
 		public Map<String,Object> selectQTAllList(String NowPage,String Nums,String card){
 			String ss=null;
-			/*if(card=="gaj" || card.equals("gaj")) {
-				ss="公安局的法人编号";
-			}*/
+			List<JianLiA01> selectList=new ArrayList<>();
+			if(card=="gaj" || card.equals("gaj")) {
+				ss=Gwygaj;
+				Object object = redisUtils.get("gajAllList");
+				if(object==null|| object=="") {
+					selectList= selectUnitAllList(ss);
+					redisUtils.setMap("gajAllList", selectList,600);
+				}else {
+					String s =(String)redisUtils.get("gajAllList");
+					selectList= JSONObject.parseArray(s,JianLiA01.class);
+				}	
+			}
 			if(card=="jcy" || card.equals("jcy")) {
-				ss="A49.F09.291.000";
+				ss=Gwyjcy;
+				selectList= selectUnitAllList(ss);
 			}
 			if(card=="fy" || card.equals("fy")) {
-				ss="A49.F09.281";
+				ss=Gwyfy;
+				selectList= selectUnitAllList(ss);
 			}
 			if(card=="sfj" || card.equals("sfj")) {
-				ss="A49.F09.435";
+				ss=Gwysfj;
+				selectList= selectUnitAllList(ss);
 			}
-			RsUnmk rsUnmkList = rsUnmkServiceImpl.findQTCode(ss);		//1.查询出全政法委的全部部门id
-			Set<String> set = new HashSet<>();			//存放唯一政法委的用户id
-			List<JianLiA01> rsA02UserId = JianLiA01Service.findQTCodeID(rsUnmkList.getUID());		//根据部门id查询全部的人员id
-			if(rsA02UserId!=null && rsA02UserId.size()>0 ) {
-				for(int j=0;j<rsA02UserId.size();j++) {
-					set.add(rsA02UserId.get(j).getAid());
-				}
-			}
-			List<JianLiA01> selectList = new ArrayList<>();
-			for(String aa:set) {
-				JianLiA01 jl = new JianLiA01();
-				jl.setAid(aa);
-				JianLiA01 jla01 = JianLiA01Service.selectIdList(jl);
-				selectList.add(jla01);
-			}
+			
 			for(int i=0;i<selectList.size();i++) {
 				if(selectList.get(i).getAid()==null || selectList.get(i).getAid().equals("")) {
 					selectList.get(i).setAid("-");
@@ -479,6 +535,9 @@ public class JianLiA01Controller {
 			}
 			Map<String,Object> obj = new HashMap<>();
 			obj.put("错误", "报错了");
+			
+		
+			
 			return obj;
 			
 		}
@@ -664,13 +723,27 @@ public class JianLiA01Controller {
 		}
 		
 		@RequestMapping("/ZFWdataAnalysis")
-		public Map<String,Object> ZFWdataAnalysis(){
-			return JianLiA01Service.ZFWdataAnalysis();
+		public Object ZFWdataAnalysis(){
+			Object indexData  =redisUtils.get("zfw");
+			 if(indexData==null|| indexData=="") {
+				Object data = JianLiA01Service.ZFWdataAnalysis();
+				redisUtils.setMap("zfw", data,600);
+				return data;
+			 }else {
+				return indexData;
+			 }
 		}
 		
 		@RequestMapping("/QTdataAnalysis")
-		public Map<String,Object> QTdataAnalysis(String card){
-			return JianLiA01Service.QTdataAnalysis(card);
+		public Object QTdataAnalysis(String card){
+			Object indexData  =redisUtils.get(card);
+			 if(indexData==null|| indexData=="") {
+				Object data = JianLiA01Service.QTdataAnalysis(card);
+				redisUtils.setMap(card, data,600);
+				return data;
+			 }else {
+				return indexData;
+			 }
 		}
 		
 		/**
@@ -765,8 +838,16 @@ public class JianLiA01Controller {
 		 * @return
 		 */
 		@RequestMapping("/findIndexData")
-		public Map<String,Object> findIndexData(){
-			return JianLiA01Service.findIndexData();
+		public Object findIndexData(){
+			//redis读取数据   有  返回   没有调用数据放到redis并返回 
+			 Object indexData  =redisUtils.get("index");
+			 if(indexData==null|| indexData=="") {
+				Object data = JianLiA01Service.findIndexData();
+				redisUtils.setMap("index", data,600);
+				return data;
+			 }else {
+				return indexData;
+			 } 
 		}
 		
 		
@@ -775,6 +856,98 @@ public class JianLiA01Controller {
 			return JianLiA01Service.screenDataAnalysis(UID);
 		}
 		
+		@RequestMapping("/updataRedisData")
+		public void updataRedisData() {
+			Timer timer = new Timer();		
+			timer.schedule(new TimerTask() {				//schedule方法是执行时间定时任务的方法					
+				//run方法就是具体需要定时执行的任务			
+				@Override			
+				public void run() {			
+					System.out.println("执行定时任务!!!");			
+					long startTime=System.currentTimeMillis();
+					//项目启动缓存首页findIndexData数据
+					Object indexData  =redisUtils.get("index");
+					if(indexData==null|| indexData=="") {
+						Object data = JianLiA01Service.findIndexData();
+						redisUtils.setMap("index", data,600);
+						System.out.println("添加数据成功");
+					}else {
+						Object data = JianLiA01Service.findIndexData(); 
+						redisUtils.getAndSet("index",data);
+						System.out.println("更新数据成功");
+					 }
+					
+					
+					//项目启动缓存检察院数据
+					Object jcy  =redisUtils.get("jcy");
+					if(jcy==null|| jcy=="") {
+						Object data = JianLiA01Service.QTdataAnalysis("jcy");
+						redisUtils.setMap("jcy", data,600);
+					}else {
+						Object data = JianLiA01Service.QTdataAnalysis("jcy");
+						redisUtils.getAndSet("jcy",data);
+					 }
+					
+					
+					//项目启动缓存法院数据
+					Object fy  =redisUtils.get("fy");
+					if(fy==null|| fy=="") {
+						Object data = JianLiA01Service.QTdataAnalysis("fy");
+						redisUtils.setMap("fy", data,600);
+					}else {
+						Object data = JianLiA01Service.QTdataAnalysis("fy");
+						redisUtils.getAndSet("fy",data);
+					 }
+					
+					//项目启动缓存司法局数据
+					Object sfj  =redisUtils.get("sfj");
+					if(sfj==null|| sfj=="") {
+						Object data = JianLiA01Service.QTdataAnalysis("sfj");
+						redisUtils.setMap("sfj", data,600);
+					}else {
+						Object data = JianLiA01Service.QTdataAnalysis("sfj");
+						redisUtils.getAndSet("sfj",data);
+					}
+					 
+					//项目启动缓存公安局数据
+					Object gaj  =redisUtils.get("gaj");
+					if(gaj==null|| gaj=="") {
+						Object data = JianLiA01Service.QTdataAnalysis("gaj");
+						redisUtils.setMap("gaj", data,600);
+					}else {
+						Object data = JianLiA01Service.QTdataAnalysis("gaj");
+						redisUtils.getAndSet("gaj",data);
+					 }
+					
+					//项目启动缓存政法委数据
+					Object zfw  =redisUtils.get("zfw");
+					if(zfw==null|| zfw=="") {
+						Object data = JianLiA01Service.ZFWdataAnalysis();
+						redisUtils.setMap("zfw", data,600);
+					}else {
+						Object data = JianLiA01Service.ZFWdataAnalysis();
+						redisUtils.getAndSet("zfw",data);
+					 }
+					 
+					
+					
+					//存或更新公安局全部人员信息
+					Object gajAllList  =redisUtils.get("gajAllList");
+					if(gajAllList==null|| gajAllList=="") {
+						redisUtils.setMap("gajAllList", selectUnitAllList(Gwygaj),600);
+					}else {
+						redisUtils.getAndSet("gajAllList",selectUnitAllList(Gwygaj));
+					 }
+					
+					long endTime=System.currentTimeMillis();
+					 float excTime=(float)(endTime-startTime)/1000;
+					 System.out.println("执行时间："+excTime+"s");
+
+				}		
+			}, 1,450000);		//定时间隔450秒
+			
+		}
+			
 		
 		
 }

@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -37,6 +38,7 @@ import org.apache.poi.xssf.usermodel.XSSFPicture;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -82,6 +84,21 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	
 	@Autowired
 	private IRsUnmkDao rsUnmkDaoImpl;
+	
+	@Value("${Gwy.jcy}")
+	private String Gwyjcy;
+	
+	@Value("${Gwy.sfj}")
+	private String Gwysfj;
+	
+	@Value("${Gwy.fy}")
+	private String Gwyfy;
+	
+	@Value("${Gwy.zfw}")
+	private String Gwyzfw;
+	
+	@Value("${Gwy.gaj}")
+	private String Gwygaj;
 	
 	@Override
 	public JianLiA01 findExport(String id) {
@@ -461,7 +478,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	        jianliA01.setAid(id);
 	        JianLiA01 imageurl = jianLiA01Dao.selectImgUrl(jianliA01);
 	        if(imageurl!=null&& !imageurl.equals("")){
-	        	String imgurl="C:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+imageurl.getImgUrl();
+	        	String imgurl="D:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+imageurl.getImgUrl();
 				ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();     
 	            bufferImg = ImageIO.read(new File(imgurl));     
 	            ImageIO.write(bufferImg, "jpg", byteArrayOut); 
@@ -507,7 +524,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			cell015.setCellStyle(utils.Style7(workbook));
 	        cell015.setCellValue("全日制");
 	        List<JianLiA08> jianLiA08QRZ= jianLiA08Dao.selectQRZ(id);
-	        System.out.println(jianLiA08QRZ);
 	        
 	        CellRangeAddress region8 = new CellRangeAddress(6, (short) 6, 2, (short) 3);
 			Cell cell13=row6.createCell(2);
@@ -595,7 +611,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			
 			List<JianLiA08> jianLiA08QRZYX = jianLiA08Dao.selectQRZYX(id);
-//			System.out.println(jianLiA08QRZYX);
 			CellRangeAddress region10 = new CellRangeAddress(6, (short) 7, 5, (short) 6);
 			Cell cell15=row6.createCell(5);
 			utils.setRegionStyle(sh, region10, utils.Style9(workbook));
@@ -670,11 +685,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		    cell0171.setCellValue("学 位");  
 		        
 	        List<JianLiA08> jianLiA08ZZ= jianLiA08Dao.selectZZ(id);
-	        System.out.println(jianLiA08ZZ);
 	        List<JianLiA08> aa1 = new ArrayList<>();
 	        int ii1=0;
 	        if(jianLiA08ZZ!=null&&jianLiA08ZZ.size()>0) {
-	        	System.out.println("进来了");
 				for(int w=0;w<jianLiA08ZZ.size();w++) {
 					if(jianLiA08ZZ.size()==1 && ii1<1) {			//只查询出一条在职教育
 						aa1.add(jianLiA08ZZ.get(w));
@@ -700,7 +713,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					cell17.setCellValue("");//A0901A  在职学位
 				}
 			}else{
-				System.out.println("进来了去");
 				cell16.setCellValue("");//A0801A  在职学历
 				cell17.setCellValue("");//A0901A  在职学位
 			}
@@ -1362,7 +1374,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		JianLiA01 url = jianLiA01Dao.selectImgUrl(jianli);
 		if(url!=null) {
-			String imgurl="C:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+url.getImgUrl();
+			String imgurl="D:\\zzbhr\\apache-tomcat-6.0.26\\webapps\\zzbhr\\"+url.getImgUrl();
 			String base64Str = Base64Transformation.imageToBase64Str(imgurl).replaceAll("\r\n","");
 			map2.put("url", base64Str);
 		}
@@ -1522,15 +1534,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	public List<JianLiA01> screenZFWList(ScreeningDTO sc) {
 		// TODO Auto-generated method stuby
 		Map<String,String> rsUnmkMap = new HashMap<>();
-		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-		rsUnmkMap.put("fy", "A49.F09.281");			//法院
+		rsUnmkMap.put("gaj", Gwygaj);		//公安局
+		rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+		rsUnmkMap.put("sfj", Gwysfj);		//司法局
+		rsUnmkMap.put("fy", Gwyfy);			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 		RsUnmk r = new RsUnmk();
 		r.setUID("0");
 		r.setName("中国共产党太原市委员会政法委员会");
-		r.setCode("A49.F09.329");
+		r.setCode(Gwyzfw);
 		r.setSID("-1");
 		rsUnmkList.add(r);
 		Set<String> set = new HashSet<>();
@@ -1757,17 +1769,17 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	public List<JianLiA01> screenQTList(ScreeningDTO sc) {
 		// TODO Auto-generated method stub
 		String ss=null;
-		/*if(sc.getCard()=="gaj" || sc.getCard().equals("gaj")) {
-		ss="公安局的法人编号";
-		}*/
+		if(sc.getCard()=="gaj" || sc.getCard().equals("gaj")) {
+			ss=Gwygaj;
+		}
 		if(sc.getCard()=="jcy" || sc.getCard().equals("jcy")) {
-			ss="A49.F09.291.000";
+			ss=Gwyjcy;
 		}
 		if(sc.getCard()=="fy" || sc.getCard().equals("fy")) {
-			ss="A49.F09.281";
+			ss=Gwyfy;
 		}
 		if(sc.getCard()=="sfj" || sc.getCard().equals("sfj")) {
-			ss="A49.F09.435";
+			ss=Gwysfj;
 		}
 		RsUnmk rsUnmkList = rsUnmkDaoImpl.findQTCode(ss);		//1.查询出全政法委的全部部门id
 		Set<String> set = new HashSet<>();
@@ -1991,15 +2003,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	public Map<String, Object> ZFWdataAnalysis() {
 		// TODO Auto-generated method stub
 		Map<String,String> rsUnmkMap = new HashMap<>();
-		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-		rsUnmkMap.put("fy", "A49.F09.281");			//法院
+		rsUnmkMap.put("gaj", Gwygaj);		//公安局
+		rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+		rsUnmkMap.put("sfj", Gwysfj);		//司法局
+		rsUnmkMap.put("fy", Gwyfy);			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 		RsUnmk r = new RsUnmk();
 		r.setUID("0");
 		r.setName("中国共产党太原市委员会政法委员会");
-		r.setCode("A49.F09.329");
+		r.setCode(Gwyzfw);
 		r.setSID("-1");
 		rsUnmkList.add(r);
 		Set<String> set2 = new HashSet<>();			//存放唯一政法委的用户id
@@ -2224,17 +2236,17 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 	public Map<String, Object> QTdataAnalysis(String card) {
 		// TODO Auto-generated method stub
 		String s=null;
-		/*if(card=="gaj" || card.equals("gaj")) {
-			s="公安局的法人编号";
-		}*/
+		if(card=="gaj" || card.equals("gaj")) {
+			s=Gwygaj;
+		}
 		if(card=="jcy" || card.equals("jcy")) {
-			s="A49.F09.291.000";
+			s=Gwyjcy;
 		}
 		if(card=="fy" || card.equals("fy")) {
-			s="A49.F09.281";
+			s=Gwyfy;
 		}
 		if(card=="sfj" || card.equals("sfj")) {
-			s="A49.F09.435";
+			s=Gwysfj;
 		}
 		RsUnmk rsUnmkList = rsUnmkDaoImpl.findQTCode(s);		//1.查询出全政法委的全部部门id
 		Set<String> set2 = new HashSet<>();			//存放唯一政法委的用户id
@@ -2481,9 +2493,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		// TODO Auto-generated method stub
 		List<JianLiA01> allList= new ArrayList<>();
 		List<JianLiA01> list = jianLiA01Dao.findUidAllList(UID);
+		Set<String> set = new HashSet<>();
 		if(list!=null && list.size()>0) {
 			for(int i =0;i<list.size();i++) {
-				JianLiA01 aidList = jianLiA01Dao.selectIdList(list.get(i));
+				set.add(list.get(i).getAid());
+			}
+			for(String aid:set) {
+				JianLiA01 j = new JianLiA01();
+				j.setAid(aid);
+				JianLiA01 aidList = jianLiA01Dao.selectIdList(j);
 				allList.add(aidList);
 			}
 			return allList;
@@ -2498,15 +2516,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		// TODO Auto-generated method stub
 		Map<String,Object> bossMap = new HashMap<>();
 		Map<String,String> rsUnmkMap = new HashMap<>();
-		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-		rsUnmkMap.put("fy", "A49.F09.281");			//法院
+		rsUnmkMap.put("gaj", Gwygaj);		//公安局
+		rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+		rsUnmkMap.put("sfj", Gwysfj);		//司法局
+		rsUnmkMap.put("fy", Gwyfy);			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkDaoImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 		RsUnmk r = new RsUnmk();
 		r.setUID("0");
 		r.setName("中国共产党太原市委员会政法委员会");
-		r.setCode("A49.F09.329");
+		r.setCode(Gwyzfw);
 		r.setSID("-1");
 		rsUnmkList.add(r);
 		Set<String> set = new HashSet<>();			//存放唯一政法委的用户id
@@ -2518,10 +2536,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				}
 			}
 		}
-		List<JianLiA01> ZFWAllList = new ArrayList<>();
-		List<String> zfwidList= new ArrayList<>();
+		List<JianLiA01> ZFWAllList = new LinkedList<>();			//存放全部政法委人员详细信息
+		List<String> zfwidList= new ArrayList<>(set);				//存放全部人员id
 		for(String aid:set) {
-			zfwidList.add(aid);
 			Map<String,String> map = new HashMap<>();
 			map.put("ID",aid);	
 			List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
@@ -2532,10 +2549,12 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			
 		}
-		//===========================查询出政法委的全部人员的全部字段=================================
-		/*List<JianLiA01> GAJAllList = new ArrayList<>();
+		
+		
+		
+		List<JianLiA01> GAJAllList = new LinkedList<>();
 		Set<String> setA = new HashSet<>();
-		String a="";				//公安局的法人编号
+		String a=Gwygaj;				//公安局的法人编号
 		RsUnmk aa = rsUnmkDaoImpl.findQTCode(a);
 		List<JianLiA01> GAJList = jianLiA01Dao.findQTCodeID(aa.getUID());		//根据部门id查询全部的人员id
 		if(GAJList!=null && GAJList.size()>0 ) {
@@ -2543,9 +2562,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				setA.add(GAJList.get(j).getAid());
 			}
 		}
-		List<String> gajidList= new ArrayList<>();
+		List<String> gajidList= new ArrayList<>(setA);
 		for(String aid:setA) {
-			gajidList.add(aid);
 			Map<String,String> map = new HashMap<>();
 			map.put("ID",aid);	
 			List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
@@ -2556,15 +2574,14 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			
 		}
-		*/
+	
 		
 		
 		
 		
-		
-		List<JianLiA01> JCYAllList = new ArrayList<>();
+		List<JianLiA01> JCYAllList = new LinkedList<>();
 		Set<String> setB = new HashSet<>();
-		String b="A49.F09.291.000";		//检察院的法人编号
+		String b=Gwyjcy;		//检察院的法人编号
 		RsUnmk bb = rsUnmkDaoImpl.findQTCode(b);
 		List<JianLiA01> JCYList = jianLiA01Dao.findQTCodeID(bb.getUID());		//根据部门id查询全部的人员id
 		if(JCYList!=null && JCYList.size()>0 ) {
@@ -2572,9 +2589,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				setB.add(JCYList.get(j).getAid());
 			}
 		}
-		List<String> jcyidList= new ArrayList<>();
+		List<String> jcyidList= new ArrayList<>(setB);
 		for(String aid:setB) {
-			jcyidList.add(aid);
 			Map<String,String> map = new HashMap<>();
 			map.put("ID",aid);	
 			List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
@@ -2588,9 +2604,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		
 		
-		List<JianLiA01> FYAllList = new ArrayList<>();
+		List<JianLiA01> FYAllList = new LinkedList<>();
 		Set<String> setC = new HashSet<>();
-		String c="A49.F09.281";		//法院的法人编号
+		String c=Gwyfy;		//法院的法人编号
 		RsUnmk cc = rsUnmkDaoImpl.findQTCode(c);
 		List<JianLiA01> FYList = jianLiA01Dao.findQTCodeID(cc.getUID());		//根据部门id查询全部的人员id
 		if(FYList!=null && FYList.size()>0 ) {
@@ -2598,9 +2614,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				setC.add(FYList.get(j).getAid());
 			}
 		}
-		List<String> fyidList= new ArrayList<>();
+		List<String> fyidList= new ArrayList<>(setC);
 		for(String aid:setC) {
-			fyidList.add(aid);
 			Map<String,String> map = new HashMap<>();
 			map.put("ID",aid);	
 			List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
@@ -2615,9 +2630,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		
 		
-		List<JianLiA01> SFJAllList = new ArrayList<>();
+		List<JianLiA01> SFJAllList = new LinkedList<>();
 		Set<String> setD = new HashSet<>();
-		String d="A49.F09.435";		//司法局的法人编号
+		String d=Gwysfj;		//司法局的法人编号
 		RsUnmk dd = rsUnmkDaoImpl.findQTCode(d);
 		List<JianLiA01> SFJList = jianLiA01Dao.findQTCodeID(dd.getUID());		//根据部门id查询全部的人员id
 		if(SFJList!=null && SFJList.size()>0 ) {
@@ -2625,9 +2640,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				setD.add(SFJList.get(j).getAid());
 			}
 		}
-		List<String> sfjidList= new ArrayList<>();
+		List<String> sfjidList= new ArrayList<>(setD);
 		for(String aid:setD) {
-			sfjidList.add(aid);
 			Map<String,String> map = new HashMap<>();
 			map.put("ID",aid);	
 			List<JianLiA01> selectA01 = jianLiA01Dao.selectA01(map);
@@ -2700,9 +2714,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		int year = Integer.parseInt(sf.format(date));
 		for(int i=0;i<ZFWAllList.size();i++) {
 			zfwSexNum+=Integer.parseInt(ZFWAllList.get(i).getRemarks());
-			if(ZFWAllList.get(i).getNation()!="汉族" || !ZFWAllList.get(i).getNation().equals("汉族")) {
-				//zfwEthnicMinorityNum=zfwEthnicMinorityNum+1;
-			}
+			/*if(ZFWAllList.get(i).getNation()!="汉族" || !ZFWAllList.get(i).getNation().equals("汉族")) {
+				zfwEthnicMinorityNum=zfwEthnicMinorityNum+1;
+			}*/
 			if(ZFWAllList.get(i).getSex()=="男" ||  ZFWAllList.get(i).getSex().equals("男")) {
 				zfwManNum=zfwManNum+1;
 			}
@@ -2721,6 +2735,20 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB11=QB11+1;
 				}
 			}
+			if(ZFWAllList.get(i).getRemarks()!=null && !ZFWAllList.get(i).getRemarks().equals("")) {
+				int intage = Integer.parseInt(ZFWAllList.get(i).getRemarks());
+				if(intage<=30) {
+					QB30=QB30+1;
+				}else if(intage>=31 && intage<=40 ) {
+					QB40=QB40+1;
+				}else if(intage>=41 && intage<=50 ) {
+					QB50=QB50+1;
+				}else if(intage>=51 && intage<=59 ) {
+					QB59=QB59+1;
+				}else if(intage>=60) {
+					QB60=QB60+1;
+				}
+			}
 			
 		}
 		Map<String,String> map2zfw = new HashMap<>();
@@ -2736,24 +2764,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		
 		Map<String,String> map1zfw = new HashMap<>();
-		List<JianLiA01> age = jianLiA01Dao.selectAGE(zfwidList);
-		for(int i=0;i<age.size();i++) {
-			if(age.get(i)!=null && !age.get(i).equals("")) {
-				int intage = Integer.parseInt(age.get(i).getBirthDay());
-				if(intage<=30) {
-					QB30=QB30+1;
-				}else if(intage>=31 && intage<=40 ) {
-					QB40=QB40+1;
-				}else if(intage>=41 && intage<=50 ) {
-					QB50=QB50+1;
-				}else if(intage>=51 && intage<=59 ) {
-					QB59=QB59+1;
-				}else if(intage>=60) {
-					QB60=QB60+1;
-				}
-			}
-			
-		}
 		map1zfw.put("30", QB30+"");
 		map1zfw.put("40", QB40+"");
 		map1zfw.put("50", QB50+"");
@@ -2785,11 +2795,11 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		
 
-		/*for(int i=0;i<GAJAllList.size();i++) {
+		for(int i=0;i<GAJAllList.size();i++) {
 			gajSexNum+=Integer.parseInt(GAJAllList.get(i).getRemarks());
-			if(GAJAllList.get(i).getNation()!="汉族" && !GAJAllList.get(i).getNation().equals("汉族")) {
+			/*if(GAJAllList.get(i).getNation()!="汉族" && !GAJAllList.get(i).getNation().equals("汉族")) {
 				gajEthnicMinorityNum=gajEthnicMinorityNum+1;
-			}
+			}*/
 			if(GAJAllList.get(i).getSex()=="男" ||  GAJAllList.get(i).getSex().equals("男")) {
 				gajManNum=gajManNum+1;
 			}
@@ -2808,6 +2818,20 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB11=QB11+1;
 				}
 			}
+			if(GAJAllList.get(i).getRemarks()!=null && !GAJAllList.get(i).getRemarks().equals("")) {
+				int intage = Integer.parseInt(GAJAllList.get(i).getRemarks());
+				if(intage<=30) {
+					QB30=QB30+1;
+				}else if(intage>=31 && intage<=40 ) {
+					QB40=QB40+1;
+				}else if(intage>=41 && intage<=50 ) {
+					QB50=QB50+1;
+				}else if(intage>=51 && intage<=59 ) {
+					QB59=QB59+1;
+				}else if(intage>=60) {
+					QB60=QB60+1;
+				}
+			}
 
 		}
 		Map<String,String> map2gaj = new HashMap<>();
@@ -2822,24 +2846,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		QB11=0;
 		
 		Map<String,String> map1gaj = new HashMap<>();
-		List<JianLiA01> age2 = jianLiA01Dao.selectAGE(gajidList);
-		for(int i=0;i<age2.size();i++) {
-			if(age2.get(i)!=null && !age2.get(i).equals("")) {
-				int intage = Integer.parseInt(age2.get(i).getBirthDay());
-				if(intage<=30) {
-					QB30=QB30+1;
-				}else if(intage>=31 && intage<=40 ) {
-					QB40=QB40+1;
-				}else if(intage>=41 && intage<=50 ) {
-					QB50=QB50+1;
-				}else if(intage>=51 && intage<=59 ) {
-					QB59=QB59+1;
-				}else if(intage>=60) {
-					QB60=QB60+1;
-				}
-			}
-			
-		}
 		map1gaj.put("30", QB30+"");
 		map1gaj.put("40", QB40+"");
 		map1gaj.put("50", QB50+"");
@@ -2857,7 +2863,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			jianli.setSex("大学");
 			List<JianLiA01> screenEducationBgOne = jianLiA01Dao.screenEducationBgOne(jianli);
 			if(screenEducationBgOne!=null) {
-				gajwbk=gajbk+screenEducationBgOne.size();	
+				gajbk=gajbk+screenEducationBgOne.size();	
 			}
 			jianli.setSex("研究生");
 			
@@ -2866,14 +2872,13 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 				gajyjs=gajyjs+educationBgOne.size();
 			}	
 		}
-		*/
 		
 		
 		for(int i=0;i<FYAllList.size();i++) {
 			fySexNum+=Integer.parseInt(FYAllList.get(i).getRemarks());
-			if(FYAllList.get(i).getNation()!="汉族" ||  !FYAllList.get(i).getNation().equals("汉族")) {
-				//fyEthnicMinorityNum=fyEthnicMinorityNum+1;
-			}
+			/*if(FYAllList.get(i).getNation()!="汉族" ||  !FYAllList.get(i).getNation().equals("汉族")) {
+				fyEthnicMinorityNum=fyEthnicMinorityNum+1;
+			}*/
 			if(FYAllList.get(i).getSex()=="男" ||  FYAllList.get(i).getSex().equals("男")) {
 				fyManNum=fyManNum+1;
 			}
@@ -2892,23 +2897,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB11=QB11+1;
 				}
 			}
-		}
-		Map<String,String> map2fy = new HashMap<>();
-		map2fy.put("dutyLevelTwo", QB2+"");
-		map2fy.put("dutyLevelFive", QB5+"");
-		map2fy.put("dutyLevelNine", QB10+"");
-		map2fy.put("dutyLevelTen", QB11+"");
-		dutyLevel.put("FYDutyLevel", map2fy);
-		QB2=0;
-		QB5=0;
-		QB10=0;								
-		QB11=0;
-
-		Map<String,String> map1fy = new HashMap<>();
-		List<JianLiA01> age3 = jianLiA01Dao.selectAGE(fyidList);
-		for(int i=0;i<age3.size();i++) {
-			if(age3.get(i)!=null && !age3.get(i).equals("")) {
-				int intage = Integer.parseInt(age3.get(i).getBirthDay());
+			if(FYAllList.get(i).getRemarks()!=null && !FYAllList.get(i).getRemarks().equals("")) {
+				int intage = Integer.parseInt(FYAllList.get(i).getRemarks());
 				if(intage<=30) {
 					QB30=QB30+1;
 				}else if(intage>=31 && intage<=40 ) {
@@ -2923,6 +2913,18 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 			}
 			
 		}
+		Map<String,String> map2fy = new HashMap<>();
+		map2fy.put("dutyLevelTwo", QB2+"");
+		map2fy.put("dutyLevelFive", QB5+"");
+		map2fy.put("dutyLevelNine", QB10+"");
+		map2fy.put("dutyLevelTen", QB11+"");
+		dutyLevel.put("FYDutyLevel", map2fy);
+		QB2=0;
+		QB5=0;
+		QB10=0;								
+		QB11=0;
+
+		Map<String,String> map1fy = new HashMap<>();
 		map1fy.put("30", QB30+"");
 		map1fy.put("40", QB40+"");
 		map1fy.put("50", QB50+"");
@@ -2953,9 +2955,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		for(int i=0;i<JCYAllList.size();i++) {  
 			jcySexNum+=Integer.parseInt(JCYAllList.get(i).getRemarks());
-			if(JCYAllList.get(i).getNation()!="汉族" ||  !JCYAllList.get(i).getNation().equals("汉族")) {
-				//jcyEthnicMinorityNum=jcyEthnicMinorityNum+1;
-			}
+			/*if(JCYAllList.get(i).getNation()!="汉族" ||  !JCYAllList.get(i).getNation().equals("汉族")) {
+				jcyEthnicMinorityNum=jcyEthnicMinorityNum+1;
+			}*/
 			if(JCYAllList.get(i).getSex()=="男" ||  JCYAllList.get(i).getSex().equals("男")) {
 				jcyManNum=jcyManNum+1;
 			}
@@ -2974,6 +2976,20 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB11=QB11+1;
 				}
 			}
+			if(JCYAllList.get(i).getRemarks()!=null && !JCYAllList.get(i).getRemarks().equals("")) {
+				int intage = Integer.parseInt(JCYAllList.get(i).getRemarks());
+				if(intage<=30) {
+					QB30=QB30+1;
+				}else if(intage>=31 && intage<=40 ) {
+					QB40=QB40+1;
+				}else if(intage>=41 && intage<=50 ) {
+					QB50=QB50+1;
+				}else if(intage>=51 && intage<=59 ) {
+					QB59=QB59+1;
+				}else if(intage>=60) {
+					QB60=QB60+1;
+				}
+			}
 		}
 		Map<String,String> map2jcy = new HashMap<>();
 		map2jcy.put("dutyLevelTwo", QB2+"");
@@ -2987,24 +3003,6 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		QB11=0;
 
 		Map<String,String> map1jcy = new HashMap<>();
-		List<JianLiA01> age4 = jianLiA01Dao.selectAGE(jcyidList);
-		for(int i=0;i<age4.size();i++) {
-			if(age4.get(i)!=null && !age4.get(i).equals("")) {
-				int intage = Integer.parseInt(age4.get(i).getBirthDay());
-				if(intage<=30) {
-					QB30=QB30+1;
-				}else if(intage>=31 && intage<=40 ) {
-					QB40=QB40+1;
-				}else if(intage>=41 && intage<=50 ) {
-					QB50=QB50+1;
-				}else if(intage>=51 && intage<=59 ) {
-					QB59=QB59+1;
-				}else if(intage>=60) {
-					QB60=QB60+1;
-				}
-			}
-			
-		}
 		map1jcy.put("30", QB30+"");
 		map1jcy.put("40", QB40+"");
 		map1jcy.put("50", QB50+"");
@@ -3035,9 +3033,9 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		for(int i=0;i<SFJAllList.size();i++) {
 			sfjSexNum+=Integer.parseInt(SFJAllList.get(i).getRemarks());
-			if(SFJAllList.get(i).getNation()!="汉族" ||  !SFJAllList.get(i).getNation().equals("汉族")) {
-				//sfjEthnicMinorityNum=sfjEthnicMinorityNum+1;
-			}
+			/*if(SFJAllList.get(i).getNation()!="汉族" ||  !SFJAllList.get(i).getNation().equals("汉族")) {
+				sfjEthnicMinorityNum=sfjEthnicMinorityNum+1;
+			}*/
 			if(SFJAllList.get(i).getSex()=="男" ||  SFJAllList.get(i).getSex().equals("男")) {
 				sfjManNum=sfjManNum+1;
 			}
@@ -3056,19 +3054,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB11=QB11+1;
 				}
 			}
-		}
-		Map<String,String> map2sfj = new HashMap<>();
-		map2sfj.put("dutyLevelTwo", QB2+"");
-		map2sfj.put("dutyLevelFive", QB5+"");
-		map2sfj.put("dutyLevelNine", QB10+"");
-		map2sfj.put("dutyLevelTen", QB11+"");
-		dutyLevel.put("SFJDutyLevel", map2sfj);
-
-		Map<String,String> map1sfj = new HashMap<>();
-		List<JianLiA01> age5 = jianLiA01Dao.selectAGE(sfjidList);
-		for(int i=0;i<age5.size();i++) {
-			if(age5.get(i)!=null && !age5.get(i).equals("")) {
-				int intage = Integer.parseInt(age5.get(i).getBirthDay());
+			if(SFJAllList.get(i).getRemarks()!=null && !SFJAllList.get(i).getRemarks().equals("")) {
+				int intage = Integer.parseInt(SFJAllList.get(i).getRemarks());
 				if(intage<=30) {
 					QB30=QB30+1;
 				}else if(intage>=31 && intage<=40 ) {
@@ -3081,8 +3068,15 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 					QB60=QB60+1;
 				}
 			}
-			
 		}
+		Map<String,String> map2sfj = new HashMap<>();
+		map2sfj.put("dutyLevelTwo", QB2+"");
+		map2sfj.put("dutyLevelFive", QB5+"");
+		map2sfj.put("dutyLevelNine", QB10+"");
+		map2sfj.put("dutyLevelTen", QB11+"");
+		dutyLevel.put("SFJDutyLevel", map2sfj);
+
+		Map<String,String> map1sfj = new HashMap<>();
 		map1sfj.put("30", QB30+"");
 		map1sfj.put("40", QB40+"");
 		map1sfj.put("50", QB50+"");
@@ -3111,7 +3105,7 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		
 		Map<String,Integer> ageRatio = new HashMap<>();				//年龄比
 		ageRatio.put("zfwSex", zfwSexNum/zfwidList.size());
-		//ageRatio.put("gajSex", gajSexNum/gajidList.size());
+		ageRatio.put("gajSex", gajSexNum/gajidList.size());
 		ageRatio.put("jcySex", jcySexNum/jcyidList.size());
 		ageRatio.put("fySex", fySexNum/fyidList.size());
 		ageRatio.put("sfjSex", sfjSexNum/sfjidList.size());
@@ -3131,8 +3125,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		sexRatio.put("zfwMan", zfwManNum*100/zfwidList.size());
 		sexRatio.put("zfwGirl", zfwGirlNum*100/zfwidList.size());
 		
-		//sexRatio.put("gajMan", gajManNum*100/gajidList.size());
-		//sexRatio.put("gajGirl", gajGirlNum*100/gajidList.size());
+		sexRatio.put("gajMan", gajManNum*100/gajidList.size());
+		sexRatio.put("gajGirl", gajGirlNum*100/gajidList.size());
 		
 		sexRatio.put("jcyMan", jcyManNum*100/jcyidList.size());
 		sexRatio.put("jcyGirl", jcyGirlNum*100/jcyidList.size());
@@ -3148,8 +3142,8 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		education.put("zfwbk", zfwbk*100/zfwidList.size());
 		education.put("zfwyjs", zfwyjs*100/zfwidList.size());
 		
-		//education.put("gajbk", gajbk*100/gajidList.size());
-		//education.put("gajyjs", gajyjs*100/gajidList.size());
+		education.put("gajbk", gajbk*100/gajidList.size());
+		education.put("gajyjs", gajyjs*100/gajidList.size());
 		
 		education.put("jcybk", jcybk*100/jcyidList.size());
 		education.put("jcyyjs", jcyyjs*100/jcyidList.size());
@@ -3166,17 +3160,17 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		aaa.put("SFJTotal", SFJAllList.size()+"");
 		aaa.put("JCYTotal", JCYAllList.size()+"");
 		aaa.put("FYTotal", FYAllList.size()+"");
-		//aaa.put("GAJTotal", GAJAllList.size()+"");
+		aaa.put("GAJTotal", GAJAllList.size()+"");
 		bossMap.put("Total", aaa);
 		return bossMap;
 	}
-
-
+	
+	
+	
 	@Override
 	public Map<String, Object> screenDataAnalysis(String UID) {
 		// TODO Auto-generated method stub
 		List<JianLiA01> zfwList = jianLiA01Dao.findUidAllList(UID);
-		System.out.println(zfwList+"---------------");
 		if(zfwList.size()<=0 ) {
 			Map<String,Object> map = new HashMap<>();
 			map.put("sexRatio1", 0+"%");
@@ -3418,6 +3412,13 @@ public class JianLiA01ServiceImpl extends GenericServiceImpl<JianLiA01, Integer>
 		map.put("postgraduate", bb);
 		return map;
 
+	}
+
+
+	@Override
+	public JianLiA01 selectIdData(String Aid) {
+		// TODO Auto-generated method stub
+		return jianLiA01Dao.selectIdData(Aid);
 	}
 
 

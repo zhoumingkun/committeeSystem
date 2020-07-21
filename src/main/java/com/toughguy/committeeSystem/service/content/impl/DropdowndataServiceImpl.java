@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.toughguy.committeeSystem.model.content.Dropdowndata;
@@ -26,21 +27,36 @@ public class DropdowndataServiceImpl extends GenericServiceImpl<Dropdowndata, In
 	
 	@Autowired
 	private IRsUnmkDao rsUnmkImpl;
+	
+	@Value("${Gwy.jcy}")
+	private String Gwyjcy;
+	
+	@Value("${Gwy.sfj}")
+	private String Gwysfj;
+	
+	@Value("${Gwy.fy}")
+	private String Gwyfy;
+	
+	@Value("${Gwy.zfw}")
+	private String Gwyzfw;
+	
+	@Value("${Gwy.gaj}")
+	private String Gwygaj;
 
 	@Override
 	public Dropdowndata findZFWPullData() {
 		// TODO Auto-generated method stub
 		Dropdowndata data = new Dropdowndata();
 		Map<String,String> rsUnmkMap = new HashMap<>();
-		//rsUnmkMap.put("gaj", "");		//公安局
-		rsUnmkMap.put("jcy", "A49.F09.291.000");		//检察院
-		rsUnmkMap.put("sfj", "A49.F09.435");		//司法局
-		rsUnmkMap.put("fy", "A49.F09.281");			//法院
+		rsUnmkMap.put("gaj", Gwygaj);		//公安局
+		rsUnmkMap.put("jcy", Gwyjcy);		//检察院
+		rsUnmkMap.put("sfj", Gwysfj);		//司法局
+		rsUnmkMap.put("fy", Gwyfy);			//法院
 		List<RsUnmk> rsUnmkList = rsUnmkImpl.findZFWCode(rsUnmkMap);		//1.查询出全政法委的全部部门id
 		RsUnmk r = new RsUnmk();
 		r.setUID("0");
 		r.setName("中国共产党太原市委员会政法委员会");
-		r.setCode("A49.F09.329");
+		r.setCode(Gwyzfw);
 		r.setSID("-1");
 		rsUnmkList.add(r);
 		List<String> Department = new ArrayList<>();		//部门
@@ -76,17 +92,17 @@ public class DropdowndataServiceImpl extends GenericServiceImpl<Dropdowndata, In
 		// TODO Auto-generated method stub
 		Dropdowndata data = new Dropdowndata();
 		String ss=null;
-		/*if(card=="gaj" || card.equals("gaj")) {
-			ss="公安局的法人编号";
-		}*/
+		if(card=="gaj" || card.equals("gaj")) {
+			ss=Gwygaj;
+		}
 		if(card=="jcy" || card.equals("jcy")) {
-			ss="A49.F09.291.000";
+			ss=Gwyjcy;
 		}
 		if(card=="fy" || card.equals("fy")) {
-			ss="A49.F09.281";
+			ss=Gwyfy;
 		}
 		if(card=="sfj" || card.equals("sfj")) {
-			ss="A49.F09.435";
+			ss=Gwysfj;
 		}
 		RsUnmk rsUnmkList = rsUnmkImpl.findQTCode(ss);		//1.查询出全政法委的全部部门id
 		List<String> Department = dropdowndataDao.selectDepartment(rsUnmkList.getUID());		//部门

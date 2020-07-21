@@ -116,5 +116,12 @@ public interface IJianLiA01Service extends IGenericService<JianLiA01, Integer>{
 	 * @return
 	 */
 	public Map<String, Object> screenDataAnalysis(String UID);
+	
+	
+	/**
+	 * 通过用户id查询数据库返回列表信息
+	 * @return
+	 */
+	public JianLiA01 selectIdData(String Aid);
 
 }
